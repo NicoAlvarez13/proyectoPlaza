@@ -10,10 +10,15 @@ public class ValidadorFormulario : MonoBehaviour
     public TMP_InputField inputEdad;
     public TextMeshProUGUI textoError; // El texto que mostrará la advertencia
     public TextMeshProUGUI textoErrorInfo;
+    public TextMeshProUGUI textoDelCodigoSala;
+
+    [Header("Referencias Extra")]
+    public FadeInBoth scriptDePantallas;
 
     void Start()
     {
         textoError.gameObject.SetActive(false);
+        textoErrorInfo.gameObject.SetActive(false);
 
         // Suscribirse al evento "onSelect" de los inputs para ocultar el error
         // cuando el usuario intente corregirlo.
@@ -27,7 +32,21 @@ public class ValidadorFormulario : MonoBehaviour
     public void VerificarInputs()
     {
         // Verificamos si alguno de los campos está vacío o solo tiene espacios
-        if (string.IsNullOrWhiteSpace(inputCodigoSala.text) || string.IsNullOrWhiteSpace(inputNombre.text) || string.IsNullOrWhiteSpace(inputApellido.text) || string.IsNullOrWhiteSpace(inputEdad.text))
+        if (string.IsNullOrWhiteSpace(inputNombre.text) || string.IsNullOrWhiteSpace(inputApellido.text) || string.IsNullOrWhiteSpace(inputEdad.text))
+        {
+            MostrarError("Por favor, completa todos los campos.");
+        }
+        else
+        {
+            // Si todo está correcto, procedemos
+            textoErrorInfo.gameObject.SetActive(false);
+            LogicaExitosa();
+        }
+    }
+
+    public void VerificarInputsSala(){
+
+        if(string.IsNullOrWhiteSpace(inputCodigoSala.text))
         {
             MostrarError("Por favor, completa todos los campos.");
         }
@@ -35,7 +54,7 @@ public class ValidadorFormulario : MonoBehaviour
         {
             // Si todo está correcto, procedemos
             textoError.gameObject.SetActive(false);
-            LogicaExitosa();
+            LogicaExitosaSala();
         }
     }
 
@@ -45,17 +64,25 @@ public class ValidadorFormulario : MonoBehaviour
         textoErrorInfo.text = mensaje;
         textoErrorInfo.gameObject.SetActive(true); // Hacemos visible el mensaje
         textoError.gameObject.SetActive(true); // Hacemos visible el mensaje
+        textoDelCodigoSala.gameObject.SetActive(false);
     }
 
     void LogicaExitosa()
     {
         Debug.Log("Formulario enviado correctamente");
-        // Aquí iría tu código para cambiar de escena, hacer login, etc.
+        scriptDePantallas.IrAlCanvasCodigo();
+    }
+
+    void LogicaExitosaSala()
+    {
+        Debug.Log("Formulario enviado correctamente");
+        scriptDePantallas.IrAlCanvasConteo();
     }
 
     void OcultarError()
     {
         textoError.gameObject.SetActive(false);
         textoErrorInfo.gameObject.SetActive(false);
+        textoDelCodigoSala.gameObject.SetActive(true);
     }
 }
