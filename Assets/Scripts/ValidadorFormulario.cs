@@ -76,7 +76,7 @@ public class ValidadorFormulario : MonoBehaviour
     void LogicaExitosaSala()
     {
         Debug.Log("Formulario enviado correctamente");
-        scriptDePantallas.IrAlCanvasConteo();
+        scriptDePantallas.IrAlCanvasPersonaje();
     }
 
     void OcultarError()

@@ -11,6 +11,7 @@ public class FadeInBoth : MonoBehaviour
     public GameObject canvasDatosIngles;
     public GameObject canvasCodigo;
     public GameObject canvasCodigoIngles;
+    public GameObject canvasPersonaje;
     public GameObject canvasConteo;
     public GameObject canvasConteoIngles;
 
@@ -40,6 +41,7 @@ public class FadeInBoth : MonoBehaviour
         canvasDatosIngles.SetActive(false);
         canvasCodigo.SetActive(false);
         canvasCodigoIngles.SetActive(false);
+        canvasPersonaje.SetActive(false);
         
         StartCoroutine(CambiarInterfaz());
     }
@@ -74,6 +76,12 @@ public class FadeInBoth : MonoBehaviour
     {
         canvasDatos.SetActive(false);
         canvasCodigoIngles.SetActive(true);
+    }
+
+    public void IrAlCanvasPersonaje()
+    {
+        canvasCodigo.SetActive(false);
+        canvasPersonaje.SetActive(true);
     }
 
     public void IrAlCanvasConteo()
