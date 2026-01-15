@@ -56,7 +56,7 @@ public class SelectorPaises : MonoBehaviour
         // 5. Agregamos la opción por defecto al principio
         // Puedes poner una imagen genérica de 'mundo' o null
         Sprite mundoSprite = Resources.Load<Sprite>("Flags/World");
-        opcionesConBandera.Insert(0, new TMP_Dropdown.OptionData("Seleccione su pais...", mundoSprite));
+        opcionesConBandera.Insert(0, new TMP_Dropdown.OptionData("Seleccione su país...", mundoSprite));
 
         // 6. Inyectamos la lista compleja al Dropdown
         dropdownPaises.AddOptions(opcionesConBandera);
@@ -68,4 +68,6 @@ public class SelectorPaises : MonoBehaviour
         if (dropdownPaises.value == 0) return null;
         return dropdownPaises.options[dropdownPaises.value].text;
     }
+
+
 }

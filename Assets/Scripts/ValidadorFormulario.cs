@@ -8,81 +8,110 @@ public class ValidadorFormulario : MonoBehaviour
     public TMP_InputField inputNombre; // Arrastra aquí tu InputField de contraseña
     public TMP_InputField inputApellido;
     public TMP_InputField inputEdad;
-    public TextMeshProUGUI textoError; // El texto que mostrará la advertencia
+    
+    [Header("UI References - Textos Error")]
+    public TextMeshProUGUI textoError;
     public TextMeshProUGUI textoErrorInfo;
     public TextMeshProUGUI textoDelCodigoSala;
+
+    [Header("Dropdown de Países")]
+    public TMP_Dropdown dropdownPaises;
+
+    [Header("Feedback General")]
+    public GameObject cartelError; // El objeto visual del error
 
     [Header("Referencias Extra")]
     public FadeInBoth scriptDePantallas;
 
     void Start()
     {
-        textoError.gameObject.SetActive(false);
-        textoErrorInfo.gameObject.SetActive(false);
+        OcultarError();
 
-        // Suscribirse al evento "onSelect" de los inputs para ocultar el error
-        // cuando el usuario intente corregirlo.
+        // Suscribirse para ocultar error al escribir
         inputNombre.onSelect.AddListener(delegate { OcultarError(); });
         inputCodigoSala.onSelect.AddListener(delegate { OcultarError(); });
         inputApellido.onSelect.AddListener(delegate { OcultarError(); });
         inputEdad.onSelect.AddListener(delegate { OcultarError(); });
+        // También ocultamos error si tocan el dropdown
+        // (Nota: onValueChanged requiere un parámetro, usamos lambda _ => )
+        dropdownPaises.onValueChanged.AddListener(_ => OcultarError());
     }
 
     // Esta función la llamaremos desde el Botón
     public void VerificarInputs()
     {
-        // Verificamos si alguno de los campos está vacío o solo tiene espacios
-        if (string.IsNullOrWhiteSpace(inputNombre.text) || string.IsNullOrWhiteSpace(inputApellido.text) || string.IsNullOrWhiteSpace(inputEdad.text))
+        // 1. Validar Textos (Nombre, Apellido, Edad)
+        bool textosCompletos = !string.IsNullOrWhiteSpace(inputNombre.text) &&
+                               !string.IsNullOrWhiteSpace(inputApellido.text) &&
+                               !string.IsNullOrWhiteSpace(inputEdad.text);
+
+        // 2. Validar Dropdown (Debe ser mayor a 0 para no ser "Seleccione país...")
+        bool paisValido = dropdownPaises.value > 0;
+
+        // 3. Evaluación Final (AMBOS deben ser verdaderos)
+        if (textosCompletos && paisValido)
         {
-            MostrarError("Por favor, completa todos los campos.");
+            // ÉXITO
+            LogicaExitosa();
         }
         else
         {
-            // Si todo está correcto, procedemos
-            textoErrorInfo.gameObject.SetActive(false);
-            LogicaExitosa();
+            // ERROR
+            MostrarError("Por favor, completa todos los campos.");
+
+            // Debug opcional para que sepas qué faltó
+            if (!textosCompletos) Debug.Log("Faltan textos");
+            if (!paisValido) Debug.Log("Falta el país");
         }
     }
 
-    public void VerificarInputsSala(){
-
-        if(string.IsNullOrWhiteSpace(inputCodigoSala.text))
+    // Esta función es para la OTRA pantalla (la del código de sala)
+    public void VerificarInputsSala()
+    {
+        if (string.IsNullOrWhiteSpace(inputCodigoSala.text))
         {
-            MostrarError("Por favor, completa todos los campos.");
+            MostrarError("Por favor, ingresa el código.");
         }
         else
         {
-            // Si todo está correcto, procedemos
-            textoError.gameObject.SetActive(false);
             LogicaExitosaSala();
         }
     }
 
     void MostrarError(string mensaje)
     {
-        textoError.text = mensaje;
-        textoErrorInfo.text = mensaje;
-        textoErrorInfo.gameObject.SetActive(true); // Hacemos visible el mensaje
-        textoError.gameObject.SetActive(true); // Hacemos visible el mensaje
-        textoDelCodigoSala.gameObject.SetActive(false);
+        // Actualizamos el texto
+        if (textoError != null) textoError.text = mensaje;
+        if (textoErrorInfo != null) textoErrorInfo.text = mensaje;
+
+        // Activamos todos los objetos de error visuales
+        if (textoErrorInfo != null) textoErrorInfo.gameObject.SetActive(true);
+        if (textoError != null) textoError.gameObject.SetActive(true);
+        if (cartelError != null) cartelError.SetActive(true); // <--- Agregado para consistencia
+
+        if (textoDelCodigoSala != null) textoDelCodigoSala.gameObject.SetActive(false);
+    }
+
+    void OcultarError()
+    {
+        if (textoError != null) textoError.gameObject.SetActive(false);
+        if (textoErrorInfo != null) textoErrorInfo.gameObject.SetActive(false);
+        if (cartelError != null) cartelError.SetActive(false); // <--- Agregado
+
+        if (textoDelCodigoSala != null) textoDelCodigoSala.gameObject.SetActive(true);
     }
 
     void LogicaExitosa()
     {
         Debug.Log("Formulario enviado correctamente");
+        OcultarError(); // Limpiamos errores por si acaso
         scriptDePantallas.IrAlCanvasCodigo();
     }
 
     void LogicaExitosaSala()
     {
-        Debug.Log("Formulario enviado correctamente");
+        Debug.Log("Sala verificada correctamente");
+        OcultarError();
         scriptDePantallas.IrAlCanvasPersonaje();
-    }
-
-    void OcultarError()
-    {
-        textoError.gameObject.SetActive(false);
-        textoErrorInfo.gameObject.SetActive(false);
-        textoDelCodigoSala.gameObject.SetActive(true);
     }
 }
