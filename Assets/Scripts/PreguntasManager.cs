@@ -4,126 +4,101 @@ using UnityEngine;
 
 public class PreguntasManager : MonoBehaviour
 {
-    // --- ¡CAMBIO! ---
-    // Ahora tenemos 4 listas maestras, una para cada categoría.
-    // Asumiré que tienes 12 canvases por categoría (total 48)
-    [Header("Categoría 1 (Ej: Geografía)")]
+    // ... (Tus listas de categorías siguen igual) ...
+    [Header("Categoría 1 (Ej: Aire)")]
     public List<GameObject> category1Canvases;
-
-    [Header("Categoría 2 (Ej: Historia)")]
+    [Header("Categoría 2 (Ej: Tierra)")]
     public List<GameObject> category2Canvases;
-
-    [Header("Categoría 3 (Ej: Ciencia)")]
+    [Header("Categoría 3 (Ej: Fuego)")]
     public List<GameObject> category3Canvases;
-
-    [Header("Categoría 4 (Ej: Deportes)")]
+    [Header("Categoría 4 (Ej: Agua)")]
     public List<GameObject> category4Canvases;
-
     [Header("Categoría 5 (Ej: Bonus)")]
     public List<GameObject> category5Canvases;
 
-
-    // --- Listas de "disponibles" ---
-    // También necesitamos 4 listas temporales
+    // --- Listas temporales ---
     private List<GameObject> availableCat1, availableCat2, availableCat3, availableCat4, availableCat5;
+    private List<List<GameObject>> allAvailablePools;
 
-    // --- Variables de estado del juego ---
-    private List<List<GameObject>> allAvailablePools; // Una lista que contiene las otras listas
-    private int currentCategoryIndex = 0;             // 0=Cat1, 1=Cat2, 2=Cat3, 3=Cat4
-    private int questionsAskedFromCategory = 0;       // Contador de preguntas por categoría
-    private const int QUESTIONS_PER_CATEGORY = 2;     // ¡Constante mágica!
+    // --- Variables de Estado ---
+    private int currentCategoryIndex = 0;
+    private int questionsAskedFromCategory = 0;
+    private const int QUESTIONS_PER_CATEGORY = 2;
 
+    // NUEVO: Variable para recordar qué pregunta está en pantalla y poder borrarla
+    private GameObject preguntaActualActiva;
 
-    // 1. ESTA FUNCIÓN LA LLAMA TU "CuentaRegresiva.cs"
     public void StartQuiz()
     {
-        // Preparamos las 4 listas para la partida
+        // Inicialización de listas (igual que antes)
         availableCat1 = new List<GameObject>(category1Canvases);
         availableCat2 = new List<GameObject>(category2Canvases);
         availableCat3 = new List<GameObject>(category3Canvases);
         availableCat4 = new List<GameObject>(category4Canvases);
         availableCat5 = new List<GameObject>(category5Canvases);
 
-        // Creamos una "lista de listas" para acceder a ellas por índice
-        allAvailablePools = new List<List<GameObject>>
-        {
-            availableCat1,
-            availableCat2,
-            availableCat3,
-            availableCat4,
-            availableCat5
-        };
+        allAvailablePools = new List<List<GameObject>> { availableCat1, availableCat2, availableCat3, availableCat4, availableCat5 };
 
-        // Reseteamos los contadores
         currentCategoryIndex = 0;
         questionsAskedFromCategory = 0;
+        preguntaActualActiva = null; // Reseteamos
 
-        // Ocultamos TODOS los canvases de preguntas
         HideAllCanvases();
-
-        // Mostramos la primera pregunta (que será de la Categoría 1)
         ShowNextQuestion();
     }
 
-    // 2. ESTA FUNCIÓN LA LLAMAN LOS BOTONES DE RESPUESTA
     public void ShowNextQuestion()
     {
-        // --- Lógica de Avance ---
-        // ¿Ya hicimos las 2 preguntas de esta categoría?
-        if (questionsAskedFromCategory >= QUESTIONS_PER_CATEGORY)
+        // 1. NUEVO: Si hay una pregunta mostrándose, la ocultamos primero
+        if (preguntaActualActiva != null)
         {
-            currentCategoryIndex++;               // Pasamos a la siguiente categoría
-            questionsAskedFromCategory = 0;       // Reseteamos el contador
+            preguntaActualActiva.SetActive(false);
         }
 
-        // --- Chequeo de Fin de Juego ---
-        // ¿Ya pasamos la categoría 5 (índice 4)?
+        // --- Lógica de Cambio de Categoría ---
+        if (questionsAskedFromCategory >= QUESTIONS_PER_CATEGORY)
+        {
+            currentCategoryIndex++;
+            questionsAskedFromCategory = 0;
+        }
+
+        // --- Fin del Juego ---
         if (currentCategoryIndex >= allAvailablePools.Count)
         {
-            Debug.Log("¡JUEGO TERMINADO! Has completado todas las categorías.");
-            // Aquí muestras el panel de "Fin del Juego" o "Puntaje Final"
+            Debug.Log("¡JUEGO TERMINADO!");
+            // Aquí llamarías a tu pantalla final
             return;
         }
 
         // --- Selección de Pregunta ---
-
-        // 1. Obtenemos el "mazo" de la categoría actual
         List<GameObject> currentPool = allAvailablePools[currentCategoryIndex];
 
-        // 2. Chequeo de seguridad: ¿Hay preguntas en este mazo?
         if (currentPool.Count == 0)
         {
-            // Esto no debería pasar si tienes 12 preguntas y solo pides 2,
-            // pero es una buena práctica tenerlo.
-            Debug.LogError("¡ERROR! Se acabaron las preguntas de la categoría " + (currentCategoryIndex + 1));
-            // Forzamos el paso a la siguiente categoría
+            Debug.LogError("Se acabaron las preguntas de la categoría " + (currentCategoryIndex + 1));
+            // Forzar avance para evitar bloqueo
             questionsAskedFromCategory = QUESTIONS_PER_CATEGORY;
-            ShowNextQuestion(); // Volvemos a llamar a la función
+            ShowNextQuestion();
             return;
         }
 
-        // 3. Elegir un Canvas al azar de ese mazo
         int randomIndex = Random.Range(0, currentPool.Count);
         GameObject nextQuestion = currentPool[randomIndex];
-
-        // 4. Quitarlo del mazo para que no se repita
         currentPool.RemoveAt(randomIndex);
 
-        // 5. ¡Mostrarlo!
+        // 2. Mostrar la nueva y guardarla como "Activa"
         nextQuestion.SetActive(true);
+        preguntaActualActiva = nextQuestion;
 
-        // 6. Actualizar el contador
         questionsAskedFromCategory++;
     }
 
-    // Función de utilidad para ocultar todo al inicio
     private void HideAllCanvases()
     {
-        // Oculta todos los canvases de todas las listas maestras
-        foreach (GameObject canvas in category1Canvases) canvas.SetActive(false);
-        foreach (GameObject canvas in category2Canvases) canvas.SetActive(false);
-        foreach (GameObject canvas in category3Canvases) canvas.SetActive(false);
-        foreach (GameObject canvas in category4Canvases) canvas.SetActive(false);
-        foreach (GameObject canvas in category5Canvases) canvas.SetActive(false);
+        foreach (GameObject canvas in category1Canvases) if (canvas) canvas.SetActive(false);
+        foreach (GameObject canvas in category2Canvases) if (canvas) canvas.SetActive(false);
+        foreach (GameObject canvas in category3Canvases) if (canvas) canvas.SetActive(false);
+        foreach (GameObject canvas in category4Canvases) if (canvas) canvas.SetActive(false);
+        foreach (GameObject canvas in category5Canvases) if (canvas) canvas.SetActive(false);
     }
 }
