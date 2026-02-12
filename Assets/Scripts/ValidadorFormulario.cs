@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro; // Necesario para usar TextMeshPro
+using UnityEngine.UI;
 
 public class ValidadorFormulario : MonoBehaviour
 {
@@ -22,6 +23,11 @@ public class ValidadorFormulario : MonoBehaviour
 
     [Header("Referencias Extra")]
     public FadeInBoth scriptDePantallas;
+
+    // Referencia a tu script que maneja la lógica de preguntas (GameManager o similar)
+    [SerializeField] private GameManager gameManager;
+
+    public PreguntasManager preguntasManager;
 
     void Start()
     {
@@ -114,4 +120,14 @@ public class ValidadorFormulario : MonoBehaviour
         OcultarError();
         scriptDePantallas.IrAlCanvasPersonaje();
     }
+
+    /*private void OnTimeUp()
+    {
+        isTimerRunning = false;
+        Debug.Log("¡Tiempo agotado!");
+
+        // Aquí llamamos a tu lógica existente para respuesta incorrecta
+        // Enviamos 'false' o un índice inválido para indicar que no respondió
+        preguntasManager.RespuestaIncorrectaPorTiempo();
+    }*/
 }

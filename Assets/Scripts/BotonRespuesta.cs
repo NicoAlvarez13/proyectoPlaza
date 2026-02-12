@@ -39,13 +39,23 @@ public class BotonRespuesta : MonoBehaviour
     // Este método lo vinculas al evento OnClick del botón en Unity
     public void AlHacerClick()
     {
-        // 1. Bloqueamos el botón para que no spameen clicks
-        miBoton.interactable = false;
+        // 1. Bloqueamos el botón para evitar doble click
+        if (miBoton != null) miBoton.interactable = false;
 
-        // 2. AQUÍ DEBERÍAS DETENER TU CRONÓMETRO (si tienes referencia a él)
-        // Ejemplo: FindFirstObjectByType<CuentaRegresiva>().PausarReloj();
+        // --- CORRECCIÓN AQUÍ ---
+        // En lugar de llamar a preguntasManager.DetenerReloj()...
+        // Buscamos el temporizador que está ACTIVO en la pantalla ahora mismo.
+        // Como solo hay un canvas de pregunta activo, FindFirstObjectByType encontrará el correcto.
 
-        // 3. Iniciamos la animación
+        TemporizadorIndividual timerActivo = Object.FindFirstObjectByType<TemporizadorIndividual>();
+
+        if (timerActivo != null)
+        {
+            timerActivo.DetenerReloj();
+        }
+        // -----------------------
+
+        // 3. Iniciamos la animación de feedback
         StartCoroutine(SecuenciaFeedback());
     }
 

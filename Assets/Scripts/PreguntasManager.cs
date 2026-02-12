@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PreguntasManager : MonoBehaviour
 {
-    // ... (Tus listas de categorías siguen igual) ...
     [Header("Categoría 1 (Ej: Aire)")]
     public List<GameObject> category1Canvases;
     [Header("Categoría 2 (Ej: Tierra)")]
@@ -16,6 +15,9 @@ public class PreguntasManager : MonoBehaviour
     [Header("Categoría 5 (Ej: Bonus)")]
     public List<GameObject> category5Canvases;
 
+    // --- YA NO NECESITAS LA REFERENCIA AL TEMPORIZADOR AQUÍ ---
+    // El temporizador vive dentro de cada Canvas y funciona automático.
+
     // --- Listas temporales ---
     private List<GameObject> availableCat1, availableCat2, availableCat3, availableCat4, availableCat5;
     private List<List<GameObject>> allAvailablePools;
@@ -24,13 +26,11 @@ public class PreguntasManager : MonoBehaviour
     private int currentCategoryIndex = 0;
     private int questionsAskedFromCategory = 0;
     private const int QUESTIONS_PER_CATEGORY = 2;
-
-    // NUEVO: Variable para recordar qué pregunta está en pantalla y poder borrarla
     private GameObject preguntaActualActiva;
 
     public void StartQuiz()
     {
-        // Inicialización de listas (igual que antes)
+        // Inicialización de listas
         availableCat1 = new List<GameObject>(category1Canvases);
         availableCat2 = new List<GameObject>(category2Canvases);
         availableCat3 = new List<GameObject>(category3Canvases);
@@ -41,7 +41,7 @@ public class PreguntasManager : MonoBehaviour
 
         currentCategoryIndex = 0;
         questionsAskedFromCategory = 0;
-        preguntaActualActiva = null; // Reseteamos
+        preguntaActualActiva = null;
 
         HideAllCanvases();
         ShowNextQuestion();
@@ -49,7 +49,9 @@ public class PreguntasManager : MonoBehaviour
 
     public void ShowNextQuestion()
     {
-        // 1. NUEVO: Si hay una pregunta mostrándose, la ocultamos primero
+        // 1. Si había una pregunta activa, la apagamos.
+        // ALERTA: Al hacer SetActive(false), el script del temporizador
+        // dentro de ese canvas se apaga solo (gracias a OnDisable).
         if (preguntaActualActiva != null)
         {
             preguntaActualActiva.SetActive(false);
@@ -66,7 +68,7 @@ public class PreguntasManager : MonoBehaviour
         if (currentCategoryIndex >= allAvailablePools.Count)
         {
             Debug.Log("¡JUEGO TERMINADO!");
-            // Aquí llamarías a tu pantalla final
+            // Aquí iría tu lógica de fin de juego (pantalla de puntaje, etc.)
             return;
         }
 
@@ -75,8 +77,7 @@ public class PreguntasManager : MonoBehaviour
 
         if (currentPool.Count == 0)
         {
-            Debug.LogError("Se acabaron las preguntas de la categoría " + (currentCategoryIndex + 1));
-            // Forzar avance para evitar bloqueo
+            // Manejo de error si se acaban las preguntas (evitar bloqueo)
             questionsAskedFromCategory = QUESTIONS_PER_CATEGORY;
             ShowNextQuestion();
             return;
@@ -86,7 +87,9 @@ public class PreguntasManager : MonoBehaviour
         GameObject nextQuestion = currentPool[randomIndex];
         currentPool.RemoveAt(randomIndex);
 
-        // 2. Mostrar la nueva y guardarla como "Activa"
+        // 2. Activamos la nueva pregunta.
+        // ALERTA: Al hacer SetActive(true), el script del temporizador
+        // dentro de este canvas se enciende y arranca solo (gracias a OnEnable).
         nextQuestion.SetActive(true);
         preguntaActualActiva = nextQuestion;
 
@@ -100,5 +103,25 @@ public class PreguntasManager : MonoBehaviour
         foreach (GameObject canvas in category3Canvases) if (canvas) canvas.SetActive(false);
         foreach (GameObject canvas in category4Canvases) if (canvas) canvas.SetActive(false);
         foreach (GameObject canvas in category5Canvases) if (canvas) canvas.SetActive(false);
+    }
+
+    // --- ESTA FUNCIÓN ES LA QUE LLAMAN LOS TEMPORIZADORES ---
+    public void RespuestaIncorrectaPorTiempo()
+    {
+        Debug.Log("Se acabó el tiempo - Respuesta Incorrecta");
+
+        // Opcional: Sonido de error
+        // audioSource.PlayOneShot(sonidoError);
+
+        StartCoroutine(EsperarYAvanzar());
+    }
+
+    private System.Collections.IEnumerator EsperarYAvanzar()
+    {
+        // Esperamos 2 segundos para que el jugador vea el texto rojo o se lamente
+        yield return new WaitForSeconds(2f);
+
+        // Pasamos a la siguiente
+        ShowNextQuestion();
     }
 }
