@@ -3,8 +3,8 @@ using TMPro;
 
 public class TemporizadorVisual : MonoBehaviour
 {
-    [Header("Configuración UI")]
-    public TextMeshProUGUI textoCronometro; // Arrastra aquí el texto 00:00
+    [Header("Configuraciï¿½n UI")]
+    public TextMeshProUGUI textoCronometro; // Arrastra aquï¿½ el texto 00:00
     public float tiempoMaximo = 15f;
 
     [Header("Referencia al Manager")]
@@ -26,7 +26,7 @@ public class TemporizadorVisual : MonoBehaviour
             }
             else
             {
-                // SE ACABÓ EL TIEMPO
+                // SE ACABï¿½ EL TIEMPO
                 tiempoActual = 0;
                 ActualizarTexto(0);
                 contando = false;
