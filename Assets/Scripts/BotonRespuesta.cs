@@ -26,14 +26,15 @@ public class BotonRespuesta : MonoBehaviour
     [Header("Tiempos")]
     public float tiempoDeEspera = 1.0f; // Tiempo para ver el color antes de cambiar
 
-    private PreguntasManager preguntasManager; // Referencia al manager
+    [Header("Conexión")]
+    public PreguntasManager preguntasManager; // Referencia al manager
 
     void Awake()
     {
         if (imagenDelBorde != null) colorOriginal = imagenDelBorde.color;
 
-        // Buscamos el PreguntasManager automáticamente en la escena
-        preguntasManager = FindFirstObjectByType<PreguntasManager>();
+        /*// Buscamos el PreguntasManager automáticamente en la escena
+        preguntasManager = FindFirstObjectByType<PreguntasManager>();*/
     }
 
     // Este método lo vinculas al evento OnClick del botón en Unity

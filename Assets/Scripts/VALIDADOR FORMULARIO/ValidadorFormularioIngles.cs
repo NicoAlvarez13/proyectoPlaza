@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ValidadorFormularioIngles : MonoBehaviour
 {
@@ -22,6 +23,10 @@ public class ValidadorFormularioIngles : MonoBehaviour
 
     [Header("Referencias Extra")]
     public FadeInBoth scriptDePantallas;
+
+    [SerializeField] private GameManager gameManager;
+
+    public PreguntasManager preguntasManager;
 
     void Start()
     {
