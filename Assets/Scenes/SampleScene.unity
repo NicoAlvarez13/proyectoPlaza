@@ -894,7 +894,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 238574575}
 --- !u!1001 &3073656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1782,7 +1782,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1937525589}
 --- !u!1 &7702121
 GameObject:
   m_ObjectHideFlags: 0
@@ -3385,7 +3385,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 238574575}
 --- !u!224 &18613827 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5598331272076749983, guid: 44447fd9e6c4cdf47a7e56a14f8361c8, type: 3}
@@ -4400,7 +4400,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 327266730}
 --- !u!1 &26621729
 GameObject:
   m_ObjectHideFlags: 0
@@ -5231,7 +5231,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 691282008}
 --- !u!224 &31295253 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 10995270589061540, guid: f6006e7c12b74e14181fbfdbaca86274, type: 3}
@@ -6127,7 +6127,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1312753578}
 --- !u!1 &35178162
 GameObject:
   m_ObjectHideFlags: 0
@@ -7343,7 +7343,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 185053850}
 --- !u!224 &43961642 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8865942232197074493, guid: 33319f9c0230b3e4e9d33d523a57f71a, type: 3}
@@ -7867,7 +7867,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 73171705}
 --- !u!1 &49338110
 GameObject:
   m_ObjectHideFlags: 0
@@ -9087,6 +9087,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 62254861}
+  - component: {fileID: 62254862}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -9117,6 +9118,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &62254862
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62254860}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &62906080
 GameObject:
   m_ObjectHideFlags: 0
@@ -9702,7 +9715,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1857133762}
 --- !u!1 &66037615
 GameObject:
   m_ObjectHideFlags: 0
@@ -10983,6 +10996,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 73171704}
+  - component: {fileID: 73171705}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -11013,6 +11027,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &73171705
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73171703}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &73480130
 GameObject:
   m_ObjectHideFlags: 0
@@ -12164,7 +12190,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 706224521}
 --- !u!1 &83006466
 GameObject:
   m_ObjectHideFlags: 0
@@ -12822,7 +12848,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 669194456}
 --- !u!1 &90277862
 GameObject:
   m_ObjectHideFlags: 0
@@ -13994,7 +14020,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 2017828572}
 --- !u!1 &97314722
 GameObject:
   m_ObjectHideFlags: 0
@@ -14778,7 +14804,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 2027169173}
 --- !u!1 &100125361
 GameObject:
   m_ObjectHideFlags: 0
@@ -15139,7 +15165,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1155653104}
 --- !u!1 &102091614
 GameObject:
   m_ObjectHideFlags: 0
@@ -17155,7 +17181,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1009997617}
 --- !u!1 &114777067
 GameObject:
   m_ObjectHideFlags: 0
@@ -21037,7 +21063,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1857133762}
 --- !u!1 &143484103
 GameObject:
   m_ObjectHideFlags: 0
@@ -21620,7 +21646,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 706224521}
 --- !u!1 &146232285
 GameObject:
   m_ObjectHideFlags: 0
@@ -22743,6 +22769,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 156723326}
+  - component: {fileID: 156723327}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -22773,6 +22800,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &156723327
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156723325}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &157495013
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23292,6 +23331,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 166230639}
+  - component: {fileID: 166230640}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -23322,6 +23362,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &166230640
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166230638}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &167065580
 GameObject:
   m_ObjectHideFlags: 0
@@ -25087,6 +25139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 185053849}
+  - component: {fileID: 185053850}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -25117,6 +25170,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &185053850
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185053848}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &185327747
 GameObject:
   m_ObjectHideFlags: 0
@@ -25701,7 +25766,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1313398775}
 --- !u!1 &186276765
 GameObject:
   m_ObjectHideFlags: 0
@@ -26639,7 +26704,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1891591202}
 --- !u!1 &188568314
 GameObject:
   m_ObjectHideFlags: 0
@@ -29591,7 +29656,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 2017828572}
 --- !u!1 &213340880
 GameObject:
   m_ObjectHideFlags: 0
@@ -31379,7 +31444,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 981765908}
 --- !u!1 &226293082
 GameObject:
   m_ObjectHideFlags: 0
@@ -31932,7 +31997,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1896020448}
 --- !u!1 &230593041
 GameObject:
   m_ObjectHideFlags: 0
@@ -32938,7 +33003,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 292340091}
 --- !u!1 &236657564
 GameObject:
   m_ObjectHideFlags: 0
@@ -33152,6 +33217,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 238574574}
+  - component: {fileID: 238574575}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -33182,6 +33248,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &238574575
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238574573}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &239258787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35048,7 +35126,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 2004109719}
 --- !u!1 &252619231
 GameObject:
   m_ObjectHideFlags: 0
@@ -37219,7 +37297,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1857133762}
 --- !u!1001 &273356229
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37995,6 +38073,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 278279364}
+  - component: {fileID: 278279365}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -38023,6 +38102,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &278279365
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278279363}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &278428820
 GameObject:
   m_ObjectHideFlags: 0
@@ -38648,7 +38739,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1590812983}
 --- !u!1 &283435567
 GameObject:
   m_ObjectHideFlags: 0
@@ -39274,6 +39365,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 285531606}
+  - component: {fileID: 285531607}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -39304,6 +39396,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &285531607
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285531605}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &286534467
 GameObject:
   m_ObjectHideFlags: 0
@@ -39824,7 +39928,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 618491274}
 --- !u!1001 &290560041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39940,6 +40044,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 292340090}
+  - component: {fileID: 292340091}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -39968,6 +40073,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &292340091
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292340089}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &295309835
 GameObject:
   m_ObjectHideFlags: 0
@@ -40222,7 +40339,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 691282008}
 --- !u!1 &296097931
 GameObject:
   m_ObjectHideFlags: 0
@@ -41603,7 +41720,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1805115491}
 --- !u!1 &310552448
 GameObject:
   m_ObjectHideFlags: 0
@@ -43495,6 +43612,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 327266729}
+  - component: {fileID: 327266730}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -43525,6 +43643,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &327266730
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327266728}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &328165104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45181,7 +45311,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1089416455}
 --- !u!1001 &337948602
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48049,7 +48179,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 558472445}
 --- !u!1 &361406347
 GameObject:
   m_ObjectHideFlags: 0
@@ -48406,6 +48536,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 370543768}
+  - component: {fileID: 370543769}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -48436,6 +48567,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &370543769
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370543767}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &372067008
 GameObject:
   m_ObjectHideFlags: 0
@@ -50463,7 +50606,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 238574575}
 --- !u!1 &382084712
 GameObject:
   m_ObjectHideFlags: 0
@@ -54167,7 +54310,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 62254862}
 --- !u!1 &416008712
 GameObject:
   m_ObjectHideFlags: 0
@@ -57960,7 +58103,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1267505728}
 --- !u!1 &442899979
 GameObject:
   m_ObjectHideFlags: 0
@@ -63060,7 +63203,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 591517847}
 --- !u!1 &493715163
 GameObject:
   m_ObjectHideFlags: 0
@@ -63458,7 +63601,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 838027725}
 --- !u!1 &496925412
 GameObject:
   m_ObjectHideFlags: 0
@@ -64452,7 +64595,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 166230640}
 --- !u!1 &501894951
 GameObject:
   m_ObjectHideFlags: 0
@@ -65336,7 +65479,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 62254862}
 --- !u!1001 &505676841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65614,6 +65757,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 505988595}
+  - component: {fileID: 505988596}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -65644,6 +65788,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &505988596
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505988594}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &506482600
 GameObject:
   m_ObjectHideFlags: 0
@@ -67528,7 +67684,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1391263185}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -67875,7 +68031,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 285531607}
 --- !u!1001 &522181219
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69293,6 +69449,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 532623098}
+  - component: {fileID: 532623099}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -69323,6 +69480,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &532623099
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532623097}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &533432176
 GameObject:
   m_ObjectHideFlags: 0
@@ -70082,6 +70251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 536708275}
+  - component: {fileID: 536708276}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -70110,6 +70280,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &536708276
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536708274}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &537787447
 GameObject:
   m_ObjectHideFlags: 0
@@ -71414,7 +71596,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 885547477}
 --- !u!1 &548238364
 GameObject:
   m_ObjectHideFlags: 0
@@ -72822,6 +73004,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 558472444}
+  - component: {fileID: 558472445}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -72850,6 +73033,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &558472445
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558472443}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &558486075
 GameObject:
   m_ObjectHideFlags: 0
@@ -73104,7 +73299,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 73171705}
 --- !u!1001 &560218708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75069,7 +75264,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 185053850}
 --- !u!1 &571566829
 GameObject:
   m_ObjectHideFlags: 0
@@ -76477,7 +76672,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1009997617}
 --- !u!224 &581969709 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8865942232197074493, guid: 33319f9c0230b3e4e9d33d523a57f71a, type: 3}
@@ -77961,6 +78156,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 591517846}
+  - component: {fileID: 591517847}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -77989,6 +78185,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &591517847
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591517845}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &592091860
 GameObject:
   m_ObjectHideFlags: 0
@@ -78243,7 +78451,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 166230640}
 --- !u!1 &592523622
 GameObject:
   m_ObjectHideFlags: 0
@@ -79017,6 +79225,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 597829956}
+  - component: {fileID: 597829957}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -79045,6 +79254,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &597829957
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597829955}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &601123901
 GameObject:
   m_ObjectHideFlags: 0
@@ -79686,7 +79907,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 185053850}
 --- !u!1 &607626611
 GameObject:
   m_ObjectHideFlags: 0
@@ -80831,7 +81052,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 2059719633}
 --- !u!1 &614790162
 GameObject:
   m_ObjectHideFlags: 0
@@ -80978,6 +81199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 618491273}
+  - component: {fileID: 618491274}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -81006,6 +81228,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &618491274
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618491272}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &618879882
 GameObject:
   m_ObjectHideFlags: 0
@@ -81502,7 +81736,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 532623099}
 --- !u!1 &628902986
 GameObject:
   m_ObjectHideFlags: 0
@@ -81922,7 +82156,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 73171705}
 --- !u!1001 &631310375
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82810,7 +83044,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 185053850}
 --- !u!1001 &638534605
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86364,6 +86598,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 669194455}
+  - component: {fileID: 669194456}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -86394,6 +86629,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &669194456
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669194454}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!224 &669403607 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3876816259187802108, guid: 524f21c2dd7d4c64f8e06988f73a4639, type: 3}
@@ -86690,7 +86937,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 505988596}
 --- !u!1 &670879963
 GameObject:
   m_ObjectHideFlags: 0
@@ -87643,7 +87890,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 166230640}
 --- !u!1 &675952332
 GameObject:
   m_ObjectHideFlags: 0
@@ -89107,6 +89354,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 691282007}
+  - component: {fileID: 691282008}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -89137,6 +89385,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &691282008
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691282006}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &691428747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89885,7 +90145,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1267505728}
 --- !u!224 &698520370 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8865942232197074493, guid: 33319f9c0230b3e4e9d33d523a57f71a, type: 3}
@@ -90220,7 +90480,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1391263185}
 --- !u!1 &702848148
 GameObject:
   m_ObjectHideFlags: 0
@@ -90479,6 +90739,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 706224520}
+  - component: {fileID: 706224521}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -90507,6 +90768,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &706224521
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706224519}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &706443274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90871,7 +91144,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1891591202}
 --- !u!1 &708315584
 GameObject:
   m_ObjectHideFlags: 0
@@ -93654,7 +93927,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1788646849}
 --- !u!1001 &734993968
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -105032,7 +105305,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1312753578}
 --- !u!1 &833897622
 GameObject:
   m_ObjectHideFlags: 0
@@ -105548,6 +105821,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 838027724}
+  - component: {fileID: 838027725}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -105576,6 +105850,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &838027725
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 838027723}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &839480579
 GameObject:
   m_ObjectHideFlags: 0
@@ -106980,7 +107266,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 285531607}
 --- !u!1 &859378827
 GameObject:
   m_ObjectHideFlags: 0
@@ -110338,6 +110624,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 885547476}
+  - component: {fileID: 885547477}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -110366,6 +110653,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &885547477
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885547475}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &886151392
 GameObject:
   m_ObjectHideFlags: 0
@@ -111136,7 +111435,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1937013922}
 --- !u!1001 &890610453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -112165,7 +112464,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 327266730}
 --- !u!224 &893006304 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1809155089057757540, guid: 489cf51004ffeac4aac346fbe94444b4, type: 3}
@@ -114864,7 +115163,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 278279365}
 --- !u!1001 &914136754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -115859,6 +116158,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 920668376}
+  - component: {fileID: 920668377}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -115887,6 +116187,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &920668377
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920668375}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &921558828
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -116247,7 +116559,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 370543769}
 --- !u!224 &926019723 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5598331272076749983, guid: 44447fd9e6c4cdf47a7e56a14f8361c8, type: 3}
@@ -116895,7 +117207,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 505988596}
 --- !u!1 &934739600
 GameObject:
   m_ObjectHideFlags: 0
@@ -118571,7 +118883,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1155653104}
 --- !u!1001 &949223148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -121331,7 +121643,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 156723327}
 --- !u!1001 &969938317
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -121711,7 +122023,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 669194456}
 --- !u!1 &970350608
 GameObject:
   m_ObjectHideFlags: 0
@@ -122666,6 +122978,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 981765907}
+  - component: {fileID: 981765908}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -122694,6 +123007,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &981765908
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981765906}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &983034014
 GameObject:
   m_ObjectHideFlags: 0
@@ -125092,7 +125417,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 691282008}
 --- !u!224 &1000451561 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5598331272076749983, guid: 44447fd9e6c4cdf47a7e56a14f8361c8, type: 3}
@@ -125623,6 +125948,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1009997616}
+  - component: {fileID: 1009997617}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -125651,6 +125977,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &1009997617
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009997615}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1011126147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -127450,7 +127788,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1089416455}
 --- !u!1001 &1024871344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -129133,7 +129471,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1391263185}
 --- !u!1 &1040788620
 GameObject:
   m_ObjectHideFlags: 0
@@ -130484,7 +130822,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 2004109719}
 --- !u!1 &1056969689
 GameObject:
   m_ObjectHideFlags: 0
@@ -131728,7 +132066,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1267505728}
 --- !u!1 &1069851043
 GameObject:
   m_ObjectHideFlags: 0
@@ -132058,7 +132396,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1805115491}
 --- !u!1 &1071659048
 GameObject:
   m_ObjectHideFlags: 0
@@ -132666,7 +133004,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 62254862}
 --- !u!1 &1076182331
 GameObject:
   m_ObjectHideFlags: 0
@@ -133790,7 +134128,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 2024571912}
 --- !u!1 &1082627186
 GameObject:
   m_ObjectHideFlags: 0
@@ -134439,6 +134777,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1089416454}
+  - component: {fileID: 1089416455}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -134469,6 +134808,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &1089416455
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089416453}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1093292321
 GameObject:
   m_ObjectHideFlags: 0
@@ -135728,7 +136079,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1937013922}
 --- !u!1 &1101210876
 GameObject:
   m_ObjectHideFlags: 0
@@ -137686,7 +138037,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 2004109719}
 --- !u!1 &1117477643
 GameObject:
   m_ObjectHideFlags: 0
@@ -140358,6 +140709,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1138143899}
+  - component: {fileID: 1138143900}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -140386,6 +140738,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &1138143900
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138143898}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1138441904
 GameObject:
   m_ObjectHideFlags: 0
@@ -141404,7 +141768,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 2017828572}
 --- !u!1 &1145894024
 GameObject:
   m_ObjectHideFlags: 0
@@ -142420,6 +142784,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1155653103}
+  - component: {fileID: 1155653104}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -142448,6 +142813,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &1155653104
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155653102}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1156456786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -144564,7 +144941,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1267505728}
 --- !u!1 &1169060865
 GameObject:
   m_ObjectHideFlags: 0
@@ -149764,7 +150141,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 2059719633}
 --- !u!1 &1213268222
 GameObject:
   m_ObjectHideFlags: 0
@@ -155943,7 +156320,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 669194456}
 --- !u!1001 &1255535614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -156667,7 +157044,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1937525589}
 --- !u!1 &1259885796
 GameObject:
   m_ObjectHideFlags: 0
@@ -157606,6 +157983,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1267505727}
+  - component: {fileID: 1267505728}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -157636,6 +158014,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &1267505728
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267505726}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1268104464
 GameObject:
   m_ObjectHideFlags: 0
@@ -157890,7 +158280,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1937013922}
 --- !u!1 &1268716276
 GameObject:
   m_ObjectHideFlags: 0
@@ -160042,7 +160432,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 669194456}
 --- !u!1 &1287670274
 GameObject:
   m_ObjectHideFlags: 0
@@ -161388,7 +161778,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 532623099}
 --- !u!1001 &1300319427
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -161899,7 +162289,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 2059719633}
 --- !u!1 &1304463458
 GameObject:
   m_ObjectHideFlags: 0
@@ -162229,7 +162619,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 156723327}
 --- !u!1 &1305477885
 GameObject:
   m_ObjectHideFlags: 0
@@ -163206,6 +163596,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1312753577}
+  - component: {fileID: 1312753578}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -163236,6 +163627,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &1312753578
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312753576}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1313398773
 GameObject:
   m_ObjectHideFlags: 0
@@ -163245,6 +163648,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1313398774}
+  - component: {fileID: 1313398775}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -163275,6 +163679,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &1313398775
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313398773}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1313613194
 GameObject:
   m_ObjectHideFlags: 0
@@ -167514,7 +167930,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 285531607}
 --- !u!1 &1353050190
 GameObject:
   m_ObjectHideFlags: 0
@@ -168191,7 +168607,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 370543769}
 --- !u!1001 &1361851776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -171005,7 +171421,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 505988596}
 --- !u!224 &1382130305 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5598331272076749983, guid: 44447fd9e6c4cdf47a7e56a14f8361c8, type: 3}
@@ -172295,6 +172711,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1391263184}
+  - component: {fileID: 1391263185}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -172325,6 +172742,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &1391263185
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391263183}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1391798096
 GameObject:
   m_ObjectHideFlags: 0
@@ -173247,7 +173676,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 285531607}
 --- !u!1 &1400667848
 GameObject:
   m_ObjectHideFlags: 0
@@ -173939,7 +174368,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 156723327}
 --- !u!1 &1403261136
 GameObject:
   m_ObjectHideFlags: 0
@@ -176704,7 +177133,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 597829957}
 --- !u!224 &1426827350 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5598331272076749983, guid: 44447fd9e6c4cdf47a7e56a14f8361c8, type: 3}
@@ -177650,7 +178079,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1896020448}
 --- !u!1 &1433324644
 GameObject:
   m_ObjectHideFlags: 0
@@ -180514,7 +180943,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1957875848}
 --- !u!1 &1460347100
 GameObject:
   m_ObjectHideFlags: 0
@@ -181116,7 +181545,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 920668377}
 --- !u!1001 &1465095411
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -186850,7 +187279,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1788646849}
 --- !u!1001 &1518055950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -190465,7 +190894,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1896020448}
 --- !u!1 &1548663913
 GameObject:
   m_ObjectHideFlags: 0
@@ -191830,7 +192259,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 597829957}
 --- !u!1 &1562003944
 GameObject:
   m_ObjectHideFlags: 0
@@ -192160,7 +192589,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1937525589}
 --- !u!1 &1563999611
 GameObject:
   m_ObjectHideFlags: 0
@@ -195401,6 +195830,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1590812982}
+  - component: {fileID: 1590812983}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -195429,6 +195859,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &1590812983
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590812981}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1591244773
 GameObject:
   m_ObjectHideFlags: 0
@@ -196736,7 +197178,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 370543769}
 --- !u!1 &1603730483
 GameObject:
   m_ObjectHideFlags: 0
@@ -196991,7 +197433,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 558472445}
 --- !u!1 &1605920154
 GameObject:
   m_ObjectHideFlags: 0
@@ -198669,7 +199111,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 2059719633}
 --- !u!1 &1618983406
 GameObject:
   m_ObjectHideFlags: 0
@@ -200351,7 +200793,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 2071143926}
 --- !u!1 &1634954497
 GameObject:
   m_ObjectHideFlags: 0
@@ -200893,7 +201335,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 238574575}
 --- !u!1001 &1636297646
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -202594,7 +203036,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 156723327}
 --- !u!1 &1643797684
 GameObject:
   m_ObjectHideFlags: 0
@@ -203544,7 +203986,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1313398775}
 --- !u!1 &1650551349
 GameObject:
   m_ObjectHideFlags: 0
@@ -203936,7 +204378,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 618491274}
 --- !u!1 &1654900591
 GameObject:
   m_ObjectHideFlags: 0
@@ -204228,7 +204670,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 920668377}
 --- !u!1 &1655144052
 GameObject:
   m_ObjectHideFlags: 0
@@ -204483,7 +204925,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 2024571912}
 --- !u!1 &1656127562
 GameObject:
   m_ObjectHideFlags: 0
@@ -204891,7 +205333,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1857133762}
 --- !u!1 &1660282534
 GameObject:
   m_ObjectHideFlags: 0
@@ -206673,7 +207115,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1957875848}
 --- !u!1 &1680363873
 GameObject:
   m_ObjectHideFlags: 0
@@ -211109,7 +211551,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 62254862}
 --- !u!1 &1709051257
 GameObject:
   m_ObjectHideFlags: 0
@@ -213434,7 +213876,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 2017828572}
 --- !u!1 &1734593886
 GameObject:
   m_ObjectHideFlags: 0
@@ -213689,7 +214131,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 532623099}
 --- !u!1 &1734736522
 GameObject:
   m_ObjectHideFlags: 0
@@ -215328,7 +215770,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1138143900}
 --- !u!1 &1749553012
 GameObject:
   m_ObjectHideFlags: 0
@@ -216867,7 +217309,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 73171705}
 --- !u!224 &1764617692 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5598331272076749983, guid: 44447fd9e6c4cdf47a7e56a14f8361c8, type: 3}
@@ -217127,7 +217569,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 2071143926}
 --- !u!1 &1766082321
 GameObject:
   m_ObjectHideFlags: 0
@@ -219173,6 +219615,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788646848}
+  - component: {fileID: 1788646849}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -219201,6 +219644,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &1788646849
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788646847}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1788764728
 GameObject:
   m_ObjectHideFlags: 0
@@ -219655,7 +220110,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 591517847}
 --- !u!1001 &1793004891
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -221150,6 +221605,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1805115490}
+  - component: {fileID: 1805115491}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -221178,6 +221634,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &1805115491
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805115489}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1808577181
 GameObject:
   m_ObjectHideFlags: 0
@@ -223425,7 +223893,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 278279365}
 --- !u!1 &1825576231
 GameObject:
   m_ObjectHideFlags: 0
@@ -227009,7 +227477,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1891591202}
 --- !u!1001 &1848723708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -228543,7 +229011,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1937013922}
 --- !u!224 &1855291504 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3876816259187802108, guid: 524f21c2dd7d4c64f8e06988f73a4639, type: 3}
@@ -228670,6 +229138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1857133761}
+  - component: {fileID: 1857133762}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -228700,6 +229169,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &1857133762
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857133760}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1858147030
 GameObject:
   m_ObjectHideFlags: 0
@@ -230143,7 +230624,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1937525589}
 --- !u!1 &1875064366
 GameObject:
   m_ObjectHideFlags: 0
@@ -231998,6 +232479,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1891591201}
+  - component: {fileID: 1891591202}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -232028,6 +232510,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &1891591202
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891591200}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1892508640
 GameObject:
   m_ObjectHideFlags: 0
@@ -232956,6 +233450,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1896020447}
+  - component: {fileID: 1896020448}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -232986,6 +233481,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &1896020448
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896020446}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1896871655
 GameObject:
   m_ObjectHideFlags: 0
@@ -234550,7 +235057,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1312753578}
 --- !u!1 &1910050578
 GameObject:
   m_ObjectHideFlags: 0
@@ -234805,7 +235312,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 292340091}
 --- !u!1 &1911652236
 GameObject:
   m_ObjectHideFlags: 0
@@ -235700,7 +236207,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1891591202}
 --- !u!1 &1921455759
 GameObject:
   m_ObjectHideFlags: 0
@@ -237811,6 +238318,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1937013921}
+  - component: {fileID: 1937013922}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -237841,6 +238349,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &1937013922
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937013920}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1937408902
 GameObject:
   m_ObjectHideFlags: 0
@@ -237929,6 +238449,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1937525588}
+  - component: {fileID: 1937525589}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -237959,6 +238480,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &1937525589
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937525587}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1938461088
 GameObject:
   m_ObjectHideFlags: 0
@@ -238213,7 +238746,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 166230640}
 --- !u!1 &1938565411
 GameObject:
   m_ObjectHideFlags: 0
@@ -239910,7 +240443,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 327266730}
 --- !u!1001 &1948645718
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -241277,6 +241810,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1957875847}
+  - component: {fileID: 1957875848}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -241305,6 +241839,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &1957875848
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957875846}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1960682899
 GameObject:
   m_ObjectHideFlags: 0
@@ -242613,7 +243159,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 536708276}
 --- !u!1 &1974380580
 GameObject:
   m_ObjectHideFlags: 0
@@ -244674,7 +245220,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 885547477}
 --- !u!1 &1989335291
 GameObject:
   m_ObjectHideFlags: 0
@@ -245696,7 +246242,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 838027725}
 --- !u!1 &2004109717
 GameObject:
   m_ObjectHideFlags: 0
@@ -245706,6 +246252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2004109718}
+  - component: {fileID: 2004109719}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -245736,6 +246283,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &2004109719
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004109717}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2004209346
 GameObject:
   m_ObjectHideFlags: 0
@@ -246978,6 +247537,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2017828571}
+  - component: {fileID: 2017828572}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -247008,6 +247568,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &2017828572
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017828570}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &2019211489
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -247525,7 +248097,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 532623099}
 --- !u!1 &2021425964
 GameObject:
   m_ObjectHideFlags: 0
@@ -247779,6 +248351,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2024571911}
+  - component: {fileID: 2024571912}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -247807,6 +248380,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &2024571912
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024571910}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &2024805587
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -248277,7 +248862,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1138143900}
 --- !u!1 &2027169171
 GameObject:
   m_ObjectHideFlags: 0
@@ -248287,6 +248872,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2027169172}
+  - component: {fileID: 2027169173}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -248315,6 +248901,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &2027169173
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027169171}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!224 &2027486235 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 10995270589061540, guid: f6006e7c12b74e14181fbfdbaca86274, type: 3}
@@ -249071,7 +249669,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 505988596}
 --- !u!1 &2030851756
 GameObject:
   m_ObjectHideFlags: 0
@@ -250962,7 +251560,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 536708276}
 --- !u!1 &2042610011
 GameObject:
   m_ObjectHideFlags: 0
@@ -251788,7 +252386,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 2027169173}
 --- !u!1001 &2048045329
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -252371,7 +252969,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1391263185}
 --- !u!1 &2051294370
 GameObject:
   m_ObjectHideFlags: 0
@@ -253143,6 +253741,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2059719632}
+  - component: {fileID: 2059719633}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -253173,6 +253772,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &2059719633
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059719631}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &2060297232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -254287,6 +254898,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2071143925}
+  - component: {fileID: 2071143926}
   m_Layer: 5
   m_Name: ContenedorRespuesta
   m_TagString: Untagged
@@ -254315,6 +254927,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -1.9899902}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!225 &2071143926
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071143924}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2072023588
 GameObject:
   m_ObjectHideFlags: 0
@@ -254569,7 +255193,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 370543769}
 --- !u!1 &2072189846
 GameObject:
   m_ObjectHideFlags: 0
@@ -254903,7 +255527,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1089416455}
 --- !u!1001 &2072308569
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -256882,7 +257506,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1313398775}
 --- !u!1001 &2096837581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -257553,7 +258177,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 327266730}
 --- !u!1 &2099978157
 GameObject:
   m_ObjectHideFlags: 0
@@ -260491,7 +261115,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1312753578}
 --- !u!1 &2123790230
 GameObject:
   m_ObjectHideFlags: 0
@@ -260825,7 +261449,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 981765908}
 --- !u!1 &2124311218
 GameObject:
   m_ObjectHideFlags: 0
@@ -261882,7 +262506,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 2004109719}
 --- !u!1 &2130480394
 GameObject:
   m_ObjectHideFlags: 0
@@ -262724,7 +263348,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 1126298030}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1313398775}
 --- !u!1001 &2133873276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -263185,7 +263809,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1590812983}
 --- !u!1 &2135955480
 GameObject:
   m_ObjectHideFlags: 0
@@ -264106,7 +264730,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 691282008}
 --- !u!1 &2142839730
 GameObject:
   m_ObjectHideFlags: 0
@@ -264361,7 +264985,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1089416455}
 --- !u!1 &2143319358
 GameObject:
   m_ObjectHideFlags: 0
@@ -264992,7 +265616,7 @@ MonoBehaviour:
   sonidoError: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   tiempoDeEspera: 0.8
   preguntasManager: {fileID: 800265808}
-  grupoBotones: {fileID: 0}
+  grupoBotones: {fileID: 1896020448}
 --- !u!1 &2147106722
 GameObject:
   m_ObjectHideFlags: 0
