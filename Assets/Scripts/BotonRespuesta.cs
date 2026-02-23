@@ -29,6 +29,8 @@ public class BotonRespuesta : MonoBehaviour
     [Header("Conexión")]
     public PreguntasManager preguntasManager; // Referencia al manager
 
+    public CanvasGroup grupoBotones;
+
     void Awake()
     {
         if (imagenDelBorde != null) colorOriginal = imagenDelBorde.color;
@@ -41,7 +43,9 @@ public class BotonRespuesta : MonoBehaviour
     public void AlHacerClick()
     {
         // 1. Bloqueamos el botón para evitar doble click
-        if (miBoton != null) miBoton.interactable = false;
+        //if (miBoton != null) miBoton.interactable = false;
+
+        grupoBotones.blocksRaycasts = false;
 
         // --- CORRECCIÓN AQUÍ ---
         // En lugar de llamar a preguntasManager.DetenerReloj()...
