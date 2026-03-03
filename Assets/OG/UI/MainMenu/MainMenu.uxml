@@ -1,0 +1,26 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/OG/UI/MainMenu/MainStyles.uss?fileID=7433441132597879392&amp;guid=1dafedb736d06de4c9ee17c43f3cef75&amp;type=3#MainStyles"/>
+    <ui:VisualElement name="ViewportContainer" class="viewportContainer">
+        <ui:VisualElement name="MenuesContainer" class="menuesContainer" style="translate: 0% 0%; transition-property: translate; transition-duration: 1.2s; transition-timing-function: ease-in-out-sine;">
+            <ui:VisualElement name="CodeMenuContainer" class="codeMenuContainer" style="top: -3px; left: 0;">
+                <ui:VisualElement class="codeMainContainerBack">
+                    <ui:VisualElement name="CodeMainContainer" class="codeMainContainer">
+                        <ui:Label text="Ingresar el codigo de la sala" style="height: auto; font-size: 74px; color: rgb(255, 255, 255); -unity-text-align: upper-center; -unity-font-definition: url(&quot;project://database/Assets/TextMesh%20Pro/Examples%20&amp;%20Extras/Fonts/Electronic%20Highway%20Sign.TTF?fileID=12800000&amp;guid=8a2b9e2a607dd2143b58c44bc32410b4&amp;type=3#Electronic Highway Sign&quot;); -unity-font-style: normal; white-space: normal; text-overflow: clip; align-self: center; padding-top: 44px; padding-right: 44px; padding-bottom: 44px; padding-left: 44px; -unity-text-outline-color: rgb(255, 255, 255); -unity-text-outline-width: 1px;"/>
+                        <ui:TextField label="" placeholder-text="Codigo..." picking-mode="Position" readonly="false" keyboard-type="OneTimeCode" hide-placeholder-on-focus="false" vertical-scroller-visibility="Auto" enabled="true" tabindex="1" max-length="3" name="CodeInput" style="position: relative; align-self: center; width: 517px; height: 88px; font-size: 60px; -unity-font-definition: url(&quot;project://database/Assets/TextMesh%20Pro/Examples%20&amp;%20Extras/Fonts/Electronic%20Highway%20Sign.TTF?fileID=12800000&amp;guid=8a2b9e2a607dd2143b58c44bc32410b4&amp;type=3#Electronic Highway Sign&quot;); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; border-top-left-radius: 44px; border-top-right-radius: 44px; border-bottom-right-radius: 44px; border-bottom-left-radius: 44px; -unity-background-image-tint-color: rgb(255, 255, 255);"/>
+                        <ui:VisualElement class="pillBtnBack" style="position: relative; top: 18%;">
+                            <ui:Button text="Unirse" enabled="true" name="JoinButton" class="pillBtn" style="position: absolute;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement focusable="false" name="MainMenuContainer" class="mainMenuContainer">
+                <ui:Image source="project://database/Assets/Assets/OG/title.png?fileID=2800000&amp;guid=c8734b44d545f704b89b9876f3cdb53d&amp;type=3#title" name="MainTitle" class="pctMainTitle"/>
+                <ui:VisualElement enabled="true" picking-mode="Ignore" name="PlayButtonBack" class="pillBtnBack">
+                    <ui:Button text="JUGAR" enabled="true" focusable="true" name="PlayButton" class="pillBtn"/>
+                </ui:VisualElement>
+                <ui:Image source="project://database/Assets/Assets/OG/render.png?fileID=2800000&amp;guid=6ee74436680c71e49894d3a7d9cc8cf6&amp;type=3#render" name="PlazaRender" focusable="false" enabled="true" picking-mode="Ignore" class="plazaRender" style="position: absolute; bottom: -27.5%; height: 100%;"/>
+            </ui:VisualElement>
+            <ui:Image source="project://database/Assets/Assets/OG/Clouds.png?fileID=2800000&amp;guid=6eea1578675083141be568ecdfc7ec07&amp;type=3#Clouds" name="Clouds" enabled="true" class="clouds"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

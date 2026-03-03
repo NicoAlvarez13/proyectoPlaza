@@ -1,0 +1,159 @@
+.viewportContainer {
+    height: 100%;
+    aspect-ratio: 1.066667;
+    overflow: hidden;
+    align-items: center;
+    visibility: visible;
+    display: flex;
+    align-self: center;
+}
+
+.menuesContainer {
+    width: 100%;
+    height: 100%;
+    --position: 0;
+}
+
+.mainMenuContainer {
+    height: auto;
+    aspect-ratio: 1.066667;
+    background-color: rgb(150, 255, 253);
+    --new-var-1: url("");
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+}
+
+.codeMenuContainer {
+    height: 120%;
+    width: auto;
+    aspect-ratio: 0.8888889;
+    position: absolute;
+    translate: 0% -100%;
+    background-color: rgb(137, 137, 137);
+    background-image: url("project://database/Assets/Assets/Fondos/BackgroundsNuevos/background_3.png?fileID=2800000&guid=e206c18485c6427499ae3b90dde3200e&type=3#background_3");
+    background-size: 150% 150%;
+    background-position-y: top 100%;
+}
+
+.clouds {
+    width: 140%;
+    position: absolute;
+    align-self: center;
+    translate: 0% -85%;
+    height: auto;
+    aspect-ratio: 1.063896;
+    transition-property: translate;
+    transition-duration: 1.4s;
+    transition-delay: 0s;
+    transition-timing-function: ease;
+}
+
+.plazaRender {
+    width: 100%;
+    bottom: 0%;
+    position: absolute;
+    visibility: visible;
+}
+
+.pctMainTitle {
+    width: 20%;
+    position: absolute;
+    height: auto;
+    aspect-ratio: 1.55814;
+    align-self: center;
+    top: 19%;
+}
+
+.pillBtn {
+    position: absolute;
+    align-self: center;
+    height: 100%;
+    top: 0%;
+    aspect-ratio: 3;
+    font-size: 500%;
+    border-top-left-radius: 80px;
+    border-top-right-radius: 80px;
+    border-bottom-right-radius: 80px;
+    border-bottom-left-radius: 80px;
+    background-color: rgb(255, 213, 0);
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    color: rgb(166, 107, 0);
+    -unity-font-style: normal;
+    -unity-font-definition: url("project://database/Assets/Fonts/Switzer_Complete/Fonts/OTF/Switzer-Extrabold.otf?fileID=12800000&guid=f03ab61f63e20c6419f14f7c40c9e461&type=3#Switzer-Extrabold");
+    -unity-text-outline-width: 0;
+    -unity-text-outline-color: rgb(0, 0, 0);
+    transition-duration: 0.2s;
+    transition-delay: 0s;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    transform-origin: center;
+    translate: 0 -10%;
+    width: 100%;
+}
+
+.pillBtn:active {
+    translate: 0 0%;
+    transform-origin: center;
+}
+
+.pillBtnBack {
+    position: absolute;
+    width: auto;
+    height: 140px;
+    translate: 0 0%;
+    background-color: rgb(233, 173, 0);
+    border-top-left-radius: 80px;
+    border-top-right-radius: 80px;
+    border-bottom-right-radius: 80px;
+    border-bottom-left-radius: 80px;
+    transform-origin: center;
+    aspect-ratio: 3;
+    align-self: center;
+    top: 41%;
+}
+
+.codeMainContainer {
+    width: 100%;
+    height: auto;
+    align-self: center;
+    position: absolute;
+    top: -2%;
+    background-color: rgb(58, 0, 156);
+    --nashe: rgb(81, 103, 77);
+    translate: 0% 0%;
+    border-top-left-radius: 80px;
+    border-top-right-radius: 80px;
+    border-bottom-right-radius: 80px;
+    border-bottom-left-radius: 80px;
+    color: rgb(55, 65, 53);
+    padding-top: 203px;
+    padding-right: 203px;
+    padding-bottom: 203px;
+    padding-left: 203px;
+}
+
+.codeMainContainerBack {
+    width: 40%;
+    top: 24%;
+    align-self: center;
+    height: 32%;
+    background-color: rgb(30, 0, 79);
+    border-top-left-radius: 80px;
+    border-top-right-radius: 80px;
+    border-bottom-right-radius: 80px;
+    border-bottom-left-radius: 80px;
+}

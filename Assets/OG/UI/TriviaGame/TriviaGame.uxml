@@ -1,0 +1,9 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/OG/UI/MainStyles.uss?fileID=7433441132597879392&amp;guid=1dafedb736d06de4c9ee17c43f3cef75&amp;type=3#MainStyles"/>
+    <Style src="project://database/Assets/OG/UI/TriviaGame/TriviaGameStyles.uss?fileID=7433441132597879392&amp;guid=09e50a08e326318439e68560fc11a06a&amp;type=3#TriviaGameStyles"/>
+    <ui:VisualElement name="ViewportContainer" class="viewportContainer">
+        <ui:VisualElement name="MenuesContainer" class="menuesContainer">
+            <ui:VisualElement name="ImageSelectionUI" style="flex-grow: 1;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
