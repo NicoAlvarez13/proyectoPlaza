@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1d3c264b8420041b9eb6c4267691ea, type: 3}
+  m_Name: CategoryBonus
+  m_EditorClassIdentifier: Assembly-CSharp::CategorySO
+  CategoryNameEN: Bonus
+  CategoryNameES: Bonus
+  Questions:
+  - {fileID: 11400000, guid: a405b33a8593db6488f9cd3abbf7756c, type: 2}
+  - {fileID: 11400000, guid: e132867b2839398428b67a05a847d948, type: 2}
+  - {fileID: 11400000, guid: d4c1a55f9f880934bacf7e17a0345b3c, type: 2}
+  - {fileID: 11400000, guid: ffc0169dad54e7b4d9d6221003188d7a, type: 2}
+  - {fileID: 11400000, guid: 09e2f9a70fd754c43ae6ea1f2a000f39, type: 2}
+  - {fileID: 11400000, guid: e97728310c0b8f34fb0bef47aec37817, type: 2}
+  - {fileID: 11400000, guid: 25c798150b8f2394d9d86d9c4457ccfc, type: 2}
+  - {fileID: 11400000, guid: 7e9b5879fa84f5249816cc127106adaf, type: 2}

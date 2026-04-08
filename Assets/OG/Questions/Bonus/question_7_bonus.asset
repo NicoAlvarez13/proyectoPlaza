@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c6a66da9384a04a9b0f2cd0876f8a2, type: 3}
+  m_Name: question_7_bonus
+  m_EditorClassIdentifier: Assembly-CSharp::QuestionSO
+  QuestionID: 6e816b17-86c1-4d78-b0e4-41fe27c158f3
+  Difficulty: 0
+  Type: 1
+  QuestionTextEN: The sky can be seen the same way from different places in the country.
+  QuestionTextES: "El cielo se puede apreciar de la misma manera en diferentes lugares
+    del pa\xEDs."
+  CorrectAnswerEN: 
+  CorrectAnswerES: 
+  IncorrectAnswer1EN: 
+  IncorrectAnswer1ES: 
+  IncorrectAnswer2EN: 
+  IncorrectAnswer2ES: 
+  IncorrectAnswer3EN: 
+  IncorrectAnswer3ES: 
+  IsTrueStatement: 0

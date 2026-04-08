@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c6a66da9384a04a9b0f2cd0876f8a2, type: 3}
+  m_Name: question_1_bonus
+  m_EditorClassIdentifier: Assembly-CSharp::QuestionSO
+  QuestionID: 9aa4b6ee-0b33-4717-b149-a52643fa564c
+  Difficulty: 0
+  Type: 0
+  QuestionTextEN: "Which stars form Orion\u2019s Belt?"
+  QuestionTextES: "\xBFQu\xE9 estrellas forman el cintur\xF3n de Ori\xF3n?"
+  CorrectAnswerEN: The Three Marys
+  CorrectAnswerES: "Las Tres Mar\xEDas"
+  IncorrectAnswer1EN: The Seven Sisters
+  IncorrectAnswer1ES: Las Siete Cabritas
+  IncorrectAnswer2EN: The Pleiades
+  IncorrectAnswer2ES: "Las Pl\xE9yades"
+  IncorrectAnswer3EN: The Magellanic Clouds
+  IncorrectAnswer3ES: Las Nubes de Magallanes
+  IsTrueStatement: 0
