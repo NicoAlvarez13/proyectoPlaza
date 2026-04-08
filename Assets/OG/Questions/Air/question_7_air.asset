@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c6a66da9384a04a9b0f2cd0876f8a2, type: 3}
+  m_Name: question_7_air
+  m_EditorClassIdentifier: Assembly-CSharp::QuestionSO
+  QuestionID: fbffcd46-5936-43e4-af7e-679beaec3c00
+  Difficulty: 0
+  Type: 0
+  QuestionTextEN: What does the outer solar calendar indicate?
+  QuestionTextES: 'El calendario solar exterior indica:'
+  CorrectAnswerEN: "The Sun\u2019s position in the sky"
+  CorrectAnswerES: "La posici\xF3n del Sol en el cielo "
+  IncorrectAnswer1EN: "The Moon\u2019s phase"
+  IncorrectAnswer1ES: La fase de la Luna
+  IncorrectAnswer2EN: The passing of comets
+  IncorrectAnswer2ES: 'El paso de los cometas '
+  IncorrectAnswer3EN: The daily temperature
+  IncorrectAnswer3ES: La temperatura diaria
+  IsTrueStatement: 0

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c6a66da9384a04a9b0f2cd0876f8a2, type: 3}
+  m_Name: question_11_air
+  m_EditorClassIdentifier: Assembly-CSharp::QuestionSO
+  QuestionID: 013ec274-654f-4ac9-9320-bd15bd939181
+  Difficulty: 0
+  Type: 0
+  QuestionTextEN: 'The oscillation plane of the Foucault pendulum:'
+  QuestionTextES: "El plano de oscilaci\xF3n del p\xE9ndulo de Foucault:"
+  CorrectAnswerEN: "Rotates with Earth\u2019s motion "
+  CorrectAnswerES: 'Gira por el movimiento de la Tierra '
+  IncorrectAnswer1EN: 'Changes due to winds '
+  IncorrectAnswer1ES: 'Cambia por los vientos '
+  IncorrectAnswer2EN: 'Stops by magnetism '
+  IncorrectAnswer2ES: 'Se detiene por magnetismo '
+  IncorrectAnswer3EN: 'Never changes '
+  IncorrectAnswer3ES: 'No cambia nunca '
+  IsTrueStatement: 0

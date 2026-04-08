@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c6a66da9384a04a9b0f2cd0876f8a2, type: 3}
+  m_Name: question_12_air
+  m_EditorClassIdentifier: Assembly-CSharp::QuestionSO
+  QuestionID: 521f2e07-1631-4d3a-a7ef-6146ef3b902d
+  Difficulty: 0
+  Type: 1
+  QuestionTextEN: If there were no atmosphere, the sky would be blue 24 hours a day.
+  QuestionTextES: "Si no existiera atm\xF3sfera, el cielo ser\xEDa azul las 24 horas."
+  CorrectAnswerEN: 
+  CorrectAnswerES: 
+  IncorrectAnswer1EN: 
+  IncorrectAnswer1ES: 
+  IncorrectAnswer2EN: 
+  IncorrectAnswer2ES: 
+  IncorrectAnswer3EN: 
+  IncorrectAnswer3ES: 
+  IsTrueStatement: 0

@@ -15,8 +15,10 @@ MonoBehaviour:
   QuestionID: 331857f5-e88c-4646-9876-1f9e71a912c4
   Difficulty: 0
   Type: 1
-  QuestionTextEN: question 5 air
-  QuestionTextES: pregunta 5 air
+  QuestionTextEN: "On the summer solstice, the Sun appears to be \u201Cright above
+    our heads\u201D."
+  QuestionTextES: "En el solsticio de verano, el Sol parece estar \u201Csobre nuestras
+    cabezas\u201D."
   CorrectAnswerEN: correct answer
   CorrectAnswerES: respuesta correcta
   IncorrectAnswer1EN: incorrect answer
@@ -25,4 +27,4 @@ MonoBehaviour:
   IncorrectAnswer2ES: respuesta incorrecta
   IncorrectAnswer3EN: incorrect answer
   IncorrectAnswer3ES: respuesta incorrecta
-  IsTrueStatement: 0
+  IsTrueStatement: 1

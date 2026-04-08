@@ -15,8 +15,10 @@ MonoBehaviour:
   QuestionID: 000a87cb-8408-4097-9f5d-8687d065c5e3
   Difficulty: 0
   Type: 1
-  QuestionTextEN: question 4 air
-  QuestionTextES: pregunta 4 air
+  QuestionTextEN: 'The three objects displayed at the beginning of the tour in the
+    museum are: Sundial, Solar calendar, and Globe.'
+  QuestionTextES: "Los 3 objetos expuestos al principio del recorrido en el museo
+    son: Reloj de sol, Calendario solar y Globo terr\xE1queo."
   CorrectAnswerEN: correct answer
   CorrectAnswerES: respuesta correcta
   IncorrectAnswer1EN: incorrect answer

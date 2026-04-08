@@ -15,14 +15,14 @@ MonoBehaviour:
   QuestionID: f6135b3c-829b-406b-b53d-8f9e4c84f9b5
   Difficulty: 0
   Type: 0
-  QuestionTextEN: question 2 air
-  QuestionTextES: pregunta 2 air
-  CorrectAnswerEN: correct answer
-  CorrectAnswerES: respuesta correcta
-  IncorrectAnswer1EN: incorrect answer
-  IncorrectAnswer1ES: respuesta incorrecta
-  IncorrectAnswer2EN: incorrect answer
-  IncorrectAnswer2ES: respuesta incorrecta
-  IncorrectAnswer3EN: incorrect answer
-  IncorrectAnswer3ES: respuesta incorrecta
+  QuestionTextEN: What does the functioning of the sundial depend on?
+  QuestionTextES: "\xBFDe qu\xE9 depende el funcionamiento del reloj de sol?"
+  CorrectAnswerEN: On the position of the Sun
+  CorrectAnswerES: "De la posici\xF3n del sol"
+  IncorrectAnswer1EN: On gravity
+  IncorrectAnswer1ES: De la gravedad
+  IncorrectAnswer2EN: On the ambient temperature
+  IncorrectAnswer2ES: De la temperatura ambiente
+  IncorrectAnswer3EN: On the lunar phase
+  IncorrectAnswer3ES: De la fase lunar
   IsTrueStatement: 0

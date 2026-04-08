@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Question
   QuestionID: 940ee9e9-3046-4864-b7ae-af377c9eca7a
   Difficulty: 0
-  Type: 0
-  QuestionTextEN: question 1 air
-  QuestionTextES: pregunta 1 air
+  Type: 1
+  QuestionTextEN: The Foucault Pendulum is used to demonstrate the rotation of the
+    Earth.
+  QuestionTextES: "El P\xE9ndulo de Foucault se utiliza para demostrar la rotaci\xF3n
+    de la Tierra."
   CorrectAnswerEN: correct answer
   CorrectAnswerES: respuesta correcta
   IncorrectAnswer1EN: incorrect answer
@@ -25,4 +27,4 @@ MonoBehaviour:
   IncorrectAnswer2ES: respuesta incorrecta
   IncorrectAnswer3EN: incorrect answer
   IncorrectAnswer3ES: respuesta incorrecta
-  IsTrueStatement: 0
+  IsTrueStatement: 1

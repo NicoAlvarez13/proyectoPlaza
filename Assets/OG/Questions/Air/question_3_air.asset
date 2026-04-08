@@ -15,14 +15,14 @@ MonoBehaviour:
   QuestionID: 2694a346-8cea-4dad-8df8-444bc09f10f4
   Difficulty: 0
   Type: 0
-  QuestionTextEN: question 3 air
-  QuestionTextES: pregunta 3 air
-  CorrectAnswerEN: correct answer
-  CorrectAnswerES: respuesta correcta
-  IncorrectAnswer1EN: incorrect answer
-  IncorrectAnswer1ES: respuesta incorrecta
-  IncorrectAnswer2EN: incorrect answer
-  IncorrectAnswer2ES: respuesta incorrecta
-  IncorrectAnswer3EN: incorrect answer
-  IncorrectAnswer3ES: respuesta incorrecta
+  QuestionTextEN: How does the Foucault pendulum move?
+  QuestionTextES: "\xBFC\xF3mo se mueve el p\xE9ndulo de Foucault?"
+  CorrectAnswerEN: "Its plane of oscillation rotates due to the Earth\u2019s movement"
+  CorrectAnswerES: "Su plano de oscilaci\xF3n gira por el movimiento de la Tierra"
+  IncorrectAnswer1EN: "It stops every 12 hours due to the Earth\u2019s magnetic field"
+  IncorrectAnswer1ES: "Se detiene cada 12 horas por el campo magn\xE9tico terrestre "
+  IncorrectAnswer2EN: "It oscillates according to the Sun\u2019s gravitational field"
+  IncorrectAnswer2ES: "Oscila seg\xFAn el campo gravitacional del Sol "
+  IncorrectAnswer3EN: It changes direction due to atmospheric winds
+  IncorrectAnswer3ES: "Cambia de direcci\xF3n por los vientos atmosf\xE9ricos"
   IsTrueStatement: 0

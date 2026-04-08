@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c6a66da9384a04a9b0f2cd0876f8a2, type: 3}
+  m_Name: question_10_air
+  m_EditorClassIdentifier: Assembly-CSharp::QuestionSO
+  QuestionID: afb705f0-fa3c-4d9a-8e14-66ca51f52733
+  Difficulty: 0
+  Type: 1
+  QuestionTextEN: "The Foucault pendulum demonstrates the Earth\u2019s rotation."
+  QuestionTextES: "El p\xE9ndulo de Foucault demuestra la rotaci\xF3n de la Tierra."
+  CorrectAnswerEN: 
+  CorrectAnswerES: 
+  IncorrectAnswer1EN: 
+  IncorrectAnswer1ES: 
+  IncorrectAnswer2EN: 
+  IncorrectAnswer2ES: 
+  IncorrectAnswer3EN: 
+  IncorrectAnswer3ES: 
+  IsTrueStatement: 1

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c6a66da9384a04a9b0f2cd0876f8a2, type: 3}
+  m_Name: question_8_air
+  m_EditorClassIdentifier: Assembly-CSharp::QuestionSO
+  QuestionID: 15a3f836-3fd2-4f95-a776-d34b8735b3e3
+  Difficulty: 0
+  Type: 0
+  QuestionTextEN: "What happens if I lift and release 2, 3, or 4 balls of Newton\u2019s
+    cradle?"
+  QuestionTextES: "\xBFQu\xE9 pasa si levanto y suelto 2, 3 o 4 bolas del p\xE9ndulo
+    de Newton?"
+  CorrectAnswerEN: 'Same number move '
+  CorrectAnswerES: 'Se mueve la misma cantidad que suelte '
+  IncorrectAnswer1EN: All opposite balls move
+  IncorrectAnswer1ES: 'Se mueven todas '
+  IncorrectAnswer2EN: None move
+  IncorrectAnswer2ES: Ninguna se mueve
+  IncorrectAnswer3EN: 'Only one moves '
+  IncorrectAnswer3ES: 'Solo una se mueve '
+  IsTrueStatement: 0
