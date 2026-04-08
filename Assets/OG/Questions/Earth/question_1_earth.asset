@@ -15,14 +15,14 @@ MonoBehaviour:
   QuestionID: 4f44e68f-f371-4190-be7c-c04d86a2db56
   Difficulty: 0
   Type: 0
-  QuestionTextEN: question 1 earth
-  QuestionTextES: pregunta 1 earth
-  CorrectAnswerEN: correct answer
-  CorrectAnswerES: respuesta correcta
-  IncorrectAnswer1EN: incorrect answer
-  IncorrectAnswer1ES: respuesta incorrecta
-  IncorrectAnswer2EN: incorrect answer
-  IncorrectAnswer2ES: respuesta incorrecta
-  IncorrectAnswer3EN: incorrect answer
-  IncorrectAnswer3ES: respuesta incorrecta
+  QuestionTextEN: What dinosaur is exhibited in the Museum?
+  QuestionTextES: "\xBFQu\xE9 dinosaurio est\xE1 expuesto en el Museo?"
+  CorrectAnswerEN: Tyrannotitan Chubutensis
+  CorrectAnswerES: Tyrannotitan Chubutensis
+  IncorrectAnswer1EN: Argentinosaurus huinculensis
+  IncorrectAnswer1ES: Argentinosaurus huinculensis
+  IncorrectAnswer2EN: Giganotosaurus carolinii
+  IncorrectAnswer2ES: Giganotosaurus carolinii
+  IncorrectAnswer3EN: Carnotaurus sastrei
+  IncorrectAnswer3ES: Carnotaurus sastrei
   IsTrueStatement: 0

@@ -15,8 +15,10 @@ MonoBehaviour:
   QuestionID: 5e2a54cb-4761-47b4-999b-b52174219d1a
   Difficulty: 0
   Type: 1
-  QuestionTextEN: question 5 fire
-  QuestionTextES: pregunta 5 fire
+  QuestionTextEN: "The Earth\u2019s core reaches temperatures similar to the Sun\u2019s
+    surface."
+  QuestionTextES: "El n\xFAcleo de la Tierra alcanza temperaturas similares a la
+    superficie del Sol."
   CorrectAnswerEN: correct answer
   CorrectAnswerES: respuesta correcta
   IncorrectAnswer1EN: incorrect answer
@@ -25,4 +27,4 @@ MonoBehaviour:
   IncorrectAnswer2ES: respuesta incorrecta
   IncorrectAnswer3EN: incorrect answer
   IncorrectAnswer3ES: respuesta incorrecta
-  IsTrueStatement: 0
+  IsTrueStatement: 1

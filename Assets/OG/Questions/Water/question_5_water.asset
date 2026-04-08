@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Question
   QuestionID: e8122a82-030b-4ac9-8a04-5c5011015687
   Difficulty: 0
-  Type: 1
-  QuestionTextEN: question 5 water
-  QuestionTextES: pregunta 5 water
-  CorrectAnswerEN: correct answer
-  CorrectAnswerES: respuesta correcta
-  IncorrectAnswer1EN: incorrect answer
-  IncorrectAnswer1ES: respuesta incorrecta
-  IncorrectAnswer2EN: incorrect answer
-  IncorrectAnswer2ES: respuesta incorrecta
-  IncorrectAnswer3EN: incorrect answer
-  IncorrectAnswer3ES: respuesta incorrecta
+  Type: 0
+  QuestionTextEN: What types of rain have been detected on other planets?
+  QuestionTextES: "\xBFQu\xE9 tipos de lluvia se han detectado en otros planetas?"
+  CorrectAnswerEN: Methane rain
+  CorrectAnswerES: Lluvias de metano
+  IncorrectAnswer1EN: Gold rain
+  IncorrectAnswer1ES: Lluvias de oro
+  IncorrectAnswer2EN: Sulfur rain
+  IncorrectAnswer2ES: Lluvias de azufre
+  IncorrectAnswer3EN: None of the above
+  IncorrectAnswer3ES: Ninguna de las anteriores
   IsTrueStatement: 0

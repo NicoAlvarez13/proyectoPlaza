@@ -15,14 +15,14 @@ MonoBehaviour:
   QuestionID: 37df02b9-e9ca-4bcb-a173-07b3b2d7e7c4
   Difficulty: 0
   Type: 0
-  QuestionTextEN: question 2 water
-  QuestionTextES: pregunta 2 water
-  CorrectAnswerEN: correct answer
-  CorrectAnswerES: respuesta correcta
-  IncorrectAnswer1EN: incorrect answer
-  IncorrectAnswer1ES: respuesta incorrecta
-  IncorrectAnswer2EN: incorrect answer
-  IncorrectAnswer2ES: respuesta incorrecta
-  IncorrectAnswer3EN: incorrect answer
-  IncorrectAnswer3ES: respuesta incorrecta
+  QuestionTextEN: 'The water cycle includes:'
+  QuestionTextES: 'El ciclo del agua incluye:'
+  CorrectAnswerEN: All of the above
+  CorrectAnswerES: Todas las anteriores
+  IncorrectAnswer1EN: Evaporation
+  IncorrectAnswer1ES: "Evaporaci\xF3n"
+  IncorrectAnswer2EN: Condensation
+  IncorrectAnswer2ES: "Condensaci\xF3n"
+  IncorrectAnswer3EN: Precipitation
+  IncorrectAnswer3ES: "Precipitaci\xF3n"
   IsTrueStatement: 0

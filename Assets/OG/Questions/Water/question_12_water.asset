@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c6a66da9384a04a9b0f2cd0876f8a2, type: 3}
+  m_Name: question_12_water
+  m_EditorClassIdentifier: Assembly-CSharp::QuestionSO
+  QuestionID: 03048ade-d15d-4a3d-84e2-6825c48dfb45
+  Difficulty: 0
+  Type: 1
+  QuestionTextEN: There are more humans on Earth than living organisms in a liter
+    of river water.
+  QuestionTextES: "Hay m\xE1s seres humanos en el planeta que organismos vivos en
+    un litro de agua de r\xEDo."
+  CorrectAnswerEN: 
+  CorrectAnswerES: 
+  IncorrectAnswer1EN: 
+  IncorrectAnswer1ES: 
+  IncorrectAnswer2EN: 
+  IncorrectAnswer2ES: 
+  IncorrectAnswer3EN: 
+  IncorrectAnswer3ES: 
+  IsTrueStatement: 0

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c6a66da9384a04a9b0f2cd0876f8a2, type: 3}
+  m_Name: question_11_water
+  m_EditorClassIdentifier: Assembly-CSharp::QuestionSO
+  QuestionID: be65b82d-cab3-46a3-b1b0-ca8bbcdb3274
+  Difficulty: 0
+  Type: 1
+  QuestionTextEN: On other planets, it rains water just like on Earth.
+  QuestionTextES: En otros planetas llueve agua igual que en la Tierra.
+  CorrectAnswerEN: 
+  CorrectAnswerES: 
+  IncorrectAnswer1EN: 
+  IncorrectAnswer1ES: 
+  IncorrectAnswer2EN: 
+  IncorrectAnswer2ES: 
+  IncorrectAnswer3EN: 
+  IncorrectAnswer3ES: 
+  IsTrueStatement: 0

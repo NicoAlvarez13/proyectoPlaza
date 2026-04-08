@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c6a66da9384a04a9b0f2cd0876f8a2, type: 3}
+  m_Name: question_11_fire
+  m_EditorClassIdentifier: Assembly-CSharp::QuestionSO
+  QuestionID: ce724f81-884e-46d4-952a-a7d6d13bbc96
+  Difficulty: 0
+  Type: 0
+  QuestionTextEN: "How do scientists study Earth\u2019s interior?"
+  QuestionTextES: "\xBFQu\xE9 m\xE9todo utilizan los cient\xEDficos para estudiar
+    el interior de la Tierra?"
+  CorrectAnswerEN: Seismic waves
+  CorrectAnswerES: "Ondas s\xEDsmicas"
+  IncorrectAnswer1EN: Satellites
+  IncorrectAnswer1ES: "Sat\xE9lites espaciales"
+  IncorrectAnswer2EN: Underground robots
+  IncorrectAnswer2ES: "Robots subterr\xE1neos"
+  IncorrectAnswer3EN: Thermal cameras
+  IncorrectAnswer3ES: "C\xE1maras t\xE9rmicas"
+  IsTrueStatement: 0

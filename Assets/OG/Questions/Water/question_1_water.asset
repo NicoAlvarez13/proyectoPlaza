@@ -15,14 +15,14 @@ MonoBehaviour:
   QuestionID: f32500f7-005f-43a4-9f70-05d8a809c064
   Difficulty: 0
   Type: 0
-  QuestionTextEN: question 1 water
-  QuestionTextES: pregunta 1 water
-  CorrectAnswerEN: correct answer
-  CorrectAnswerES: respuesta correcta
-  IncorrectAnswer1EN: incorrect answer
-  IncorrectAnswer1ES: respuesta incorrecta
-  IncorrectAnswer2EN: incorrect answer
-  IncorrectAnswer2ES: respuesta incorrecta
-  IncorrectAnswer3EN: incorrect answer
-  IncorrectAnswer3ES: respuesta incorrecta
+  QuestionTextEN: Which of these is not a state of water?
+  QuestionTextES: "\xBFCu\xE1l de estos no es un estado del agua?"
+  CorrectAnswerEN: Wet
+  CorrectAnswerES: "H\xFAmedo"
+  IncorrectAnswer1EN: Liquid
+  IncorrectAnswer1ES: "L\xEDquido"
+  IncorrectAnswer2EN: Gas
+  IncorrectAnswer2ES: Gaseoso
+  IncorrectAnswer3EN: Solid
+  IncorrectAnswer3ES: "S\xF3lido"
   IsTrueStatement: 0

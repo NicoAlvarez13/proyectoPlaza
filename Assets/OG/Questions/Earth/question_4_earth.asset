@@ -14,15 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Question
   QuestionID: 50d38463-cf44-418c-a9ad-986a2b529aa5
   Difficulty: 0
-  Type: 1
-  QuestionTextEN: question 4 earth
-  QuestionTextES: pregunta 4 earth
-  CorrectAnswerEN: correct answer
-  CorrectAnswerES: respuesta correcta
-  IncorrectAnswer1EN: incorrect answer
-  IncorrectAnswer1ES: respuesta incorrecta
-  IncorrectAnswer2EN: incorrect answer
-  IncorrectAnswer2ES: respuesta incorrecta
-  IncorrectAnswer3EN: incorrect answer
-  IncorrectAnswer3ES: respuesta incorrecta
+  Type: 0
+  QuestionTextEN: "What happens when you lift and release one of the spheres of Newton\u2019s
+    cradle?"
+  QuestionTextES: "\xBFQu\xE9 pasa al levantar y soltar una de las esferas del p\xE9ndulo
+    de Newton?"
+  CorrectAnswerEN: One opposite sphere rises and the others barely move
+  CorrectAnswerES: "Una esfera opuesta sube y las dem\xE1s casi no se mueven "
+  IncorrectAnswer1EN: The sphere remains in the air without moving
+  IncorrectAnswer1ES: 'La esfera queda en el aire sin moverse '
+  IncorrectAnswer2EN: All the spheres move in opposite directions
+  IncorrectAnswer2ES: 'Todas las esferas se mueven en direcciones opuestas  '
+  IncorrectAnswer3EN: All the spheres fall to the ground
+  IncorrectAnswer3ES: "Todas las esferas\_caen\_al\_suelo "
   IsTrueStatement: 1

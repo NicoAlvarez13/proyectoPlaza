@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c6a66da9384a04a9b0f2cd0876f8a2, type: 3}
+  m_Name: question_8_water
+  m_EditorClassIdentifier: Assembly-CSharp::QuestionSO
+  QuestionID: fd111701-39a7-463f-9e4c-a4d12619c070
+  Difficulty: 0
+  Type: 0
+  QuestionTextEN: Which one is an ancient marine fossil?
+  QuestionTextES: "\xBFCu\xE1l es un f\xF3sil marino antiguo?"
+  CorrectAnswerEN: Trilobite
+  CorrectAnswerES: Trilobite
+  IncorrectAnswer1EN: Megalodon
+  IncorrectAnswer1ES: "Megalod\xF3n"
+  IncorrectAnswer2EN: Stromatolite
+  IncorrectAnswer2ES: Estromatolito
+  IncorrectAnswer3EN: Archaeopteryx
+  IncorrectAnswer3ES: Archaeopteryx
+  IsTrueStatement: 0

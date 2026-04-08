@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Question
   QuestionID: 8d105505-0757-441a-9836-451cc6d6e6e2
   Difficulty: 0
-  Type: 0
-  QuestionTextEN: question 1 fire
-  QuestionTextES: pregunta 1 fire
+  Type: 1
+  QuestionTextEN: The outer core of the Earth is solid and the inner core is liquid.
+  QuestionTextES: "El n\xFAcleo externo de la Tierra es s\xF3lido y el interno es
+    l\xEDquido."
   CorrectAnswerEN: correct answer
   CorrectAnswerES: respuesta correcta
   IncorrectAnswer1EN: incorrect answer

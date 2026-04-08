@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Question
   QuestionID: 0f775823-a38c-4ef8-9446-2e2d1cd6cbcf
   Difficulty: 0
-  Type: 0
-  QuestionTextEN: question 3 fire
-  QuestionTextES: pregunta 3 fire
+  Type: 1
+  QuestionTextEN: "The Earth\u2019s core is the hottest point of the planet."
+  QuestionTextES: "El n\xFAcleo es el punto m\xE1s caliente del planeta."
   CorrectAnswerEN: correct answer
   CorrectAnswerES: respuesta correcta
   IncorrectAnswer1EN: incorrect answer
@@ -24,5 +24,5 @@ MonoBehaviour:
   IncorrectAnswer2EN: incorrect answer
   IncorrectAnswer2ES: respuesta incorrecta
   IncorrectAnswer3EN: incorrect answer
-  IncorrectAnswer3ES: respuesta incorrecta
-  IsTrueStatement: 0
+  IncorrectAnswer3ES: 
+  IsTrueStatement: 1

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c6a66da9384a04a9b0f2cd0876f8a2, type: 3}
+  m_Name: question_8_earth
+  m_EditorClassIdentifier: Assembly-CSharp::QuestionSO
+  QuestionID: 7d035609-30e3-4c18-b60e-277ae12b2ac2
+  Difficulty: 0
+  Type: 0
+  QuestionTextEN: "What is the approximate thickness of the Earth\u2019s mantle?"
+  QuestionTextES: "\xBFCu\xE1l es el espesor aproximado del manto terrestre?"
+  CorrectAnswerEN: 2.900 km
+  CorrectAnswerES: 2.900 km
+  IncorrectAnswer1EN: 1.000 km
+  IncorrectAnswer1ES: 1.000 km
+  IncorrectAnswer2EN: 5.000 km
+  IncorrectAnswer2ES: 5.000 km
+  IncorrectAnswer3EN: 700 km
+  IncorrectAnswer3ES: 700 km
+  IsTrueStatement: 0

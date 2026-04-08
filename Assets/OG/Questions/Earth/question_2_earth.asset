@@ -15,14 +15,15 @@ MonoBehaviour:
   QuestionID: 0c9cf399-cc5f-4f80-8282-1e9753b35ca7
   Difficulty: 0
   Type: 0
-  QuestionTextEN: question 2 earth
-  QuestionTextES: pregunta 2 earth
-  CorrectAnswerEN: correct answer
-  CorrectAnswerES: respuesta correcta
-  IncorrectAnswer1EN: incorrect answer
-  IncorrectAnswer1ES: respuesta incorrecta
-  IncorrectAnswer2EN: incorrect answer
-  IncorrectAnswer2ES: respuesta incorrecta
-  IncorrectAnswer3EN: incorrect answer
-  IncorrectAnswer3ES: respuesta incorrecta
+  QuestionTextEN: What is formed when tectonic plates collide with each other?
+  QuestionTextES: "\xBFQu\xE9 se forma cuando las placas tect\xF3nicas chocan entre
+    s\xED?"
+  CorrectAnswerEN: Mountains
+  CorrectAnswerES: "Monta\xF1as"
+  IncorrectAnswer1EN: 'Underwater volcanoes '
+  IncorrectAnswer1ES: Volcanes submarinos
+  IncorrectAnswer2EN: Canyons
+  IncorrectAnswer2ES: "Ca\xF1ones"
+  IncorrectAnswer3EN: Hurricanes
+  IncorrectAnswer3ES: Huracanes
   IsTrueStatement: 0

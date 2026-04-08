@@ -15,14 +15,14 @@ MonoBehaviour:
   QuestionID: 0f775823-a38c-4ef8-9446-2e2d1cd6cbcf
   Difficulty: 0
   Type: 0
-  QuestionTextEN: question 3 earth
-  QuestionTextES: pregunta 3 earth
-  CorrectAnswerEN: correct answer
-  CorrectAnswerES: respuesta correcta
-  IncorrectAnswer1EN: incorrect answer
-  IncorrectAnswer1ES: respuesta incorrecta
-  IncorrectAnswer2EN: incorrect answer
-  IncorrectAnswer2ES: respuesta incorrecta
-  IncorrectAnswer3EN: incorrect answer
-  IncorrectAnswer3ES: respuesta incorrecta
+  QuestionTextEN: Where did the Tyrannotitan Chubutensis live?
+  QuestionTextES: "\xBFEn d\xF3nde habit\xF3 el Tyrannotitan Chubutensis?"
+  CorrectAnswerEN: 'Patagonia, Argentina '
+  CorrectAnswerES: 'Patagonia, Argentina '
+  IncorrectAnswer1EN: Rio de Janeiro, Brazil
+  IncorrectAnswer1ES: "R\xEDo de Janeiro, Brasil"
+  IncorrectAnswer2EN: 'Cuyo, Argentina '
+  IncorrectAnswer2ES: Cuyo, Argentina
+  IncorrectAnswer3EN: Machu Picchu, Peru
+  IncorrectAnswer3ES: "Machu Picchu, Per\xFA"
   IsTrueStatement: 0

@@ -15,8 +15,8 @@ MonoBehaviour:
   QuestionID: 5e2a54cb-4761-47b4-999b-b52174219d1a
   Difficulty: 0
   Type: 1
-  QuestionTextEN: question 5 earth
-  QuestionTextES: pregunta 5 earth
+  QuestionTextEN: The Moon is a part of the Earth that broke away from it.
+  QuestionTextES: La Luna es una parte de la Tierra desprendida de ella.
   CorrectAnswerEN: correct answer
   CorrectAnswerES: respuesta correcta
   IncorrectAnswer1EN: incorrect answer
@@ -25,4 +25,4 @@ MonoBehaviour:
   IncorrectAnswer2ES: respuesta incorrecta
   IncorrectAnswer3EN: incorrect answer
   IncorrectAnswer3ES: respuesta incorrecta
-  IsTrueStatement: 0
+  IsTrueStatement: 1

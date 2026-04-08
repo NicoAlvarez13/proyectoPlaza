@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c6a66da9384a04a9b0f2cd0876f8a2, type: 3}
+  m_Name: question_10_fire
+  m_EditorClassIdentifier: Assembly-CSharp::QuestionSO
+  QuestionID: 8f33c3ad-e40a-4823-9867-a38a12917b7f
+  Difficulty: 0
+  Type: 0
+  QuestionTextEN: Which layer of the core is liquid?
+  QuestionTextES: "\xBFQu\xE9 capa del n\xFAcleo es l\xEDquida y presenta movimientos
+    de convecci\xF3n? "
+  CorrectAnswerEN: Outer core
+  CorrectAnswerES: "N\xFAcleo externo"
+  IncorrectAnswer1EN: Inner core
+  IncorrectAnswer1ES: "N\xFAcleo interno"
+  IncorrectAnswer2EN: Crust
+  IncorrectAnswer2ES: Corteza terrestre
+  IncorrectAnswer3EN: Mantle
+  IncorrectAnswer3ES: Manto inferior
+  IsTrueStatement: 0

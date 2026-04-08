@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Question
   QuestionID: e10a1e98-f12c-4e77-873c-a5fe40c53d75
   Difficulty: 0
-  Type: 0
-  QuestionTextEN: question 3 water
-  QuestionTextES: pregunta 3 water
+  Type: 1
+  QuestionTextEN: The water we use today is the same that existed in the time of
+    the dinosaurs.
+  QuestionTextES: "\xBFEl agua que usamos hoy es la misma que exist\xEDa en tiempos
+    de los dinosaurios?"
   CorrectAnswerEN: correct answer
   CorrectAnswerES: respuesta correcta
   IncorrectAnswer1EN: incorrect answer
@@ -25,4 +27,4 @@ MonoBehaviour:
   IncorrectAnswer2ES: respuesta incorrecta
   IncorrectAnswer3EN: incorrect answer
   IncorrectAnswer3ES: respuesta incorrecta
-  IsTrueStatement: 0
+  IsTrueStatement: 1

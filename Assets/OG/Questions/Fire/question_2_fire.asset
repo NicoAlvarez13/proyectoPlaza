@@ -15,14 +15,14 @@ MonoBehaviour:
   QuestionID: a022bf88-0a75-4812-9cb9-4139e6ba7a38
   Difficulty: 0
   Type: 0
-  QuestionTextEN: question 2 fire
-  QuestionTextES: pregunta 2 fire
-  CorrectAnswerEN: correct answer
-  CorrectAnswerES: respuesta correcta
-  IncorrectAnswer1EN: incorrect answer
-  IncorrectAnswer1ES: respuesta incorrecta
-  IncorrectAnswer2EN: incorrect answer
-  IncorrectAnswer2ES: respuesta incorrecta
-  IncorrectAnswer3EN: incorrect answer
-  IncorrectAnswer3ES: respuesta incorrecta
+  QuestionTextEN: What is the Earth like on the inside?
+  QuestionTextES: "\xBFC\xF3mo es la Tierra por dentro?"
+  CorrectAnswerEN: Solid core, liquid core, mantle, and crust
+  CorrectAnswerES: "N\xFAcleo s\xF3lido, n\xFAcleo l\xEDquido, manto y corteza "
+  IncorrectAnswer1EN: Only one continuous layer of hot rock
+  IncorrectAnswer1ES: 'Solo una capa continua de roca caliente  '
+  IncorrectAnswer2EN: Liquid core and the rest hollow
+  IncorrectAnswer2ES: "N\xFAcleo l\xEDquido y resto hueco "
+  IncorrectAnswer3EN: Alternating layers of water and rock all the way to the center
+  IncorrectAnswer3ES: "Capas alternadas de agua y roca hasta\_el\_centro "
   IsTrueStatement: 0

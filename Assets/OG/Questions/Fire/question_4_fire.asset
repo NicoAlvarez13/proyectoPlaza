@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Question
   QuestionID: 50d38463-cf44-418c-a9ad-986a2b529aa5
   Difficulty: 0
-  Type: 1
-  QuestionTextEN: question 4 fire
-  QuestionTextES: pregunta 4 fire
-  CorrectAnswerEN: correct answer
-  CorrectAnswerES: respuesta correcta
-  IncorrectAnswer1EN: incorrect answer
-  IncorrectAnswer1ES: respuesta incorrecta
-  IncorrectAnswer2EN: incorrect answer
-  IncorrectAnswer2ES: respuesta incorrecta
-  IncorrectAnswer3EN: incorrect answer
-  IncorrectAnswer3ES: respuesta incorrecta
+  Type: 0
+  QuestionTextEN: What does the compass always point to?
+  QuestionTextES: "\xBFQu\xE9 busca siempre la br\xFAjula?"
+  CorrectAnswerEN: The North
+  CorrectAnswerES: 'El norte '
+  IncorrectAnswer1EN: The Sun
+  IncorrectAnswer1ES: El sol
+  IncorrectAnswer2EN: The South Pole
+  IncorrectAnswer2ES: El polo sur
+  IncorrectAnswer3EN: The horizon
+  IncorrectAnswer3ES: El horizonte
   IsTrueStatement: 1
