@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1d3c264b8420041b9eb6c4267691ea, type: 3}
+  m_Name: CategoryFire
+  m_EditorClassIdentifier: Assembly-CSharp::CategorySO
+  CategoryNameEN: Fire
+  CategoryNameES: Fuego
+  Questions:
+  - {fileID: 11400000, guid: 925fe2032f51b3143be377e11865f17f, type: 2}
+  - {fileID: 11400000, guid: 6ba9794a118517f4e8098b7481c2a656, type: 2}
+  - {fileID: 11400000, guid: 17b65569b62eb0f4e8efb1ea30a86518, type: 2}
+  - {fileID: 11400000, guid: 3954a13708396fd4c918e44824003fd9, type: 2}
+  - {fileID: 11400000, guid: db9136415f810064fa98e0c0b462f9e9, type: 2}

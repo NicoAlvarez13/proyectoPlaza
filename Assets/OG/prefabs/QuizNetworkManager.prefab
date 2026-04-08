@@ -44,6 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ffed33627caff54c9ad94f26d4980dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuizNetworkManager
-  _playerPrefab:
-    RawGuidValue: 9db07369028e9e848be3bf93a2626ba1
   _networkRunnerPrefab: {fileID: 3928595514793067433, guid: 3da402f979321524b84219a1156408ee, type: 3}
+  _runner: {fileID: 0}

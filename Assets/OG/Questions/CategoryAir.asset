@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1d3c264b8420041b9eb6c4267691ea, type: 3}
+  m_Name: CategoryAir
+  m_EditorClassIdentifier: Assembly-CSharp::CategorySO
+  CategoryNameEN: Air
+  CategoryNameES: Aire
+  Questions:
+  - {fileID: 11400000, guid: 1c2b663c5373ff74790ce4e3e1c62612, type: 2}
+  - {fileID: 11400000, guid: 604edd6f8c7f41e428fbc3e416e585e9, type: 2}
+  - {fileID: 11400000, guid: 464e8bff8db1d904581f9ed1d319d4fd, type: 2}
+  - {fileID: 11400000, guid: d72fbf8915a713a42908e6c05f0f0f27, type: 2}
+  - {fileID: 11400000, guid: 62cf851edc3e1754ca812e9eec1706b2, type: 2}

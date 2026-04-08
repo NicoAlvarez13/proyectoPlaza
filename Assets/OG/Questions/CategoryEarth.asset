@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1d3c264b8420041b9eb6c4267691ea, type: 3}
+  m_Name: CategoryEarth
+  m_EditorClassIdentifier: Assembly-CSharp::CategorySO
+  CategoryNameEN: Earth
+  CategoryNameES: Tierra
+  Questions:
+  - {fileID: 11400000, guid: b2ccf70507c020842b19f02bea72bf5c, type: 2}
+  - {fileID: 11400000, guid: 1a542551175592c48bfc2e0cfd9133fe, type: 2}
+  - {fileID: 11400000, guid: eb2551216f88f7b44b75519908a1713f, type: 2}
+  - {fileID: 11400000, guid: 8c77c01af0b99814c9e78b096015efb6, type: 2}
+  - {fileID: 11400000, guid: 4fddccf4152c62049ac532e328e374ae, type: 2}

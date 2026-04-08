@@ -157,3 +157,25 @@
     border-bottom-right-radius: 80px;
     border-bottom-left-radius: 80px;
 }
+
+.unity-button__image {
+}
+
+.answerButton {
+    transition-duration: 0.2s;
+}
+
+.answerButton:active {
+    translate: 0 8%;
+}
+
+.animResult:disabled {
+    color: rgba(255, 66, 66, 0);
+    display: none;
+}
+
+.animResult:enabled {
+}
+
+.animResult {
+}

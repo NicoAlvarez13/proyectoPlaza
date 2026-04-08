@@ -45,10 +45,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86eaa2f5c53ca0e4998603cf61709606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuizGameManager
+  _timeToStart: 5
+  _timeForQuestion: 15
+  _timeForResult: 4
+  _timeForEndgame: 60
+  _scoreMultiplier: 100
+  _TimeToStart: 0
+  _TimeForQuestion: 0
+  _TimeForResult: 0
+  _TimeForEndgame: 0
+  _ScoreMultiplier: 0
+  _IsRoomActive:
+    _value: 1
+  _GameStarted: 0
+  _CurrentState: 0
+  _StateTimer: 0
   _CurrentQuestionIndex: 0
-  _RoundTimer: 0
-  _IsQuestionActive:
-    _value: 0
+  _TotalQuestions: 0
+  AllCategoriesDatabase:
+  - {fileID: 11400000, guid: c54416509463a2442941498f967062ba, type: 2}
+  - {fileID: 11400000, guid: c6c33a504e131e14da7e4425ffe22679, type: 2}
+  - {fileID: 11400000, guid: 2d93816606317b54aa4e51863498b087, type: 2}
+  - {fileID: 11400000, guid: 730e5a4b63d564b49889629d1314f40c, type: 2}
+  _SelectedQuestionIDs: []
 --- !u!114 &-3164006544384342016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,7 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkObject
   SortKey: 1844213393
   ObjectInterest: 1
-  Flags: 131073
+  Flags: 524289
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: -5227000350638598853}

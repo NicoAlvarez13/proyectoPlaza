@@ -194,13 +194,14 @@ GameObject:
   m_Component:
   - component: {fileID: 350675861}
   - component: {fileID: 350675860}
+  - component: {fileID: 350675862}
   m_Layer: 0
   m_Name: TriviaGameUi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &350675860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,6 +240,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &350675862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350675859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b54c131e87a9274d9502789a4785e6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TriviaGameUI
+  _uiDocument: {fileID: 350675860}
+  _playerCardTemplate: {fileID: 9197481963319205126, guid: f8a816c6580753c43801d0f916181a14, type: 3}
+  _quizBackgrounds:
+  - {fileID: 21300000, guid: c5bded716bec8d14eb160914a1dccb36, type: 3}
+  - {fileID: 21300000, guid: a85a11b67b3ae7946904ee1146022de8, type: 3}
+  - {fileID: 21300000, guid: c2a882fb3e7306044bcc5550a5bbe62a, type: 3}
+  - {fileID: 21300000, guid: 81678aae6ab058643bd567d5ed047113, type: 3}
+  _headerColors:
+  - serializedVersion: 2
+    rgba: 4289432576
+  - serializedVersion: 2
+    rgba: 4278211712
+  - serializedVersion: 2
+    rgba: 4278192895
+  - serializedVersion: 2
+    rgba: 4287395584
+  _categoriesIcon:
+  - {fileID: 21300000, guid: b5c28270e5230fe4ab26189f99f34010, type: 3}
+  - {fileID: -3374312181666687681, guid: d4d6e86f762d91c4eb4d378290972c99, type: 3}
+  - {fileID: -5619853109906548180, guid: de01ac1e7dae6994e8c5c269dd94a266, type: 3}
+  - {fileID: 3086370057011325995, guid: 6d9cd892290954548a0ebabcc9752921, type: 3}
+  PlayerSelectedIndex: 0
+  SpritesList:
+  - {fileID: -808808270821479884, guid: ecbb73fec8f452845b1cdc21dce08729, type: 3}
+  - {fileID: -9158349384845336690, guid: 4a52455e3bf6875428acad889ac78470, type: 3}
+  - {fileID: -5226647853256959419, guid: 17c0afed9cb93884aa8523f9b4a1f0b7, type: 3}
+  - {fileID: 3584695137363010030, guid: 3f694444c6318334b87fa65ca49e202f, type: 3}
+  - {fileID: 3584695137363010030, guid: 3f694444c6318334b87fa65ca49e202f, type: 3}
 --- !u!1 &781864989
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,26 +290,14 @@ GameObject:
   m_Component:
   - component: {fileID: 781864992}
   - component: {fileID: 781864991}
-  - component: {fileID: 781864990}
+  - component: {fileID: 781864993}
   m_Layer: 0
   m_Name: MainMenuUI_guide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &781864990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 781864989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2283d57d968b9f04684991d2cb6cfeed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MainMenuController
+  m_IsActive: 0
 --- !u!114 &781864991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,6 +336,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &781864993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781864989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c2f3e1efb817c845b849afbbd355f30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MainMenuController_guide
+  uiDocument: {fileID: 781864991}
+  joinRoomBaseUrl: https://mati7gomez.github.io/pct-build-client/?idsala=
+  qrSize: 512
+  astronautAnimSpeed: 2
 --- !u!1 &1033760033
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,7 +369,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1033760034
 Transform:
   m_ObjectHideFlags: 0
@@ -375,6 +420,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2283d57d968b9f04684991d2cb6cfeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuController
+  _uiDocument: {fileID: 1033760035}
+  IsProcessing: 0
+  astronautAnimSpeed: 2
 --- !u!1 &1682348225
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,7 +520,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1682348228}
-  - {fileID: 1033760034}
   - {fileID: 781864992}
+  - {fileID: 1033760034}
   - {fileID: 350675861}
   - {fileID: 16573508}

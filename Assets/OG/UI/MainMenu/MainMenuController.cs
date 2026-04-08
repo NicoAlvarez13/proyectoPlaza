@@ -1,49 +1,93 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UIElements;
+// Removed unused standalone input module
 
 public class MainMenuController : MonoBehaviour
 {
-    private UIDocument _uiDocument;
+    public static MainMenuController Instance { get; private set; }
+
+    [SerializeField] private UIDocument _uiDocument;
+
+    // --- Constants ---
+    private const string LAST_ROOM_KEY = "LastRoomCode";
 
     // --- UI Elements ---
-    private Button _playButton;
+    private Button _btnPlay;
     private Button _joinButton;
+    private Button _reconnectButton;
+    private VisualElement _reconnectWrapper;
     private TextField _codeInput;
     private VisualElement _menuesContainer;
     private VisualElement _clouds;
+    private Label _lblError;
+
+    public bool IsProcessing = false;
+
+    // Transition Elements
+    private bool _transitioned;
+    private bool _transitioning = false;
+    private int _pendingTransitions = 0;
+
+    // Decoratives
+    [Header("Animation Settings")]
+    [SerializeField] private float astronautAnimSpeed = 2f; // Duration of one float direction in seconds
+    private Image _astronaut;
+    private bool _isAstronautDown = false;
 
 
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
 
-    private bool _watingResponse = false;
+        if (_uiDocument == null) _uiDocument = GetComponent<UIDocument>();
+    }
 
     private void OnEnable()
     {
-        Debug.Log(Application.absoluteURL);
-        _uiDocument = GetComponent<UIDocument>();
-        if (_uiDocument == null)
-        {
-            Debug.LogError("UIDocument component is missing from this GameObject.");
-            return;
-        }
-
+        if (_uiDocument == null) return;
         VisualElement root = _uiDocument.rootVisualElement;
 
-        // 1. Initialize all elements using the generic helper
-        _playButton = QueryElement<Button>(root, "PlayButton");
-        _joinButton = QueryElement<Button>(root, "JoinButton");
-        _codeInput = QueryElement<TextField>(root, "CodeInput");
-        _menuesContainer = QueryElement<VisualElement>(root, "MenuesContainer");
-        _clouds = QueryElement<VisualElement>(root, "Clouds");
+        // Initialize Elements based on UXML names
+        _btnPlay = root.Q<Button>("PlayButton");
+        _joinButton = root.Q<Button>("JoinButton");
+        _codeInput = root.Q<TextField>("CodeInput");
+        _menuesContainer = root.Q<VisualElement>("MenuesContainer");
+        _clouds = root.Q<VisualElement>("Clouds");
 
-        // 2. Hook up all interactions
-        RegisterEvents();
-        if (true) {
-            //OnLoadedWithURL();
+        // NEW: Query the error label (Make sure your UXML has a Label with this name)
+        _lblError = root.Q<Label>("lblErrorMessage");
+
+        // Reconnect Button Wrapper & Button
+        _reconnectWrapper = root.Q<VisualElement>("btnReconnect");
+        if (_reconnectWrapper != null)
+        {
+            _reconnectButton = _reconnectWrapper.Q<Button>("Button");
         }
+
+        // Query the astronaut image
+        _astronaut = root.Q<Image>("Astronaut");
+
+        SetupInitialState();
+        RegisterEvents();
+
+        // WAIT for the UI to be fully drawn before starting percentage-based animations
+        if (_astronaut != null)
+        {
+            _astronaut.RegisterCallback<GeometryChangedEvent>(OnGeometryCalculated);
+        }
+    }
+
+    private void Start()
+    {
+        CheckUrlParameters();
     }
 
     private void OnDisable()
@@ -51,109 +95,319 @@ public class MainMenuController : MonoBehaviour
         UnregisterEvents();
     }
 
-    // --- Initialization Helpers ---
-
-    /// <summary>
-    /// Queries a UI element by name and logs a warning if it cannot be found.
-    /// </summary>
-    private T QueryElement<T>(VisualElement root, string elementName) where T : VisualElement
+    private void SetupInitialState()
     {
-        T element = root.Q<T>(elementName);
-        if (element == null)
+        if (_reconnectWrapper != null)
         {
-            Debug.LogWarning($"UI Element with ID '{elementName}' was not found.");
+            bool hasSavedRoom = PlayerPrefs.HasKey(LAST_ROOM_KEY);
+            _reconnectWrapper.style.display = hasSavedRoom ? DisplayStyle.Flex : DisplayStyle.None;
         }
-        return element;
+
+        if (_codeInput != null) _codeInput.value = string.Empty;
+
+        // NEW: Clear the error label on startup
+        if (_lblError != null) _lblError.text = string.Empty;
+
+        SetMenuesTransitionToInitialState();
     }
 
-    // --- Event Management ---
+    // --- URL Logic ---
+    private void CheckUrlParameters()
+    {
+        string url = Application.absoluteURL;
+        if (string.IsNullOrEmpty(url) || !url.Contains("idsala=")) return;
 
+        string roomCode = GetParamFromUrl(url, "idsala");
+        if (!string.IsNullOrEmpty(roomCode))
+        {
+            if (_codeInput != null) _codeInput.value = roomCode;
+            SetMenuesTransitionToFinalState();
+        }
+    }
+
+    private string GetParamFromUrl(string url, string paramName)
+    {
+        try
+        {
+            string searchString = paramName + "=";
+            int startIndex = url.IndexOf(searchString);
+            if (startIndex == -1) return null;
+
+            startIndex += searchString.Length;
+            int endIndex = url.IndexOf('&', startIndex);
+
+            return (endIndex == -1) ? url.Substring(startIndex) : url.Substring(startIndex, endIndex - startIndex);
+        }
+        catch { return null; }
+    }
+
+
+    #region Animation Logic
+
+    /// <summary>
+    /// Fired once the UI Toolkit has finished calculating screen sizes.
+    /// </summary>
+    private void OnGeometryCalculated(GeometryChangedEvent evt)
+    {
+        // 1. Unregister immediately so this only runs once
+        _astronaut.UnregisterCallback<GeometryChangedEvent>(OnGeometryCalculated);
+
+        // 2. Now that the UI has a real size, start the animation
+        StartAstronautAnimation();
+    }
+
+
+    /// <summary>
+    /// Configures the USS Transition properties and starts the infinite loop.
+    /// </summary>
+    /// 
+    private void StartAstronautAnimation()
+    {
+        Debug.Log($"astro nashe {_astronaut}");
+        if (_astronaut == null) return;
+
+        // 1. Explicitly set the starting position before applying transitions
+        _astronaut.style.translate = new Translate(new Length(0, LengthUnit.Percent), new Length(20, LengthUnit.Percent));
+
+        // 2. Configure USS transition settings via C#
+        _astronaut.style.transitionDuration = new List<TimeValue> { new TimeValue(astronautAnimSpeed, TimeUnit.Second) };
+        _astronaut.style.transitionProperty = new List<StylePropertyName> { new StylePropertyName("translate") };
+        _astronaut.style.transitionTimingFunction = new List<EasingFunction> { new EasingFunction(EasingMode.EaseInOutSine) };
+
+        // 3. Listen for when the translate animation finishes to ping-pong it
+        _astronaut.RegisterCallback<TransitionEndEvent>(OnAstronautTransitionEnd);
+
+        // 4. Delay the first movement by 50 milliseconds so the UI engine registers the initial state
+        _astronaut.schedule.Execute(MoveAstronautDown).StartingIn(50);
+    }
+
+
+    private void MoveAstronautDown()
+    {
+        _isAstronautDown = true;
+        _astronaut.style.translate = new Translate(new Length(0, LengthUnit.Percent), new Length(45, LengthUnit.Percent));
+    }
+
+    private void MoveAstronautUp()
+    {
+        _isAstronautDown = false;
+        _astronaut.style.translate = new Translate(new Length(0, LengthUnit.Percent), new Length(0, LengthUnit.Percent));
+    }
+
+    private void OnAstronautTransitionEnd(TransitionEndEvent evt)
+    {
+        // Only react if the 'translate' property finished transitioning
+        if (!evt.stylePropertyNames.Contains("translate")) return;
+
+        // Ping-pong the direction
+        if (_isAstronautDown)
+        {
+            MoveAstronautUp();
+        }
+        else
+        {
+            MoveAstronautDown();
+        }
+    }
+
+    #endregion
+
+    // --- Event Management ---
     private void RegisterEvents()
     {
-        if (_playButton != null) _playButton.clicked += OnPlayButtonClicked;
+        if (_btnPlay != null) _btnPlay.clicked += OnPlayButtonClicked;
         if (_joinButton != null) _joinButton.clicked += OnJoinButtonClicked;
+        if (_reconnectButton != null) _reconnectButton.clicked += OnReconnectButtonClicked;
 
         if (_codeInput != null)
         {
             _codeInput.isDelayed = true;
-            _codeInput.RegisterValueChangedCallback(OnCodeInputSubmitted);
-            _codeInput.RegisterCallback<KeyDownEvent>(OnCodeInputEnter, TrickleDown.TrickleDown);
+            _codeInput.RegisterCallback<KeyDownEvent>(OnCodeInputEnter);
         }
     }
 
     private void UnregisterEvents()
     {
-        if (_playButton != null) _playButton.clicked -= OnPlayButtonClicked;
+        if (_btnPlay != null) _btnPlay.clicked -= OnPlayButtonClicked;
         if (_joinButton != null) _joinButton.clicked -= OnJoinButtonClicked;
+        if (_reconnectButton != null) _reconnectButton.clicked -= OnReconnectButtonClicked;
 
-        if (_codeInput != null)
-        {
-            _codeInput.UnregisterValueChangedCallback(OnCodeInputSubmitted);
-            _codeInput.UnregisterCallback<KeyDownEvent>(OnCodeInputEnter, TrickleDown.TrickleDown);
-        }
+        if (_codeInput != null) _codeInput.UnregisterCallback<KeyDownEvent>(OnCodeInputEnter);
     }
 
-    // --- UI Event Handlers ---
+    #region Menu Transition Logic
+    //-----------------------*********************--------------------------//
+    private void OnPlayButtonClicked() => ToggleMenuesTransition();
 
-    private void OnPlayButtonClicked()
+    //Main methods
+    public void ToggleMenuesTransition(bool instant = false, bool toggle = true, bool transitioned = false)
     {
-        Debug.Log("Play Button was clicked.");
+        if (_transitioning) return;
 
-        if (_menuesContainer != null && _clouds != null)
+        bool willMoveDown = (toggle && !_transitioned) || (!toggle && !_transitioned && transitioned);
+        bool willMoveUp = (toggle && _transitioned) || (!toggle && _transitioned && !transitioned);
+
+        if (!willMoveDown && !willMoveUp) return;
+
+        _transitioning = true;
+
+        SetDuration(_menuesContainer, instant ? 0f : 1.2f);
+        SetDuration(_clouds, instant ? 0f : 1.4f);
+
+        if (willMoveDown)
         {
-            _menuesContainer.style.translate = new StyleTranslate(new Translate(0, new Length(120, LengthUnit.Percent), 0));
-            _clouds.style.translate = new StyleTranslate(new Translate(0, 0, 0));
+            SetTranslate(_menuesContainer, 0, 120);
+            SetTranslate(_clouds, 0, 0);
+            _transitioned = true;
         }
+        else
+        {
+            SetTranslate(_menuesContainer, 0, 0);
+            SetTranslate(_clouds, 0, -86);
+            _transitioned = false;
+        }
+
+        if (instant)
+        {
+            _transitioning = false;
+            OnTransitionComplete();
+            return;
+        }
+
+        _pendingTransitions = 0;
+        if (_menuesContainer != null) RegisterTransitionEnd(_menuesContainer);
+        if (_clouds != null) RegisterTransitionEnd(_clouds);
     }
-    private void OnLoadedWithURL()
+    public void SetMenuesTransitionToFinalState() 
     {
-        Debug.Log("URL HAS CODE, AUTOMATICALLY REDIRECTING TO CODE MENU");
-
-        if (_menuesContainer != null && _clouds != null)
+        if (!_transitioning)
         {
-            _menuesContainer.style.transitionDuration = new List<TimeValue> { new TimeValue(0) };
-            _clouds.style.transitionDuration = new List<TimeValue> { new TimeValue(0) };
-            _menuesContainer.style.translate = new StyleTranslate(new Translate(0, new Length(120, LengthUnit.Percent), 0));
-            _clouds.style.translate = new StyleTranslate(new Translate(0, 0, 0));
+            _transitioned = false;
+            ToggleMenuesTransition(true, false, true);
+        }
+    }
+    public void SetMenuesTransitionToInitialState() 
+    {
+        if (!_transitioning)
+        {
+            _transitioned = true;
+            ToggleMenuesTransition(true, false, false);
         }
     }
 
+    //Helpers
+
+    private void SetDuration(VisualElement el, float seconds)
+    {
+        if (el != null)
+            el.style.transitionDuration = new List<TimeValue> { new TimeValue(seconds) };
+    }
+
+    private void SetTranslate(VisualElement el, float x, float yPercent)
+    {
+        if (el != null)
+            el.style.translate = new StyleTranslate(
+                new Translate(x, new Length(yPercent, LengthUnit.Percent), 0)
+            );
+    }
+
+    private void RegisterTransitionEnd(VisualElement element)
+    {
+        _pendingTransitions++;
+        EventCallback<TransitionEndEvent> callback = null;
+        callback = (_) =>
+        {
+            element.UnregisterCallback(callback);
+            if (--_pendingTransitions <= 0)
+            {
+                _transitioning = false;
+                OnTransitionComplete();
+            }
+        };
+        element.RegisterCallback(callback);
+    }
+
+    private void OnTransitionComplete()
+    {
+        Debug.Log("Transition finished!");
+    }
+
+    //----------------------*********************--------------------------//
+    #endregion
+
+    public void SetUIState(bool isVisible)
+    {
+        if (_uiDocument != null && _uiDocument.rootVisualElement != null)
+        {
+            _uiDocument.rootVisualElement.style.display = isVisible ? DisplayStyle.Flex : DisplayStyle.None;
+        }
+    }
+
+
+    //Joining logic methods
     private void OnJoinButtonClicked()
     {
-        HandleRoomJoining();
+        if (_codeInput != null && !string.IsNullOrEmpty(_codeInput.value))
+        {
+            HandleRoomJoining(_codeInput.value);
+        }
+    }
+
+    private void OnReconnectButtonClicked()
+    {
+        string savedRoom = PlayerPrefs.GetString(LAST_ROOM_KEY, string.Empty);
+        if (!string.IsNullOrEmpty(savedRoom))
+        {
+            HandleRoomJoining(savedRoom);
+        }
     }
 
     private void OnCodeInputEnter(KeyDownEvent evt)
     {
         if (evt.keyCode == KeyCode.Return || evt.keyCode == KeyCode.KeypadEnter)
         {
-            Debug.Log($"Physical Enter pressed. Text: {_codeInput.value}");
-            HandleRoomJoining();
+            OnJoinButtonClicked();
             evt.StopPropagation();
         }
     }
 
-    private async void OnCodeInputSubmitted(ChangeEvent<string> evt)
+    // Centralized method for all join attempts
+    private void HandleRoomJoining(string roomCode)
     {
-        Debug.Log($"Text submitted: {evt.newValue}");
-        if (await HandleRoomJoining()) {
-            Debug.Log("Joined room");
+        if (IsProcessing || string.IsNullOrEmpty(roomCode)) return;
+
+        IsProcessing = true;
+
+        // Clear previous errors when attempting to join
+        if (_lblError != null) _lblError.text = string.Empty;
+
+        if (QuizNetworkManager.Instance != null)
+        {
+            QuizNetworkManager.Instance.JoinRoom(roomCode, false, (success, errorMessage) =>
+            {
+                IsProcessing = false;
+
+                if (!success)
+                {
+                    // UPDATED: Display the error directly on the UI
+                    if (_lblError != null) _lblError.text = errorMessage;
+                    Debug.LogWarning($"Join failed: {errorMessage}");
+                }
+            });
+        }
+        else
+        {
+            IsProcessing = false;
+            if (_lblError != null) _lblError.text = "Network Manager not found.";
         }
     }
 
-    private async Task<bool> HandleRoomJoining() {
+    public void ShowJoinError(string message)
+    {
+        SetUIState(true);
+        IsProcessing = false;
 
-        if (!_watingResponse)
-        {
-            Debug.Log("Trying to create a room");
-            _watingResponse = true;
-            bool result = await QuizNetworkManager.Instance.CreateRoom();
-            Debug.Log($"Room creation result: {result}");
-            _watingResponse = false;
-            return result;
-        }
-
-        Debug.Log("Error joining the room, there is already a task trying to enter the room");
-        return false;
+        // UPDATED: Push the external error (like duplicate tabs) to the UI
+        if (_lblError != null) _lblError.text = message;
     }
 }

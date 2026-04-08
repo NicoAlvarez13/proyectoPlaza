@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1d3c264b8420041b9eb6c4267691ea, type: 3}
+  m_Name: CategoryWater
+  m_EditorClassIdentifier: Assembly-CSharp::CategorySO
+  CategoryNameEN: Water
+  CategoryNameES: Agua
+  Questions:
+  - {fileID: 11400000, guid: 7147bdcc1eb3d8a4489c1fa55e429996, type: 2}
+  - {fileID: 11400000, guid: 3bcf8ec845060b44cab3e37e5bcac6f4, type: 2}
+  - {fileID: 11400000, guid: 6a1749df021f3c643b048c14d0d69a93, type: 2}
+  - {fileID: 11400000, guid: 10cf680dbb4ec554c901be650d55ada5, type: 2}
+  - {fileID: 11400000, guid: 5ac8db1c271f75642872d9e38f43e173, type: 2}
