@@ -17,6 +17,9 @@ public class TriviaGameUIController : MonoBehaviour
     [SerializeField] private Color32[] _headerColors = new Color32[5];
     [SerializeField] private Sprite[] _categoriesIcon = new Sprite[5];
 
+    [Header("Country Flags (alphabetical order)")]
+    [SerializeField] private Sprite[] _countryFlags = new Sprite[28];
+
     private VisualElement _root;
     private Label _lblTitle;
     private Label _lblWaitingPlayers;
@@ -69,7 +72,17 @@ public class TriviaGameUIController : MonoBehaviour
     private TextField _inputDataName;
     private TextField _inputDataSurname;
     private TextField _inputDataAge;
-    private TextField _inputDataCountry;
+    private DropdownField _dropPaises;
+    private Image _dropFlagIcon;
+
+    private static readonly List<string> _countryNames = new List<string>
+    {
+        "Alemania", "Argentina", "Bolivia", "Brasil", "Chile", "China",
+        "Colombia", "Costa Rica", "Cuba", "Ecuador", "El Salvador", "Espa√±a",
+        "Estados Unidos", "Francia", "Honduras", "Italia", "Jap√≥n", "M√©xico",
+        "Nicaragua", "Panam√°", "Paraguay", "Per√∫", "Puerto Rico", "Reino Unido",
+        "Rep√∫blica Dominicana", "Resto del Mundo", "Uruguay", "Venezuela"
+    };
 
     public class AnswerElement
     {
@@ -201,14 +214,28 @@ public class TriviaGameUIController : MonoBehaviour
 
             _btnSubmitData = panelDatos.Q<Button>("JoinButton");
         }
-        // NUEVO: Query the TextFields for the placeholders
+        // Query the TextFields for the form inputs
         var formInputs = panelDatos.Query<TextField>().ToList();
-        if (formInputs.Count >= 4)
+        if (formInputs.Count >= 3)
         {
             _inputDataName = formInputs[0];
             _inputDataSurname = formInputs[1];
             _inputDataAge = formInputs[2];
-            _inputDataCountry = formInputs[3];
+        }
+
+        // Query and setup the country dropdown
+        _dropPaises = panelDatos.Q<DropdownField>("DropPaises");
+        _dropFlagIcon = panelDatos.Q<Image>("SelectedFlagIcon");
+        if (_dropPaises != null)
+        {
+            _dropPaises.choices = _countryNames;
+            _dropPaises.index = 0;
+            UpdateFlagIcon(0);
+            _dropPaises.RegisterValueChangedCallback(evt =>
+            {
+                int idx = _countryNames.IndexOf(evt.newValue);
+                UpdateFlagIcon(idx);
+            });
         }
 
         for (int i = 0; i < 4; i++)
@@ -290,7 +317,7 @@ public class TriviaGameUIController : MonoBehaviour
         int categoryIndex = 0;
         string categoryNameStr = "AIRE";
 
-        // MUEVE EL BOOL AQUÕ ARRIBA para que estÈ disponible durante la validaciÛn
+        // MUEVE EL BOOL AQUÔøΩ ARRIBA para que estÔøΩ disponible durante la validaciÔøΩn
         bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
 
         if (QuizGameManager.Instance != null)
@@ -303,7 +330,7 @@ public class TriviaGameUIController : MonoBehaviour
                     categoryNameStr = !string.IsNullOrWhiteSpace(cat.CategoryNameES) ? cat.CategoryNameES : cat.name;
                     string lowerName = categoryNameStr.ToLower();
 
-                    // NUEVO: Traducimos el nombre de la categorÌa sobre la marcha seg˙n el idioma detectado
+                    // NUEVO: Traducimos el nombre de la categorÔøΩa sobre la marcha segÔøΩn el idioma detectado
                     if (lowerName.Contains("aire") || lowerName.Contains("air"))
                     {
                         categoryIndex = 0;
@@ -364,7 +391,7 @@ public class TriviaGameUIController : MonoBehaviour
 
         if (_categoryLabel != null)
         {
-            _categoryLabel.text = isEnglish ? "CATEGORY" : "CATEGORÕA";
+            _categoryLabel.text = isEnglish ? "CATEGORY" : "CATEGORÔøΩA";
         }
 
         if (_categoryName != null)
@@ -798,7 +825,7 @@ public class TriviaGameUIController : MonoBehaviour
         if (_lblDataName != null) _lblDataName.text = isEn ? "Name" : "Nombre";
         if (_lblDataSurname != null) _lblDataSurname.text = isEn ? "Surname" : "Apellido";
         if (_lblDataAge != null) _lblDataAge.text = isEn ? "Age" : "Edad";
-        if (_lblDataCountry != null) _lblDataCountry.text = isEn ? "Country" : "PaÌs";
+        if (_lblDataCountry != null) _lblDataCountry.text = isEn ? "Country" : "PaÔøΩs";
         if (_btnSubmitData != null) _btnSubmitData.text = isEn ? "Submit Data" : "Enviar Datos";
 
         // Translate the TextField placeholder
@@ -817,7 +844,26 @@ public class TriviaGameUIController : MonoBehaviour
         if (_inputDataAge != null)
             _inputDataAge.textEdition.placeholder = isEn ? "Age..." : "Edad...";
 
-        if (_inputDataCountry != null)
-            _inputDataCountry.textEdition.placeholder = isEn ? "Country..." : "PaÌs...";
+        if (_dropPaises != null)
+            _dropPaises.label = string.Empty;
+    }
+
+    private void UpdateFlagIcon(int index)
+    {
+        if (_dropFlagIcon == null) return;
+        if (index >= 0 && index < _countryFlags.Length && _countryFlags[index] != null)
+        {
+            _dropFlagIcon.sprite = _countryFlags[index];
+            _dropFlagIcon.style.display = DisplayStyle.Flex;
+        }
+        else
+        {
+            _dropFlagIcon.style.display = DisplayStyle.None;
+        }
+    }
+
+    public string GetSelectedCountry()
+    {
+        return _dropPaises != null ? _dropPaises.value : string.Empty;
     }
 }

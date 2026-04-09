@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell -File /tmp/fix_controller.ps1)"
+    ]
+  }
+}

@@ -25,6 +25,10 @@ public class MainMenuController : MonoBehaviour
     private VisualElement _clouds;
     private Label _lblError;
     private Label _lblEnterCode;
+    private VisualElement _playButtonBack;
+    private VisualElement _panelDatos;
+    private Button _btnBanderaEsp;
+    private Button _btnBanderaEng;
 
     public bool IsProcessing = false;
 
@@ -78,6 +82,11 @@ public class MainMenuController : MonoBehaviour
             _reconnectButton = _reconnectWrapper.Q<Button>("Button");
         }
 
+        _playButtonBack = root.Q<VisualElement>("PlayButtonBack");
+        _panelDatos = root.Q<VisualElement>("PanelDatos");
+        _btnBanderaEsp = root.Q<Button>("BanderEsp");
+        _btnBanderaEng = root.Q<Button>("BanderaEng");
+
         // Query the astronaut image
         _astronaut = root.Q<Image>("Astronaut");
 
@@ -94,7 +103,7 @@ public class MainMenuController : MonoBehaviour
     private void Start()
     {
         CheckUrlParameters();
-        ApplyLocalization(); // NUEVO: Lo llamamos aquí para asegurar que GameManager ya despertó
+        ApplyLocalization(); // NUEVO: Lo llamamos aquï¿½ para asegurar que GameManager ya despertï¿½
     }
 
     private void OnDisable()
@@ -109,6 +118,9 @@ public class MainMenuController : MonoBehaviour
             bool hasSavedRoom = PlayerPrefs.HasKey(LAST_ROOM_KEY);
             _reconnectWrapper.style.display = hasSavedRoom ? DisplayStyle.Flex : DisplayStyle.None;
         }
+
+        if (_playButtonBack != null) _playButtonBack.style.display = DisplayStyle.None;
+        if (_panelDatos != null) _panelDatos.style.display = DisplayStyle.Flex;
 
         if (_codeInput != null) _codeInput.value = string.Empty;
 
@@ -225,6 +237,8 @@ public class MainMenuController : MonoBehaviour
         if (_btnPlay != null) _btnPlay.clicked += OnPlayButtonClicked;
         if (_joinButton != null) _joinButton.clicked += OnJoinButtonClicked;
         if (_reconnectButton != null) _reconnectButton.clicked += OnReconnectButtonClicked;
+        if (_btnBanderaEsp != null) _btnBanderaEsp.clicked += OnBanderaEspClicked;
+        if (_btnBanderaEng != null) _btnBanderaEng.clicked += OnBanderaEngClicked;
 
         if (_codeInput != null)
         {
@@ -238,6 +252,8 @@ public class MainMenuController : MonoBehaviour
         if (_btnPlay != null) _btnPlay.clicked -= OnPlayButtonClicked;
         if (_joinButton != null) _joinButton.clicked -= OnJoinButtonClicked;
         if (_reconnectButton != null) _reconnectButton.clicked -= OnReconnectButtonClicked;
+        if (_btnBanderaEsp != null) _btnBanderaEsp.clicked -= OnBanderaEspClicked;
+        if (_btnBanderaEng != null) _btnBanderaEng.clicked -= OnBanderaEngClicked;
 
         if (_codeInput != null) _codeInput.UnregisterCallback<KeyDownEvent>(OnCodeInputEnter);
     }
@@ -416,6 +432,31 @@ public class MainMenuController : MonoBehaviour
 
         // UPDATED: Push the external error (like duplicate tabs) to the UI
         if (_lblError != null) _lblError.text = message;
+    }
+
+    private void OnBanderaEspClicked()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.SetLanguage(GameManager.GameLanguage.spanish);
+        ApplyLocalization();
+        ShowPlayButton();
+    }
+
+    private void OnBanderaEngClicked()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.SetLanguage(GameManager.GameLanguage.english);
+        ApplyLocalization();
+        ShowPlayButton();
+    }
+
+    private void ShowPlayButton()
+    {
+        if (_panelDatos != null) _panelDatos.style.display = DisplayStyle.None;
+        if (_playButtonBack != null) _playButtonBack.style.display = DisplayStyle.Flex;
+
+        if (TriviaGameUIController.Instance != null)
+            TriviaGameUIController.Instance.ApplyLocalization();
     }
 
     private void ApplyLocalization()
