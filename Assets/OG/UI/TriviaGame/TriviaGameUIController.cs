@@ -56,6 +56,21 @@ public class TriviaGameUIController : MonoBehaviour
     private Label _labelNextIn;
     private Label _labelNextTime;
 
+
+    // Localization Elements
+    private Label _lblTimerTitle;
+    private Label _lblTimeUnit;
+    private Label _lblDataFormTitle;
+    private Label _lblDataName;
+    private Label _lblDataSurname;
+    private Label _lblDataAge;
+    private Label _lblDataCountry;
+    private Button _btnSubmitData;
+    private TextField _inputDataName;
+    private TextField _inputDataSurname;
+    private TextField _inputDataAge;
+    private TextField _inputDataCountry;
+
     public class AnswerElement
     {
         public VisualElement Back;
@@ -120,6 +135,10 @@ public class TriviaGameUIController : MonoBehaviour
         if (_uiDocument == null) return;
         InitializeUI();
     }
+    private void Start()
+    {
+        ApplyLocalization(); // NUEVO
+    }
 
     private void InitializeUI()
     {
@@ -160,6 +179,38 @@ public class TriviaGameUIController : MonoBehaviour
         _labelNextIn = _root.Q<Label>("labelNextIn");
         _labelNextTime = _root.Q<Label>("labelNextTime");
 
+        _lblTimerTitle = _root.Q<Label>("TimerLabel");
+        _lblTimeUnit = _root.Q<Label>("TimeUnit");
+
+
+
+        // Query the final data collection form
+        var panelDatos = _root.Q<VisualElement>("PanelDatos");
+        if (panelDatos != null)
+        {
+            var allLabels = panelDatos.Query<Label>().ToList();
+            if (allLabels.Count > 0) _lblDataFormTitle = allLabels[0]; // Gets "Complete los datos..."
+
+            _lblDataName = panelDatos.Q<Label>("Nombre");
+            _lblDataSurname = panelDatos.Q<Label>("Apellido");
+
+            // There are two labels named "Edad" in your UXML, so we grab them in order
+            var edadLabels = panelDatos.Query<Label>("Edad").ToList();
+            if (edadLabels.Count > 0) _lblDataAge = edadLabels[0];
+            if (edadLabels.Count > 1) _lblDataCountry = edadLabels[1]; // The second one is "Pais"
+
+            _btnSubmitData = panelDatos.Q<Button>("JoinButton");
+        }
+        // NUEVO: Query the TextFields for the placeholders
+        var formInputs = panelDatos.Query<TextField>().ToList();
+        if (formInputs.Count >= 4)
+        {
+            _inputDataName = formInputs[0];
+            _inputDataSurname = formInputs[1];
+            _inputDataAge = formInputs[2];
+            _inputDataCountry = formInputs[3];
+        }
+
         for (int i = 0; i < 4; i++)
         {
             VisualElement container = _root.Q<VisualElement>($"Answer{i + 1}");
@@ -187,7 +238,6 @@ public class TriviaGameUIController : MonoBehaviour
 
         ShowQuizUI(false);
         HideNextQuestionScreen();
-
         SetUIState(false);
     }
 
@@ -240,6 +290,9 @@ public class TriviaGameUIController : MonoBehaviour
         int categoryIndex = 0;
         string categoryNameStr = "AIRE";
 
+        // MUEVE EL BOOL AQUÍ ARRIBA para que esté disponible durante la validación
+        bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
+
         if (QuizGameManager.Instance != null)
         {
             for (int i = 0; i < QuizGameManager.Instance.AllCategoriesDatabase.Count; i++)
@@ -248,17 +301,38 @@ public class TriviaGameUIController : MonoBehaviour
                 if (cat.Questions.Any(ques => ques != null && ques.QuestionID == q.QuestionID))
                 {
                     categoryNameStr = !string.IsNullOrWhiteSpace(cat.CategoryNameES) ? cat.CategoryNameES : cat.name;
-
                     string lowerName = categoryNameStr.ToLower();
-                    if (lowerName.Contains("aire") || lowerName.Contains("air")) categoryIndex = 0;
-                    else if (lowerName.Contains("tierra") || lowerName.Contains("earth")) categoryIndex = 1;
-                    else if (lowerName.Contains("fuego") || lowerName.Contains("fire")) categoryIndex = 2;
-                    else if (lowerName.Contains("agua") || lowerName.Contains("water")) categoryIndex = 3;
 
-                    // FIX: Automatically assign any category with "Bonus" in the name to index 4
-                    else if (lowerName.Contains("bonus")) categoryIndex = 4;
-
-                    else categoryIndex = i;
+                    // NUEVO: Traducimos el nombre de la categoría sobre la marcha según el idioma detectado
+                    if (lowerName.Contains("aire") || lowerName.Contains("air"))
+                    {
+                        categoryIndex = 0;
+                        categoryNameStr = isEnglish ? "AIR" : "AIRE";
+                    }
+                    else if (lowerName.Contains("tierra") || lowerName.Contains("earth"))
+                    {
+                        categoryIndex = 1;
+                        categoryNameStr = isEnglish ? "EARTH" : "TIERRA";
+                    }
+                    else if (lowerName.Contains("fuego") || lowerName.Contains("fire"))
+                    {
+                        categoryIndex = 2;
+                        categoryNameStr = isEnglish ? "FIRE" : "FUEGO";
+                    }
+                    else if (lowerName.Contains("agua") || lowerName.Contains("water"))
+                    {
+                        categoryIndex = 3;
+                        categoryNameStr = isEnglish ? "WATER" : "AGUA";
+                    }
+                    else if (lowerName.Contains("bonus"))
+                    {
+                        categoryIndex = 4;
+                        categoryNameStr = "BONUS";
+                    }
+                    else
+                    {
+                        categoryIndex = i;
+                    }
 
                     break;
                 }
@@ -287,7 +361,6 @@ public class TriviaGameUIController : MonoBehaviour
                 _categoryIcon.sprite = _categoriesIcon[categoryIndex];
         }
 
-        bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
 
         if (_categoryLabel != null)
         {
@@ -709,5 +782,42 @@ public class TriviaGameUIController : MonoBehaviour
     public void UpdateWaitingPlayersText(string text)
     {
         if (_lblWaitingPlayers != null) _lblWaitingPlayers.text = text;
+    }
+
+    public void ApplyLocalization()
+    {
+        bool isEn = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
+
+        if (_lblPersonalizeAvatar != null) _lblPersonalizeAvatar.text = isEn ? "PERSONALIZE AVATAR" : "PERSONALIZAR AVATAR";
+        if (_btnConfirmAvatar != null) _btnConfirmAvatar.text = isEn ? "Confirm" : "Confirmar";
+
+        if (_lblTimerTitle != null) _lblTimerTitle.text = isEn ? "TIME LEFT" : "TIEMPO RESTANTE";
+        if (_lblTimeUnit != null) _lblTimeUnit.text = isEn ? "SEC." : "SEG.";
+
+        if (_lblDataFormTitle != null) _lblDataFormTitle.text = isEn ? "Fill in the details to see the results" : "Complete los datos para ver los resultados";
+        if (_lblDataName != null) _lblDataName.text = isEn ? "Name" : "Nombre";
+        if (_lblDataSurname != null) _lblDataSurname.text = isEn ? "Surname" : "Apellido";
+        if (_lblDataAge != null) _lblDataAge.text = isEn ? "Age" : "Edad";
+        if (_lblDataCountry != null) _lblDataCountry.text = isEn ? "Country" : "País";
+        if (_btnSubmitData != null) _btnSubmitData.text = isEn ? "Submit Data" : "Enviar Datos";
+
+        // Translate the TextField placeholder
+        if (_playerNameSelector != null)
+        {
+            _playerNameSelector.textEdition.placeholder = isEn ? "Player Name..." : "Nombre del Jugador...";
+        }
+
+        // Translate the final form placeholders
+        if (_inputDataName != null)
+            _inputDataName.textEdition.placeholder = isEn ? "Name..." : "Nombre...";
+
+        if (_inputDataSurname != null)
+            _inputDataSurname.textEdition.placeholder = isEn ? "Surname..." : "Apellido...";
+
+        if (_inputDataAge != null)
+            _inputDataAge.textEdition.placeholder = isEn ? "Age..." : "Edad...";
+
+        if (_inputDataCountry != null)
+            _inputDataCountry.textEdition.placeholder = isEn ? "Country..." : "País...";
     }
 }

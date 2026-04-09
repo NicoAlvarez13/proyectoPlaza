@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 // Removed unused standalone input module
@@ -23,6 +24,7 @@ public class MainMenuController : MonoBehaviour
     private VisualElement _menuesContainer;
     private VisualElement _clouds;
     private Label _lblError;
+    private Label _lblEnterCode;
 
     public bool IsProcessing = false;
 
@@ -65,6 +67,10 @@ public class MainMenuController : MonoBehaviour
         // NEW: Query the error label (Make sure your UXML has a Label with this name)
         _lblError = root.Q<Label>("lblErrorMessage");
 
+        var codeMainContainer = root.Q<VisualElement>("CodeMainContainer");
+        if (codeMainContainer != null) _lblEnterCode = codeMainContainer.Q<Label>();
+
+
         // Reconnect Button Wrapper & Button
         _reconnectWrapper = root.Q<VisualElement>("btnReconnect");
         if (_reconnectWrapper != null)
@@ -88,6 +94,7 @@ public class MainMenuController : MonoBehaviour
     private void Start()
     {
         CheckUrlParameters();
+        ApplyLocalization(); // NUEVO: Lo llamamos aquí para asegurar que GameManager ya despertó
     }
 
     private void OnDisable()
@@ -409,5 +416,20 @@ public class MainMenuController : MonoBehaviour
 
         // UPDATED: Push the external error (like duplicate tabs) to the UI
         if (_lblError != null) _lblError.text = message;
+    }
+
+    private void ApplyLocalization()
+    {
+        bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
+
+        if (_lblEnterCode != null) _lblEnterCode.text = isEnglish ? "Enter the room code" : "Ingresar el codigo de la sala";
+        if (_btnPlay != null) _btnPlay.text = isEnglish ? "PLAY" : "JUGAR";
+        if (_joinButton != null) _joinButton.text = isEnglish ? "JOIN" : "UNIRSE";
+
+        // Translate the TextField placeholder
+        if (_codeInput != null)
+        {
+            _codeInput.textEdition.placeholder = isEnglish ? "Code..." : "Codigo...";
+        }
     }
 }

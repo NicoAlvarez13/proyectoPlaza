@@ -46,6 +46,8 @@ public class MainMenuController_guide : MonoBehaviour
     private Label _lblErrorReconnect;
     private TextField _inputCode;
     private Image _imgQR;
+    private Label _lblReconnectMessage;
+    private Label _lblLeaveWarning;
 
     // Decoratives
 
@@ -73,6 +75,10 @@ public class MainMenuController_guide : MonoBehaviour
         }
         Instance = this;
     }
+    private void Start()
+    {
+        ApplyLocalization(); // NUEVO: Garantiza que GameManager está listo
+    }
 
     private void OnEnable()
     {
@@ -88,6 +94,9 @@ public class MainMenuController_guide : MonoBehaviour
         _createRoomContainer = root.Q<VisualElement>("CreateRoomContainer");
         _reconnectContainer = root.Q<VisualElement>("ReconnectContainer");
         _leaveWarningContainer = root.Q<VisualElement>("LeaveAndDeleteRoomWarningContainer");
+
+        if (_reconnectContainer != null) _lblReconnectMessage = _reconnectContainer.Q<Label>("lblMessage");
+        if (_leaveWarningContainer != null) _lblLeaveWarning = _leaveWarningContainer.Q<Label>("lblMessage");
 
         // 2. Assign Buttons
         var createRoomWrapper = root.Q<VisualElement>("btnCreateRoom");
@@ -602,6 +611,27 @@ public class MainMenuController_guide : MonoBehaviour
         if (QuizNetworkManager.Instance != null)
         {
             QuizGameManager.Instance.StartMatch(QuestionSO.DifficultyLevel.Easy, 1, QuizGameManager.Instance.AllCategoriesDatabase);
+        }
+    }
+
+    private void ApplyLocalization()
+    {
+        bool isEn = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
+
+        if (_btnPlay != null) _btnPlay.text = isEn ? "PLAY" : "JUGAR";
+        if (_btnCreateRoom != null) _btnCreateRoom.text = isEn ? "CREATE ROOM" : "CREAR SALA";
+        if (_btnStartGame != null) _btnStartGame.text = isEn ? "START MATCH" : "INICIAR PARTIDA";
+        if (_btnJoin != null) _btnJoin.text = isEn ? "RECONNECT" : "RECONECTARSE";
+        if (_btnAcceptLeave != null) _btnAcceptLeave.text = isEn ? "Accept" : "Aceptar";
+        if (_btnCancelLeave != null) _btnCancelLeave.text = isEn ? "Cancel" : "Cancelar";
+
+        if (_lblReconnectMessage != null) _lblReconnectMessage.text = isEn ? "TRY RECONNECTING TO THE FOLLOWING ROOM" : "INTENTA RECONECTARTE A LA SIGUIENTE SALA";
+
+        if (_lblLeaveWarning != null)
+        {
+            _lblLeaveWarning.text = isEn
+                ? "WARNING!\n\nIf you accept, you will leave and the room will be deleted, the match will end and player data will not be saved."
+                : "AVISO!\n\nSi aceptas, saldrás y se eliminará la sala, la partida terminará y no se guardarán los datos de los jugadores";
         }
     }
 }
