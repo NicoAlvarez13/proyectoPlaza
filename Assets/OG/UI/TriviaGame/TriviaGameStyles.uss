@@ -31,9 +31,12 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
-    -unity-text-align: middle-center;
-    background-color: rgb(41, 0, 8);
-    color: rgb(255, 255, 255);
+    -unity-text-align: middle-left;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    -unity-text-generator: advanced;
+    -unity-text-auto-size: best-fit 10px 100px;
+    -unity-font-definition: url("project://database/Assets/Fonts/Switzer_Complete/Fonts/WEB/fonts/Switzer-SemiboldItalic.ttf?fileID=12800000&guid=ad483681a2c9294469b0320aa4308bcf&type=3#Switzer-SemiboldItalic");
 }
 
 .unity-scroll-view__content-container {
@@ -42,5 +45,3 @@
     padding-bottom: 0;
     padding-left: 20px;
 }
-
-
