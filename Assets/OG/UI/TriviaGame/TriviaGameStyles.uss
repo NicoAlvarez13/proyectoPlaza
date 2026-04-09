@@ -39,6 +39,32 @@
     -unity-font-definition: url("project://database/Assets/Fonts/Switzer_Complete/Fonts/WEB/fonts/Switzer-SemiboldItalic.ttf?fileID=12800000&guid=ad483681a2c9294469b0320aa4308bcf&type=3#Switzer-SemiboldItalic");
 }
 
+#PlayerNameSelector > .unity-base-text-field__input {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    -unity-text-align: middle-center;
+    background-color: rgb(41, 0, 8);
+    color: rgb(255, 255, 255);
+    -unity-text-generator: advanced;
+    -unity-text-auto-size: best-fit 10px 60px;
+    -unity-font-definition: url("project://database/Assets/TextMesh%20Pro/Examples%20&%20Extras/Fonts/Electronic%20Highway%20Sign.TTF?fileID=12800000&guid=8a2b9e2a607dd2143b58c44bc32410b4&type=3#Electronic Highway Sign");
+    font-size: 4px;
+}
+
 .unity-scroll-view__content-container {
     padding-top: 20px;
     padding-right: 20px;

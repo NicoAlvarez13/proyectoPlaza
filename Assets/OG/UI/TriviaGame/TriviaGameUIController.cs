@@ -11,10 +11,11 @@ public class TriviaGameUIController : MonoBehaviour
     [SerializeField] private UIDocument _uiDocument;
     [SerializeField] private VisualTreeAsset _playerCardTemplate;
 
+    // FIX: Updated all UI element arrays to handle 5 categories instead of 4
     [Header("Quiz UI Settings")]
-    [SerializeField] private Sprite[] _quizBackgrounds = new Sprite[4];
-    [SerializeField] private Color32[] _headerColors = new Color32[4];
-    [SerializeField] private Sprite[] _categoriesIcon = new Sprite[4];
+    [SerializeField] private Sprite[] _quizBackgrounds = new Sprite[5];
+    [SerializeField] private Color32[] _headerColors = new Color32[5];
+    [SerializeField] private Sprite[] _categoriesIcon = new Sprite[5];
 
     private VisualElement _root;
     private Label _lblTitle;
@@ -186,6 +187,7 @@ public class TriviaGameUIController : MonoBehaviour
 
         ShowQuizUI(false);
         HideNextQuestionScreen();
+
         SetUIState(false);
     }
 
@@ -236,16 +238,28 @@ public class TriviaGameUIController : MonoBehaviour
         if (_playersContainer != null) _playersContainer.style.visibility = Visibility.Hidden;
 
         int categoryIndex = 0;
-        string categoryNameStr = "";
+        string categoryNameStr = "AIRE";
 
         if (QuizGameManager.Instance != null)
         {
             for (int i = 0; i < QuizGameManager.Instance.AllCategoriesDatabase.Count; i++)
             {
-                if (QuizGameManager.Instance.AllCategoriesDatabase[i].Questions.Any(ques => ques != null && ques.QuestionID == q.QuestionID))
+                var cat = QuizGameManager.Instance.AllCategoriesDatabase[i];
+                if (cat.Questions.Any(ques => ques != null && ques.QuestionID == q.QuestionID))
                 {
-                    categoryIndex = i;
-                    categoryNameStr = QuizGameManager.Instance.AllCategoriesDatabase[i].CategoryNameES;
+                    categoryNameStr = !string.IsNullOrWhiteSpace(cat.CategoryNameES) ? cat.CategoryNameES : cat.name;
+
+                    string lowerName = categoryNameStr.ToLower();
+                    if (lowerName.Contains("aire") || lowerName.Contains("air")) categoryIndex = 0;
+                    else if (lowerName.Contains("tierra") || lowerName.Contains("earth")) categoryIndex = 1;
+                    else if (lowerName.Contains("fuego") || lowerName.Contains("fire")) categoryIndex = 2;
+                    else if (lowerName.Contains("agua") || lowerName.Contains("water")) categoryIndex = 3;
+
+                    // FIX: Automatically assign any category with "Bonus" in the name to index 4
+                    else if (lowerName.Contains("bonus")) categoryIndex = 4;
+
+                    else categoryIndex = i;
+
                     break;
                 }
             }
@@ -257,7 +271,6 @@ public class TriviaGameUIController : MonoBehaviour
                 _quizBackground.style.backgroundImage = new StyleBackground(_quizBackgrounds[categoryIndex]);
         }
 
-        // FIX: Cast directly to standard Color and ensure Alpha is 255 so the color is fully visible
         if (categoryIndex >= 0 && categoryIndex < _headerColors.Length)
         {
             Color32 c32 = _headerColors[categoryIndex];
@@ -274,13 +287,14 @@ public class TriviaGameUIController : MonoBehaviour
                 _categoryIcon.sprite = _categoriesIcon[categoryIndex];
         }
 
-        // FIX: Ensure both the Spanish generic label and the actual category name display correctly
+        bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
+
         if (_categoryLabel != null)
         {
-            _categoryLabel.text = "CATEGORÍA";
+            _categoryLabel.text = isEnglish ? "CATEGORY" : "CATEGORÍA";
         }
 
-        if (_categoryName != null && !string.IsNullOrEmpty(categoryNameStr))
+        if (_categoryName != null)
         {
             _categoryName.text = categoryNameStr.ToUpper();
         }
@@ -288,14 +302,19 @@ public class TriviaGameUIController : MonoBehaviour
         _localSelectedIndex = -1;
         _localSubmittedTime = 0f;
         _canAnswerLocal = true;
-        _question.text = q.QuestionTextES;
+
+        // Load translated question text
+        _question.text = isEnglish ? q.QuestionTextEN : q.QuestionTextES;
 
         if (q.Type == QuestionSO.QuestionType.MultipleChoice)
         {
-            _localCorrectAnswer = q.CorrectAnswerES;
+            _localCorrectAnswer = isEnglish ? q.CorrectAnswerEN : q.CorrectAnswerES;
             DisplayAnswerType(true);
 
-            List<string> options = new List<string> { q.CorrectAnswerES, q.IncorrectAnswer1ES, q.IncorrectAnswer2ES, q.IncorrectAnswer3ES };
+            List<string> options = isEnglish
+                ? new List<string> { q.CorrectAnswerEN, q.IncorrectAnswer1EN, q.IncorrectAnswer2EN, q.IncorrectAnswer3EN }
+                : new List<string> { q.CorrectAnswerES, q.IncorrectAnswer1ES, q.IncorrectAnswer2ES, q.IncorrectAnswer3ES };
+
             System.Random rng = new System.Random();
             options = options.OrderBy(a => rng.Next()).ToList();
 
@@ -308,9 +327,10 @@ public class TriviaGameUIController : MonoBehaviour
         }
         else
         {
-            _localCorrectAnswer = q.IsTrueStatement ? "VERDADERO" : "FALSO";
+            _localCorrectAnswer = isEnglish ? (q.IsTrueStatement ? "TRUE" : "FALSE") : (q.IsTrueStatement ? "VERDADERO" : "FALSO");
             DisplayAnswerType(false);
-            SetTrueFalseTexts("VERDADERO", "FALSO");
+
+            SetTrueFalseTexts(isEnglish ? "TRUE" : "VERDADERO", isEnglish ? "FALSE" : "FALSO");
 
             _trueFalseAnswers[0].ApplyState(StateTrue);
             _trueFalseAnswers[0].SetInteractable(true);
@@ -353,11 +373,13 @@ public class TriviaGameUIController : MonoBehaviour
 
         bool isCorrect = (_localSelectedIndex != -1) && (clickedText == _localCorrectAnswer);
 
+        bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
+
         if (_question != null)
         {
             if (_localSelectedIndex == -1)
             {
-                _question.text = "<color=#FF3A31>TIEMPO AGOTADO</color>";
+                _question.text = isEnglish ? "<color=#FF3A31>TIME OUT</color>" : "<color=#FF3A31>TIEMPO AGOTADO</color>";
             }
             else
             {
@@ -369,11 +391,13 @@ public class TriviaGameUIController : MonoBehaviour
                         pointsEarned = Mathf.RoundToInt(_localSubmittedTime * QuizGameManager.Instance.ScoreMultiplier);
                     }
 
-                    _question.text = $"<color=#7AE04F>CORRECTO\n+{pointsEarned} Puntos</color>";
+                    string correctStr = isEnglish ? "CORRECT" : "CORRECTO";
+                    string pointsStr = isEnglish ? "Points" : "Puntos";
+                    _question.text = $"<color=#7AE04F>{correctStr}\n+{pointsEarned} {pointsStr}</color>";
                 }
                 else
                 {
-                    _question.text = "<color=#FF3A31>INCORRECTO</color>";
+                    _question.text = isEnglish ? "<color=#FF3A31>INCORRECT</color>" : "<color=#FF3A31>INCORRECTO</color>";
                 }
             }
         }
@@ -475,7 +499,8 @@ public class TriviaGameUIController : MonoBehaviour
 
         ForceHideAvatarSelection();
 
-        if (_lblTitle != null) _lblTitle.text = "PUNTAJES EN VIVO";
+        bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
+        if (_lblTitle != null) _lblTitle.text = isEnglish ? "LIVE SCORES" : "PUNTAJES EN VIVO";
         if (_lblWaitingPlayers != null) _lblWaitingPlayers.text = "";
 
         SortAndShowLeaderboard(false);
@@ -483,6 +508,9 @@ public class TriviaGameUIController : MonoBehaviour
 
     public void SortAndShowLeaderboard(bool isFinal)
     {
+        bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
+        string pointsStr = isEnglish ? "POINTS" : "PUNTOS";
+
         if (isFinal)
         {
             ShowQuizUI(false);
@@ -492,7 +520,7 @@ public class TriviaGameUIController : MonoBehaviour
 
             ForceHideAvatarSelection();
 
-            if (_lblTitle != null) _lblTitle.text = "RESULTADOS";
+            if (_lblTitle != null) _lblTitle.text = isEnglish ? "RESULTS" : "RESULTADOS";
             if (_lblWaitingPlayers != null) _lblWaitingPlayers.text = "";
         }
 
@@ -510,7 +538,7 @@ public class TriviaGameUIController : MonoBehaviour
                     Label scoreLabel = p.UICard.Q<Label>("lblPlayerScore");
                     if (scoreLabel != null)
                     {
-                        scoreLabel.text = $"PUNTOS\n{p.Score}";
+                        scoreLabel.text = $"{pointsStr}\n{p.Score}";
                         scoreLabel.style.display = DisplayStyle.Flex;
                     }
                     _playersScrollView.Add(p.UICard);
@@ -643,7 +671,9 @@ public class TriviaGameUIController : MonoBehaviour
         Label scoreLabel = newCard.Q<Label>("lblPlayerScore");
         if (scoreLabel != null)
         {
-            scoreLabel.text = $"PUNTOS\n{scoreText}";
+            bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
+            string pointsStr = isEnglish ? "POINTS" : "PUNTOS";
+            scoreLabel.text = $"{pointsStr}\n{scoreText}";
             scoreLabel.style.display = DisplayStyle.None;
         }
 
@@ -669,7 +699,11 @@ public class TriviaGameUIController : MonoBehaviour
 
     public void UpdateRoomName(string roomName)
     {
-        if (_lblTitle != null) _lblTitle.text = "SALA: " + roomName;
+        if (_lblTitle != null)
+        {
+            bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
+            _lblTitle.text = (isEnglish ? "ROOM: " : "SALA: ") + roomName;
+        }
     }
 
     public void UpdateWaitingPlayersText(string text)

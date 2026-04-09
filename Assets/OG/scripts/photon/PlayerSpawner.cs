@@ -82,7 +82,9 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined, IPlayerLeft
 
                 if (MainMenuController.Instance != null)
                 {
-                    MainMenuController.Instance.ShowJoinError("You are already playing in another tab. Please close this one.");
+                    bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
+                    string errorMsg = isEnglish ? "You are already playing in another tab. Please close this one." : "Ya estás jugando en otra pestaña. Por favor, cierra esta.";
+                    MainMenuController.Instance.ShowJoinError(errorMsg);
                 }
 
                 yield break;

@@ -11,6 +11,9 @@ public class PlayerNetworkData : NetworkBehaviour, IStateAuthorityChanged
     [Networked, OnChangedRender(nameof(OnDataChanged))] public byte SpriteIndex { get; set; }
     [Networked] public NetworkBool HasCompletedSetup { get; set; }
 
+    // NEW: Networked flag so the Manager knows when this specific player is ready
+    [Networked] public NetworkBool HasAnsweredCurrentQuestion { get; set; }
+
     [SerializeField] private Sprite[] _spritesList;
     public VisualElement UICard { get; private set; }
 
@@ -31,7 +34,6 @@ public class PlayerNetworkData : NetworkBehaviour, IStateAuthorityChanged
             {
                 if (isGameRunning && !HasCompletedSetup)
                 {
-                    // FIX: Auto-complete default values if they joined late
                     if (string.IsNullOrEmpty(PlayerName.ToString()))
                     {
                         PlayerName = "Visitor_" + UnityEngine.Random.Range(1000, 9999);
@@ -77,7 +79,11 @@ public class PlayerNetworkData : NetworkBehaviour, IStateAuthorityChanged
 
         if (string.IsNullOrEmpty(PlayerName.ToString()))
         {
-            PlayerName = "Visitor_" + UnityEngine.Random.Range(1000, 9999);
+            // Set name depending on language
+            bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
+            string prefix = isEnglish ? "Visitor_" : "Visitante_";
+
+            PlayerName = prefix + UnityEngine.Random.Range(1000, 9999);
             SpriteIndex = (byte)UnityEngine.Random.Range(0, _spritesList.Length);
         }
 
@@ -168,6 +174,10 @@ public class PlayerNetworkData : NetworkBehaviour, IStateAuthorityChanged
         {
             _mySubmittedAnswer = answerStr;
             _mySubmittedTime = QuizGameManager.Instance.StateTimer;
+
+            // NUEVO: Guardamos el índice exacto de la pregunta que acabamos de responder
+            CurrentAnswerIndex = QuizGameManager.Instance.CurrentQuestionIndex;
+            HasAnsweredCurrentQuestion = true;
         }
     }
 
@@ -199,7 +209,12 @@ public class PlayerNetworkData : NetworkBehaviour, IStateAuthorityChanged
         if (nameLabel != null) nameLabel.text = PlayerName.ToString();
 
         Label scoreLabel = UICard.Q<Label>("lblPlayerScore");
-        if (scoreLabel != null) scoreLabel.text = $"PUNTOS\n{Score}";
+        if (scoreLabel != null)
+        {
+            bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
+            string pointsWord = isEnglish ? "POINTS" : "PUNTOS";
+            scoreLabel.text = $"{pointsWord}\n{Score}";
+        }
 
         Image icon = UICard.Q<Image>("imgPlayerIcon");
         if (icon != null && SpriteIndex < _spritesList.Length)
@@ -212,7 +227,6 @@ public class PlayerNetworkData : NetworkBehaviour, IStateAuthorityChanged
     {
         if (QuizGameManager.Instance == null) return;
 
-        // FIX: Force avatar setup to complete if the game starts while they are typing their name
         if (HasStateAuthority && !HasCompletedSetup && QuizGameManager.Instance.CurrentState != QuizGameManager.GameState.Lobby)
         {
             HasCompletedSetup = true;
@@ -228,11 +242,17 @@ public class PlayerNetworkData : NetworkBehaviour, IStateAuthorityChanged
             if (HasStateAuthority) CalculateMyScore();
         }
 
-        if (_lastKnownState == QuizGameManager.GameState.ResultPhase &&
-            QuizGameManager.Instance.CurrentState == QuizGameManager.GameState.StartingMatch)
+        // NEW: Unified Reset. Whenever a new question starts, clear everything safely.
+        if (_lastKnownState != QuizGameManager.GameState.QuestionPhase &&
+            QuizGameManager.Instance.CurrentState == QuizGameManager.GameState.QuestionPhase)
         {
             _mySubmittedAnswer = "";
             _mySubmittedTime = 0f;
+            if (HasStateAuthority)
+            {
+                HasAnsweredCurrentQuestion = false;
+                CurrentAnswerIndex = -1; // NUEVO: Reseteamos el índice para evitar falsos positivos
+            }
         }
 
         _lastKnownState = QuizGameManager.Instance.CurrentState;
@@ -247,9 +267,20 @@ public class PlayerNetworkData : NetworkBehaviour, IStateAuthorityChanged
 
         if (currentQuestion == null) return;
 
-        string correctAnswerStr = currentQuestion.Type == QuestionSO.QuestionType.MultipleChoice
-            ? currentQuestion.CorrectAnswerES
-            : (currentQuestion.IsTrueStatement ? "VERDADERO" : "FALSO");
+        bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
+        string correctAnswerStr = "";
+
+        // Check language to validate answer
+        if (currentQuestion.Type == QuestionSO.QuestionType.MultipleChoice)
+        {
+            correctAnswerStr = isEnglish ? currentQuestion.CorrectAnswerEN : currentQuestion.CorrectAnswerES;
+        }
+        else
+        {
+            correctAnswerStr = isEnglish
+                ? (currentQuestion.IsTrueStatement ? "TRUE" : "FALSE")
+                : (currentQuestion.IsTrueStatement ? "VERDADERO" : "FALSO");
+        }
 
         if (_mySubmittedAnswer == correctAnswerStr)
         {

@@ -181,7 +181,9 @@ public class MainMenuController_guide : MonoBehaviour
         if (_reconnectContainer != null) _reconnectContainer.style.display = DisplayStyle.None;
         if (_leaveWarningContainer != null) _leaveWarningContainer.style.display = DisplayStyle.None;
 
-        if (_lblMessageCreate != null) _lblMessageCreate.text = "Generar codigo de sala";
+        bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
+        if (_lblMessageCreate != null) _lblMessageCreate.text = isEnglish ? "Generate room code" : "Generar código de sala";
+
         if (_lblErrorCreate != null) _lblErrorCreate.text = string.Empty;
         if (_lblErrorReconnect != null) _lblErrorReconnect.text = string.Empty;
 
@@ -504,11 +506,13 @@ public class MainMenuController_guide : MonoBehaviour
 
     private void EnterActiveRoomUI(string roomCode)
     {
-        if (_lblMessageCreate != null) _lblMessageCreate.text = $"Sala: {roomCode}";
+        bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
+
+        if (_lblMessageCreate != null) _lblMessageCreate.text = (isEnglish ? "Room: " : "Sala: ") + roomCode;
 
         if (_lblPlayers != null)
         {
-            _lblPlayers.text = "Jugadores: 0/20";
+            _lblPlayers.text = isEnglish ? "Players: 0/20" : "Jugadores: 0/20";
             _lblPlayers.style.display = DisplayStyle.Flex;
         }
 
@@ -546,7 +550,10 @@ public class MainMenuController_guide : MonoBehaviour
     public void UpdatePlayerCount(int count)
     {
         if (_lblPlayers != null)
-            _lblPlayers.text = $"Jugadores: {count} / 20";
+        {
+            bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
+            _lblPlayers.text = (isEnglish ? "Players: " : "Jugadores: ") + $"{count} / 20";
+        }
 
         if (_btnStartGame != null)
         {

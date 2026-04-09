@@ -67,6 +67,6 @@ public class TemporizadorPregunta : MonoBehaviour
         Debug.Log("¡Tiempo Agotado!");
 
         // Llamamos a la función especial que crearemos en el paso 2
-        gameManager.RespuestaIncorrectaPorTiempo();
+        //gameManager.RespuestaIncorrectaPorTiempo();
     }
 }

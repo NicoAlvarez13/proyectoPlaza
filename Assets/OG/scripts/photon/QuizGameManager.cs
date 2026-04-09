@@ -83,8 +83,9 @@ public class QuizGameManager : NetworkBehaviour, IStateAuthorityChanged
             if (GameStarted) SyncLocalUI();
         }
 
+        bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
         TriviaGameUIController.Instance.UpdateRoomName(Runner.SessionInfo.Name);
-        TriviaGameUIController.Instance.UpdateWaitingPlayersText("WAITING PLAYERS...");
+        TriviaGameUIController.Instance.UpdateWaitingPlayersText(isEnglish ? "WAITING PLAYERS..." : "ESPERANDO JUGADORES...");
     }
 
     public void StartMatch(QuestionSO.DifficultyLevel selectedDifficulty, int questionsPerCategory, List<CategorySO> selectedCategories)
@@ -100,7 +101,6 @@ public class QuizGameManager : NetworkBehaviour, IStateAuthorityChanged
             List<QuestionSO> pickedQuestions = category.GetRandomQuestions(selectedDifficulty, questionsPerCategory);
             foreach (QuestionSO q in pickedQuestions)
             {
-                // Safety check: Prevent identical questions if assigned to multiple categories by mistake
                 if (q != null && !matchQuestionIDs.Contains(q.QuestionID))
                 {
                     matchQuestionIDs.Add(q.QuestionID);
@@ -108,11 +108,9 @@ public class QuizGameManager : NetworkBehaviour, IStateAuthorityChanged
             }
         }
 
-        // --- NEW: Shuffle the final deck of questions so categories are completely randomized! ---
         System.Random rng = new System.Random();
         matchQuestionIDs = matchQuestionIDs.OrderBy(x => rng.Next()).ToList();
 
-        // Enforce maximum network array capacity
         if (matchQuestionIDs.Count > 20)
         {
             matchQuestionIDs = matchQuestionIDs.Take(20).ToList();
@@ -146,6 +144,17 @@ public class QuizGameManager : NetworkBehaviour, IStateAuthorityChanged
     {
         if (HasStateAuthority && CurrentState != GameState.Lobby)
         {
+            // NEW: Early skip validation!
+            if (CurrentState == GameState.QuestionPhase && StateTimer > 0)
+            {
+                if (CheckIfAllPlayersAnswered())
+                {
+                    StateTimer = 0; // Force immediate transition
+                    HandleStateTransition(); // TRIGGER TRANSITION IMMEDIATELY
+                    return; // Exit out of the loop for this frame
+                }
+            }
+
             if (StateTimer > 0)
             {
                 StateTimer -= Runner.DeltaTime;
@@ -156,6 +165,28 @@ public class QuizGameManager : NetworkBehaviour, IStateAuthorityChanged
                 }
             }
         }
+    }
+
+    // NEW: Method to scan the room and verify if everyone is ready
+    private bool CheckIfAllPlayersAnswered()
+    {
+        var players = FindObjectsByType<PlayerNetworkData>(FindObjectsSortMode.None);
+        int validPlayersCount = 0;
+        int answeredPlayersCount = 0;
+
+        foreach (var p in players)
+        {
+            validPlayersCount++;
+
+            // NUEVO: Comprobamos el bool Y que el índice de su respuesta coincida con el índice de la pregunta actual
+            if (p.HasAnsweredCurrentQuestion && p.CurrentAnswerIndex == CurrentQuestionIndex)
+            {
+                answeredPlayersCount++;
+            }
+        }
+
+        // Only fast-forward if there is at least 1 valid player, and ALL valid players have answered
+        return validPlayersCount > 0 && validPlayersCount == answeredPlayersCount;
     }
 
     private void HandleStateTransition()
@@ -173,7 +204,7 @@ public class QuizGameManager : NetworkBehaviour, IStateAuthorityChanged
                 if (CurrentQuestionIndex >= TotalQuestions)
                     ChangeState(GameState.MatchEnded, TimeForEndgame);
                 else
-                    ChangeState(GameState.StartingMatch, TimeToStart);
+                    ChangeState(GameState.QuestionPhase, TimeForQuestion);
                 break;
             case GameState.MatchEnded:
                 IsRoomActive = false;
@@ -196,6 +227,7 @@ public class QuizGameManager : NetworkBehaviour, IStateAuthorityChanged
     private void OnGameStateChanged()
     {
         bool isGuide = QuizNetworkManager.Instance.IsOriginalGuide();
+        bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
 
         if (CurrentState != GameState.Lobby)
         {
@@ -226,7 +258,8 @@ public class QuizGameManager : NetworkBehaviour, IStateAuthorityChanged
             {
                 case GameState.StartingMatch:
                     int seconds = Mathf.CeilToInt(StateTimer);
-                    TriviaGameUIController.Instance.ShowNextQuestionScreen("SIGUIENTE PREGUNTA EN:", seconds > 0 ? seconds.ToString() : "0");
+                    string startingText = isEnglish ? "STARTING MATCH IN:" : "EMPEZANDO PARTIDA EN:";
+                    TriviaGameUIController.Instance.ShowNextQuestionScreen(startingText, seconds > 0 ? seconds.ToString() : "0");
                     break;
                 case GameState.QuestionPhase:
                     string qID = SelectedQuestionIDs.Get(CurrentQuestionIndex).ToString();
@@ -258,7 +291,21 @@ public class QuizGameManager : NetworkBehaviour, IStateAuthorityChanged
         }
     }
 
-    public void StateAuthorityChanged() { }
+    public void StateAuthorityChanged()
+    {
+        if (HasStateAuthority)
+        {
+            if (QuizNetworkManager.Instance.IsOriginalGuide())
+            {
+                GuidePlayerRef = Runner.LocalPlayer;
+
+                if (GameStarted)
+                {
+                    SyncLocalUI();
+                }
+            }
+        }
+    }
 
     private void Update()
     {

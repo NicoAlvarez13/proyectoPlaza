@@ -50,7 +50,7 @@ public class QuizNetworkManager : MonoBehaviour
 
         if (_runner == null)
         {
-            onComplete?.Invoke(false, "Failed to initialize network runner.");
+            onComplete?.Invoke(false, GetLocalizedError("Failed to initialize network runner.", "Fallo al inicializar la red."));
             yield break;
         }
 
@@ -73,7 +73,7 @@ public class QuizNetworkManager : MonoBehaviour
             yield return new WaitUntil(() => _runner == null || _runner.IsShutdown);
 
             // Pass the error back to the UI
-            onComplete?.Invoke(false, "The game already exists. Please use the Join button instead.");
+            onComplete?.Invoke(false, GetLocalizedError("The game already exists. Please use the Join button instead.", "La partida ya existe. Por favor, usa el botón de Unirse."));
             yield break;
         }
 
@@ -87,9 +87,15 @@ public class QuizNetworkManager : MonoBehaviour
         IsReconnecting = false; // Flag as a new creation
         InitializeRunner();     // Re-initialize for the creation process
 
-        string guideToken = System.Guid.NewGuid().ToString();
-        PlayerPrefs.SetString(GUIDE_TOKEN_KEY, guideToken);
-        PlayerPrefs.Save();
+        string guideToken = PlayerPrefs.GetString(GUIDE_TOKEN_KEY, string.Empty);
+
+        if (string.IsNullOrEmpty(guideToken))
+        {
+            guideToken = System.Guid.NewGuid().ToString();
+            PlayerPrefs.SetString(GUIDE_TOKEN_KEY, guideToken);
+            PlayerPrefs.Save();
+        }
+        
 
         var sessionProps = new Dictionary<string, SessionProperty> { { "GuideToken", guideToken } };
 
@@ -108,7 +114,7 @@ public class QuizNetworkManager : MonoBehaviour
 
         if (createTask.IsFaulted)
         {
-            onComplete?.Invoke(false, "Failed to communicate with server.");
+            onComplete?.Invoke(false, GetLocalizedError("Failed to communicate with server.", "Fallo al comunicarse con el servidor."));
             yield break;
         }
 
@@ -142,7 +148,7 @@ public class QuizNetworkManager : MonoBehaviour
         if (_runner == null)
         {
             IsReconnecting = false;
-            onComplete?.Invoke(false, "Failed to initialize network runner.");
+            onComplete?.Invoke(false, GetLocalizedError("Failed to initialize network runner.", "Fallo al inicializar la red."));
             yield break;
         }
 
@@ -162,7 +168,7 @@ public class QuizNetworkManager : MonoBehaviour
         if (joinTask.IsFaulted)
         {
             IsReconnecting = false;
-            onComplete?.Invoke(false, "Critical network error. Please try again.");
+            onComplete?.Invoke(false, GetLocalizedError("Critical network error. Please try again.", "Error crítico de red. Por favor, intenta de nuevo."));
             yield break;
         }
 
@@ -200,7 +206,7 @@ public class QuizNetworkManager : MonoBehaviour
                     _runner = null;
 
                     IsReconnecting = false;
-                    onComplete?.Invoke(false, "Invalid credentials or Guide is already active. Try creating a new room.");
+                    onComplete?.Invoke(false, GetLocalizedError("Invalid credentials or Guide is already active. Try creating a new room.", "Credenciales inválidas o el Guía ya está activo. Intenta crear una nueva sala."));
                     yield break;
                 }
             }
@@ -235,19 +241,19 @@ public class QuizNetworkManager : MonoBehaviour
         switch (reason)
         {
             case ShutdownReason.GameNotFound:
-                return "Session does not exist. Please check the code and try again.";
+                return GetLocalizedError("Session does not exist. Please check the code.", "La sesión no existe. Revisa el código.");
             case ShutdownReason.GameIsFull:
-                return "The session is currently full.";
+                return GetLocalizedError("The session is currently full.", "La sesión está llena.");
             case ShutdownReason.GameClosed:
-                return "The session is closed and cannot accept new players.";
+                return GetLocalizedError("The session is closed.", "La sesión está cerrada.");
             case ShutdownReason.ConnectionTimeout:
-                return "Connection timed out. Please check your internet connection.";
+                return GetLocalizedError("Connection timed out.", "Tiempo de conexión agotado.");
             case ShutdownReason.ConnectionRefused:
-                return "Connection was refused by the server.";
+                return GetLocalizedError("Connection was refused by server.", "Conexión rechazada por el servidor.");
             case ShutdownReason.InvalidRegion:
-                return "Invalid server region. Please check your network settings.";
+                return GetLocalizedError("Invalid server region.", "Región de servidor inválida.");
             default:
-                return $"Connection failed: {reason}."; // Fallback that shows the exact enum name
+                return GetLocalizedError($"Connection failed: {reason}", $"Fallo de conexión: {reason}");
         }
     }
 
@@ -336,7 +342,7 @@ public class QuizNetworkManager : MonoBehaviour
         if (MainMenuController.Instance != null)
         {
             MainMenuController.Instance.SetUIState(true);
-            MainMenuController.Instance.ShowJoinError("The session was closed.");
+            MainMenuController.Instance.ShowJoinError(GetLocalizedError("The session was closed.", "La sesión ha sido cerrada."));
         }
 
         // FIX: Completely wipe the Trivia UI so no old cards or screens carry over to the next room!
@@ -364,7 +370,7 @@ public class QuizNetworkManager : MonoBehaviour
             string sessionGuideToken = sessionProperty;
             string localGuideToken = PlayerPrefs.GetString(GUIDE_TOKEN_KEY, string.Empty);
 
-            Debug.Log($"Session Guide Token: {sessionGuideToken}, Local Guide Token: {localGuideToken}");
+            //Debug.Log($"Session Guide Token: {sessionGuideToken}, Local Guide Token: {localGuideToken}");
 
             return !string.IsNullOrEmpty(localGuideToken) && sessionGuideToken == localGuideToken;
         }
@@ -374,6 +380,13 @@ public class QuizNetworkManager : MonoBehaviour
 
             return false;
         }
+    }
+
+    private string GetLocalizedError(string enMsg, string esMsg)
+    {
+        if (GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english)
+            return enMsg;
+        return esMsg;
     }
 
 }
