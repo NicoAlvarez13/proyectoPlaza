@@ -34,6 +34,11 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined, IPlayerLeft
         NotifyUI();
     }
 
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+    /// <summary>Modo dev: nos spawnea como jugador aunque seamos el host.</summary>
+    public void DevSpawnLocalPlayer() => StartCoroutine(ResumeOrSpawnPlayerRoutine());
+#endif
+
     private void ResumeOrSpawnPlayer()
     {
         StartCoroutine(ResumeOrSpawnPlayerRoutine());
@@ -83,7 +88,7 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined, IPlayerLeft
                 if (MainMenuController.Instance != null)
                 {
                     bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
-                    string errorMsg = isEnglish ? "You are already playing in another tab. Please close this one." : "Ya estás jugando en otra pestaña. Por favor, cierra esta.";
+                    string errorMsg = isEnglish ? "You are already playing in another tab. Please close this one." : "Ya estï¿½s jugando en otra pestaï¿½a. Por favor, cierra esta.";
                     MainMenuController.Instance.ShowJoinError(errorMsg);
                 }
 

@@ -86,6 +86,7 @@ public class QuizGameManager : NetworkBehaviour, IStateAuthorityChanged
         bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
         TriviaGameUIController.Instance.UpdateRoomName(Runner.SessionInfo.Name);
         TriviaGameUIController.Instance.UpdateWaitingPlayersText(isEnglish ? "WAITING PLAYERS..." : "ESPERANDO JUGADORES...");
+
     }
 
     public void StartMatch(QuestionSO.DifficultyLevel selectedDifficulty, int questionsPerCategory, List<CategorySO> selectedCategories)
@@ -127,6 +128,20 @@ public class QuizGameManager : NetworkBehaviour, IStateAuthorityChanged
         GameStarted = true;
         ChangeState(GameState.StartingMatch, TimeToStart);
     }
+
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+    /// <summary>
+    /// Modo dev: arranca la partida saltando la validación de guide.
+    /// Usa todas las categorías disponibles, dificultad fácil, 2 preguntas por categoría.
+    /// </summary>
+    public void DevStartMatch()
+    {
+        if (!HasStateAuthority || CurrentState != GameState.Lobby) return;
+
+        var allCategories = AllCategoriesDatabase.Where(c => c != null).ToList();
+        StartMatch(QuestionSO.DifficultyLevel.Easy, 2, allCategories);
+    }
+#endif
 
     public QuestionSO GetQuestionByID(string id)
     {
@@ -178,7 +193,7 @@ public class QuizGameManager : NetworkBehaviour, IStateAuthorityChanged
         {
             validPlayersCount++;
 
-            // NUEVO: Comprobamos el bool Y que el �ndice de su respuesta coincida con el �ndice de la pregunta actual
+            // NUEVO: Comprobamos el bool Y que el �ndice de su respuesta coincida con el �ndice de la pregunta actual
             if (p.HasAnsweredCurrentQuestion && p.CurrentAnswerIndex == CurrentQuestionIndex)
             {
                 answeredPlayersCount++;
@@ -227,6 +242,25 @@ public class QuizGameManager : NetworkBehaviour, IStateAuthorityChanged
     private void OnGameStateChanged()
     {
         bool isGuide = QuizNetworkManager.Instance.IsOriginalGuide();
+
+        // ── Audio (solo jugadores) ───────────────────────────────────────────
+        if (!isGuide)
+        {
+            switch (CurrentState)
+            {
+                case GameState.QuestionPhase:
+                    AudioManager.Instance?.StopMusic();
+                    AudioManager.Instance?.PlayTimerSFX();
+                    break;
+                case GameState.ResultPhase:
+                    AudioManager.Instance?.StopTimerSFX();
+                    break;
+                case GameState.MatchEnded:
+                    AudioManager.Instance?.StopMusic();
+                    break;
+            }
+        }
+        // ─────────────────────────────────────────────────────────────────────
         bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
 
         if (CurrentState != GameState.Lobby)
@@ -248,7 +282,7 @@ public class QuizGameManager : NetworkBehaviour, IStateAuthorityChanged
                     TriviaGameUIController.Instance.SortAndShowLeaderboard(false);
                     break;
                 case GameState.MatchEnded:
-                    TriviaGameUIController.Instance.SortAndShowLeaderboard(true);
+                    TriviaGameUIController.Instance.SortAndShowLeaderboard(true, isGuide: true);
                     break;
             }
         }

@@ -15,6 +15,11 @@ public class MainMenuController : MonoBehaviour
     // --- Constants ---
     private const string LAST_ROOM_KEY = "LastRoomCode";
 
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+    [Header("Dev Tools")]
+    [SerializeField] private string _devRoomCode = "1234";
+#endif
+
     // --- UI Elements ---
     private Button _btnPlay;
     private Button _joinButton;
@@ -27,6 +32,7 @@ public class MainMenuController : MonoBehaviour
     private Label _lblEnterCode;
     private VisualElement _playButtonBack;
     private VisualElement _panelDatos;
+    private Button _btnDevJoin;
     private Button _btnBanderaEsp;
     private Button _btnBanderaEng;
 
@@ -83,9 +89,14 @@ public class MainMenuController : MonoBehaviour
         }
 
         _playButtonBack = root.Q<VisualElement>("PlayButtonBack");
-        _panelDatos = root.Q<VisualElement>("PanelDatos");
-        _btnBanderaEsp = root.Q<Button>("BanderEsp");
-        _btnBanderaEng = root.Q<Button>("BanderaEng");
+        _panelDatos     = root.Q<VisualElement>("PanelDatos");
+        _btnBanderaEsp  = root.Q<Button>("BanderEsp");
+        _btnBanderaEng  = root.Q<Button>("BanderaEng");
+
+        _btnDevJoin = root.Q<Button>("BtnDevJoin");
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        if (_btnDevJoin != null) _btnDevJoin.style.display = DisplayStyle.Flex;
+#endif
 
         // Query the astronaut image
         _astronaut = root.Q<Image>("Astronaut");
@@ -239,6 +250,9 @@ public class MainMenuController : MonoBehaviour
         if (_reconnectButton != null) _reconnectButton.clicked += OnReconnectButtonClicked;
         if (_btnBanderaEsp != null) _btnBanderaEsp.clicked += OnBanderaEspClicked;
         if (_btnBanderaEng != null) _btnBanderaEng.clicked += OnBanderaEngClicked;
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        if (_btnDevJoin != null) _btnDevJoin.clicked += OnDevJoinClicked;
+#endif
 
         if (_codeInput != null)
         {
@@ -254,6 +268,9 @@ public class MainMenuController : MonoBehaviour
         if (_reconnectButton != null) _reconnectButton.clicked -= OnReconnectButtonClicked;
         if (_btnBanderaEsp != null) _btnBanderaEsp.clicked -= OnBanderaEspClicked;
         if (_btnBanderaEng != null) _btnBanderaEng.clicked -= OnBanderaEngClicked;
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        if (_btnDevJoin != null) _btnDevJoin.clicked -= OnDevJoinClicked;
+#endif
 
         if (_codeInput != null) _codeInput.UnregisterCallback<KeyDownEvent>(OnCodeInputEnter);
     }
@@ -282,6 +299,7 @@ public class MainMenuController : MonoBehaviour
             SetTranslate(_menuesContainer, 0, 120);
             SetTranslate(_clouds, 0, 0);
             _transitioned = true;
+            AudioManager.Instance?.PlayLobbyMusic();
         }
         else
         {
@@ -375,6 +393,33 @@ public class MainMenuController : MonoBehaviour
             HandleRoomJoining(_codeInput.value);
         }
     }
+
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+    private void OnDevJoinClicked()
+    {
+        if (IsProcessing) return;
+        IsProcessing = true;
+
+        if (GameManager.Instance != null && GameManager.Instance.CurrentLanguage == default)
+            GameManager.Instance.SetLanguage(GameManager.GameLanguage.spanish);
+
+        SetMenuesTransitionToFinalState();
+
+        if (_btnDevJoin != null) _btnDevJoin.SetEnabled(false);
+
+        QuizNetworkManager.Instance.DevCreateAndPlay((success, errorMsg) =>
+        {
+            IsProcessing = false;
+            if (_btnDevJoin != null) _btnDevJoin.SetEnabled(true);
+
+            if (!success)
+            {
+                SetUIState(true);
+                ShowJoinError(errorMsg);
+            }
+        });
+    }
+#endif
 
     private void OnReconnectButtonClicked()
     {

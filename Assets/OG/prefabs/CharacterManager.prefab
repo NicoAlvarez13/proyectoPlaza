@@ -1,4 +1,4 @@
-﻿%YAML 1.1
+%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!1 &1354312802375971290
 GameObject:
@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 1354312802375971290}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3495947703352470825}
@@ -48,7 +48,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1354312802375971290}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -62,7 +62,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &1293399218569505323
 MonoBehaviour:
@@ -76,12 +76,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -241,9 +241,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d25117546232504e81d1f2fc744da72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriviaCharacter
+  sprite: {fileID: 21300000, guid: 8aa6f3d3d58d2ed44a3e55d4b1032257, type: 3}
+  _left: 427.1
+  _top: 252
+  _width: 580
+  _height: 780
+  _animationType: 1
   _amplitude: 25
   _speed: 1.8
   _phaseOffset: 0
+  _pendulumAngle: 30
+  _pendulumSpeed: 1.5
 --- !u!1 &7364420243627804119
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,9 +340,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d25117546232504e81d1f2fc744da72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriviaCharacter
-  _amplitude: 25
-  _speed: 1.8
+  sprite: {fileID: 21300000, guid: 344ba59c0f168114e9beddcfe998490e, type: 3}
+  _left: 464.9
+  _top: 1268.8
+  _width: 580
+  _height: 780
+  _animationType: 0
+  _amplitude: 35
+  _speed: 2
   _phaseOffset: 0
+  _pendulumAngle: 30
+  _pendulumSpeed: 1.5
 --- !u!1 &9087322769606560721
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,6 +439,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d25117546232504e81d1f2fc744da72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriviaCharacter
+  sprite: {fileID: 21300000, guid: ac9028ce58647054da6c3e1af0ceb0b3, type: 3}
+  _left: 459.6
+  _top: 1242.2
+  _width: 580
+  _height: 780
+  _animationType: 0
   _amplitude: 25
   _speed: 1.8
-  _phaseOffset: 0
+  _phaseOffset: 0.8
+  _pendulumAngle: 30
+  _pendulumSpeed: 1.5

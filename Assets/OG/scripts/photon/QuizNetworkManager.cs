@@ -73,7 +73,7 @@ public class QuizNetworkManager : MonoBehaviour
             yield return new WaitUntil(() => _runner == null || _runner.IsShutdown);
 
             // Pass the error back to the UI
-            onComplete?.Invoke(false, GetLocalizedError("The game already exists. Please use the Join button instead.", "La partida ya existe. Por favor, usa el botón de Unirse."));
+            onComplete?.Invoke(false, GetLocalizedError("The game already exists. Please use the Join button instead.", "La partida ya existe. Por favor, usa el botï¿½n de Unirse."));
             yield break;
         }
 
@@ -168,7 +168,7 @@ public class QuizNetworkManager : MonoBehaviour
         if (joinTask.IsFaulted)
         {
             IsReconnecting = false;
-            onComplete?.Invoke(false, GetLocalizedError("Critical network error. Please try again.", "Error crítico de red. Por favor, intenta de nuevo."));
+            onComplete?.Invoke(false, GetLocalizedError("Critical network error. Please try again.", "Error crï¿½tico de red. Por favor, intenta de nuevo."));
             yield break;
         }
 
@@ -206,7 +206,7 @@ public class QuizNetworkManager : MonoBehaviour
                     _runner = null;
 
                     IsReconnecting = false;
-                    onComplete?.Invoke(false, GetLocalizedError("Invalid credentials or Guide is already active. Try creating a new room.", "Credenciales inválidas o el Guía ya está activo. Intenta crear una nueva sala."));
+                    onComplete?.Invoke(false, GetLocalizedError("Invalid credentials or Guide is already active. Try creating a new room.", "Credenciales invï¿½lidas o el Guï¿½a ya estï¿½ activo. Intenta crear una nueva sala."));
                     yield break;
                 }
             }
@@ -241,19 +241,19 @@ public class QuizNetworkManager : MonoBehaviour
         switch (reason)
         {
             case ShutdownReason.GameNotFound:
-                return GetLocalizedError("Session does not exist. Please check the code.", "La sesión no existe. Revisa el código.");
+                return GetLocalizedError("Session does not exist. Please check the code.", "La sesiï¿½n no existe. Revisa el cï¿½digo.");
             case ShutdownReason.GameIsFull:
-                return GetLocalizedError("The session is currently full.", "La sesión está llena.");
+                return GetLocalizedError("The session is currently full.", "La sesiï¿½n estï¿½ llena.");
             case ShutdownReason.GameClosed:
-                return GetLocalizedError("The session is closed.", "La sesión está cerrada.");
+                return GetLocalizedError("The session is closed.", "La sesiï¿½n estï¿½ cerrada.");
             case ShutdownReason.ConnectionTimeout:
-                return GetLocalizedError("Connection timed out.", "Tiempo de conexión agotado.");
+                return GetLocalizedError("Connection timed out.", "Tiempo de conexiï¿½n agotado.");
             case ShutdownReason.ConnectionRefused:
-                return GetLocalizedError("Connection was refused by server.", "Conexión rechazada por el servidor.");
+                return GetLocalizedError("Connection was refused by server.", "Conexiï¿½n rechazada por el servidor.");
             case ShutdownReason.InvalidRegion:
-                return GetLocalizedError("Invalid server region.", "Región de servidor inválida.");
+                return GetLocalizedError("Invalid server region.", "Regiï¿½n de servidor invï¿½lida.");
             default:
-                return GetLocalizedError($"Connection failed: {reason}", $"Fallo de conexión: {reason}");
+                return GetLocalizedError($"Connection failed: {reason}", $"Fallo de conexiï¿½n: {reason}");
         }
     }
 
@@ -342,7 +342,7 @@ public class QuizNetworkManager : MonoBehaviour
         if (MainMenuController.Instance != null)
         {
             MainMenuController.Instance.SetUIState(true);
-            MainMenuController.Instance.ShowJoinError(GetLocalizedError("The session was closed.", "La sesión ha sido cerrada."));
+            MainMenuController.Instance.ShowJoinError(GetLocalizedError("The session was closed.", "La sesiï¿½n ha sido cerrada."));
         }
 
         // FIX: Completely wipe the Trivia UI so no old cards or screens carry over to the next room!
@@ -388,5 +388,64 @@ public class QuizNetworkManager : MonoBehaviour
             return enMsg;
         return esMsg;
     }
+
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+    /// <summary>
+    /// Modo dev: crea una sala propia, limpia el GuideToken para verse como jugador,
+    /// y arranca la partida automÃ¡ticamente con configuraciÃ³n por defecto.
+    /// </summary>
+    public void DevCreateAndPlay(Action<bool, string> onComplete = null)
+    {
+        StartCoroutine(DevCreateAndPlayCoroutine(onComplete));
+    }
+
+    private IEnumerator DevCreateAndPlayCoroutine(Action<bool, string> onComplete)
+    {
+        // 1. Crear sala como si fuÃ©ramos el guide
+        bool success = false;
+        string error = string.Empty;
+
+        yield return StartCoroutine(CreateRoomCoroutine((ok, err) =>
+        {
+            success = ok;
+            error   = err;
+        }));
+
+        if (!success)
+        {
+            onComplete?.Invoke(false, error);
+            yield break;
+        }
+
+        // 2. Limpiar GuideToken â†’ IsOriginalGuide() devuelve false â†’ UI de jugador
+        PlayerPrefs.DeleteKey(GUIDE_TOKEN_KEY);
+        PlayerPrefs.Save();
+
+        // 3. Esperar a que QuizGameManager y PlayerSpawner estÃ©n listos
+        float timeout = 10f;
+        while (QuizGameManager.Instance == null && timeout > 0f)
+        {
+            timeout -= Time.deltaTime;
+            yield return null;
+        }
+
+        if (QuizGameManager.Instance == null)
+        {
+            onComplete?.Invoke(false, "QuizGameManager no encontrado.");
+            yield break;
+        }
+
+        // 4. Spawnearse como jugador (PlayerSpawner ya corriÃ³ como guide, no nos spawnÃ³ como jugador)
+        var spawner = FindFirstObjectByType<PlayerSpawner>();
+        if (spawner != null)
+            spawner.DevSpawnLocalPlayer();
+
+        // 5. Arrancar la partida con configuraciÃ³n por defecto
+        yield return new WaitForSeconds(0.5f);
+        QuizGameManager.Instance.DevStartMatch();
+
+        onComplete?.Invoke(true, string.Empty);
+    }
+#endif
 
 }

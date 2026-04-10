@@ -1,0 +1,626 @@
+fileFormatVersion: 2
+guid: 406d819d4a5d5854a936d779d60ac6d9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7661729099611873789
+    second: LogoIKI_0
+  - first:
+      213: -2257838134463258661
+    second: LogoIKI_1
+  - first:
+      213: 6711295889146948261
+    second: LogoIKI_2
+  - first:
+      213: -2583923212920433650
+    second: LogoIKI_3
+  - first:
+      213: -3457048617086651575
+    second: LogoIKI_4
+  - first:
+      213: 3554725954456907057
+    second: LogoIKI_5
+  - first:
+      213: 4370059754131120417
+    second: LogoIKI_6
+  - first:
+      213: -7407453040792235645
+    second: LogoIKI_7
+  - first:
+      213: 955598104203335024
+    second: LogoIKI_8
+  - first:
+      213: 4938203039216221356
+    second: LogoIKI_9
+  - first:
+      213: 4529646430752832103
+    second: LogoIKI_10
+  - first:
+      213: 1344914002724405303
+    second: LogoIKI_11
+  - first:
+      213: 8778256368447666048
+    second: LogoIKI_12
+  - first:
+      213: 1801728581608254654
+    second: LogoIKI_13
+  - first:
+      213: -7322152432675199211
+    second: LogoIKI_14
+  - first:
+      213: 6916874047303840854
+    second: LogoIKI_15
+  - first:
+      213: -5668110674228196073
+    second: LogoIKI_16
+  - first:
+      213: 286491183320430851
+    second: LogoIKI_17
+  - first:
+      213: 1069881462141174906
+    second: LogoIKI_18
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 714, y: 327, z: 724, w: 398}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: LogoIKI_0
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 378
+        width: 439
+        height: 287
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df1a3a3c50ee35a60800000000000000
+      internalID: 7661729099611873789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LogoIKI_1
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 469
+        width: 22
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdf9cf2ed2c8aa0e0800000000000000
+      internalID: -2257838134463258661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LogoIKI_2
+      rect:
+        serializedVersion: 2
+        x: 935
+        y: 422
+        width: 6
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5aaa42f9d00532d50800000000000000
+      internalID: 6711295889146948261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LogoIKI_3
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 422
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e04ddfe278f042cd0800000000000000
+      internalID: -2583923212920433650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LogoIKI_4
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 422
+        width: 5
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9437b4759981600d0800000000000000
+      internalID: -3457048617086651575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LogoIKI_5
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 378
+        width: 69
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13de34dfb6ce45130800000000000000
+      internalID: 3554725954456907057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LogoIKI_6
+      rect:
+        serializedVersion: 2
+        x: 741
+        y: 394
+        width: 32
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 121673c513295ac30800000000000000
+      internalID: 4370059754131120417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LogoIKI_7
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 378
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 381113da4b0733990800000000000000
+      internalID: -7407453040792235645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LogoIKI_8
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 378
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 075931da967f24d00800000000000000
+      internalID: 955598104203335024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LogoIKI_9
+      rect:
+        serializedVersion: 2
+        x: 883
+        y: 378
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cacbc3d1085088440800000000000000
+      internalID: 4938203039216221356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LogoIKI_10
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 378
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76a732ffd698cde30800000000000000
+      internalID: 4529646430752832103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LogoIKI_11
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 378
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73046d9e8281aa210800000000000000
+      internalID: 1344914002724405303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LogoIKI_12
+      rect:
+        serializedVersion: 2
+        x: 991
+        y: 378
+        width: 5
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08732ac68a1a2d970800000000000000
+      internalID: 8778256368447666048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LogoIKI_13
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 378
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebcad685996010910800000000000000
+      internalID: 1801728581608254654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LogoIKI_14
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 378
+        width: 37
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 517e12b282d726a90800000000000000
+      internalID: -7322152432675199211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LogoIKI_15
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 378
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 654f9a18c4cadff50800000000000000
+      internalID: 6916874047303840854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LogoIKI_16
+      rect:
+        serializedVersion: 2
+        x: 1110
+        y: 378
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71d470b6f53d651b0800000000000000
+      internalID: -5668110674228196073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LogoIKI_17
+      rect:
+        serializedVersion: 2
+        x: 1146
+        y: 378
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 309781d9632d9f300800000000000000
+      internalID: 286491183320430851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LogoIKI_18
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 378
+        width: 33
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7443b6758bf8de00800000000000000
+      internalID: 1069881462141174906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      LogoIKI_0: 7661729099611873789
+      LogoIKI_1: -2257838134463258661
+      LogoIKI_10: 4529646430752832103
+      LogoIKI_11: 1344914002724405303
+      LogoIKI_12: 8778256368447666048
+      LogoIKI_13: 1801728581608254654
+      LogoIKI_14: -7322152432675199211
+      LogoIKI_15: 6916874047303840854
+      LogoIKI_16: -5668110674228196073
+      LogoIKI_17: 286491183320430851
+      LogoIKI_18: 1069881462141174906
+      LogoIKI_2: 6711295889146948261
+      LogoIKI_3: -2583923212920433650
+      LogoIKI_4: -3457048617086651575
+      LogoIKI_5: 3554725954456907057
+      LogoIKI_6: 4370059754131120417
+      LogoIKI_7: -7407453040792235645
+      LogoIKI_8: 955598104203335024
+      LogoIKI_9: 4938203039216221356
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
