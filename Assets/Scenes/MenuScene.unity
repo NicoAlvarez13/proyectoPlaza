@@ -195,6 +195,7 @@ GameObject:
   - component: {fileID: 350675861}
   - component: {fileID: 350675860}
   - component: {fileID: 350675862}
+  - component: {fileID: 350675863}
   m_Layer: 0
   m_Name: TriviaGameUi
   m_TagString: Untagged
@@ -277,6 +278,34 @@ MonoBehaviour:
   - {fileID: 21300000, guid: de01ac1e7dae6994e8c5c269dd94a266, type: 3}
   - {fileID: 21300000, guid: 6d9cd892290954548a0ebabcc9752921, type: 3}
   - {fileID: 21300000, guid: 588d99a5cf301484faca650d1230add0, type: 3}
+  _countryFlags:
+  - {fileID: 21300000, guid: 7f9dacdcbb53b4443a7e485f4f70a563, type: 3}
+  - {fileID: 21300000, guid: 9f8ad18205e3f30428bd4b5f78131971, type: 3}
+  - {fileID: 21300000, guid: b77b5a07d1ee05d449293ae9a6e34947, type: 3}
+  - {fileID: 21300000, guid: 486a134ac9c6aa4448e93ee0a104f9fe, type: 3}
+  - {fileID: 21300000, guid: 6b2fca952b526614da76ed3f615bb077, type: 3}
+  - {fileID: 21300000, guid: fc11c976ce7fe004dade257fa99eda0f, type: 3}
+  - {fileID: 21300000, guid: a044536de61bfad4f80ca6e31ae4a8ef, type: 3}
+  - {fileID: 21300000, guid: 289cc15d82fd94f43b573abf99e0c01f, type: 3}
+  - {fileID: 21300000, guid: 52ba8eeea69bbb4469238605fe92d2c0, type: 3}
+  - {fileID: 21300000, guid: fd77dfc78ab396040813d9d44845c189, type: 3}
+  - {fileID: 21300000, guid: 9d16b2888a109d8409f271d5e8ec3cbf, type: 3}
+  - {fileID: 21300000, guid: 0ba93a2548866bb4197aa42c0046bcca, type: 3}
+  - {fileID: 21300000, guid: 6911467ebf9279b40beaedc2876cb735, type: 3}
+  - {fileID: 21300000, guid: ce0547a87e60b834696ce35195b97f71, type: 3}
+  - {fileID: 21300000, guid: bd226325dd50eaa45a9f71e5caed4aba, type: 3}
+  - {fileID: 21300000, guid: 87ca6d497f46bb245baa7eb7d7917cb0, type: 3}
+  - {fileID: 21300000, guid: 8830a4b7129e8da4b870592fffab48db, type: 3}
+  - {fileID: 21300000, guid: 2224dc24f1c78b141b44dd4aa8ac1acc, type: 3}
+  - {fileID: 21300000, guid: 0a1b8882c8d26334c98e1c6f71c96552, type: 3}
+  - {fileID: 21300000, guid: 220e1f07b0f6896498e8631b039aaa53, type: 3}
+  - {fileID: 21300000, guid: b99182304f97d87459736219794b9e34, type: 3}
+  - {fileID: 21300000, guid: 0b170035ba7957a40ac0b3564e46ec54, type: 3}
+  - {fileID: 21300000, guid: 653b987dea056974a8c302a87c720f5c, type: 3}
+  - {fileID: 21300000, guid: 520d58e659f33574ba4673bf1af49030, type: 3}
+  - {fileID: 21300000, guid: 79e073f7612e1b643a17e7820876fdc6, type: 3}
+  - {fileID: 21300000, guid: 0ca01e2ab98d04146ac7dc430093a18d, type: 3}
+  - {fileID: 0}
   PlayerSelectedIndex: 0
   SpritesList:
   - {fileID: -808808270821479884, guid: ecbb73fec8f452845b1cdc21dce08729, type: 3}
@@ -284,6 +313,18 @@ MonoBehaviour:
   - {fileID: -5226647853256959419, guid: 17c0afed9cb93884aa8523f9b4a1f0b7, type: 3}
   - {fileID: 3584695137363010030, guid: 3f694444c6318334b87fa65ca49e202f, type: 3}
   - {fileID: 3584695137363010030, guid: 3f694444c6318334b87fa65ca49e202f, type: 3}
+--- !u!114 &350675863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350675859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c404e3357165406ea11aca9be2ab8a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SupabaseService
 --- !u!1001 &763457093
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -358,7 +399,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &781864991
 MonoBehaviour:
   m_ObjectHideFlags: 0

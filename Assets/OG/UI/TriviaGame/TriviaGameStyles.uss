@@ -33,7 +33,7 @@
     border-bottom-left-radius: 0;
     -unity-text-align: middle-left;
     background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
+    color: rgb(140, 140, 140);
     -unity-text-generator: advanced;
     -unity-text-auto-size: best-fit 10px 100px;
     -unity-font-definition: url("project://database/Assets/Fonts/Switzer_Complete/Fonts/WEB/fonts/Switzer-SemiboldItalic.ttf?fileID=12800000&guid=ad483681a2c9294469b0320aa4308bcf&type=3#Switzer-SemiboldItalic");
@@ -70,4 +70,26 @@
     padding-right: 20px;
     padding-bottom: 0;
     padding-left: 20px;
+}
+
+.unity-base-dropdown__container-outer {
+    max-height: 400px;
+}
+
+.unity-base-dropdown__container-inner {
+    max-height: 400px;
+    overflow: hidden;
+}
+
+#DropPaises > .unity-base-popup-field__input {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    padding-left: 96px;
+    background-color: rgb(255, 255, 255);
 }

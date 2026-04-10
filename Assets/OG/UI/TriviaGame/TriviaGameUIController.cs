@@ -68,6 +68,7 @@ public class TriviaGameUIController : MonoBehaviour
     private Label _lblDataSurname;
     private Label _lblDataAge;
     private Label _lblDataCountry;
+    private VisualElement _panelDatos;
     private Button _btnSubmitData;
     private TextField _inputDataName;
     private TextField _inputDataSurname;
@@ -198,7 +199,8 @@ public class TriviaGameUIController : MonoBehaviour
 
 
         // Query the final data collection form
-        var panelDatos = _root.Q<VisualElement>("PanelDatos");
+        _panelDatos = _root.Q<VisualElement>("PanelDatos");
+        var panelDatos = _panelDatos;
         if (panelDatos != null)
         {
             var allLabels = panelDatos.Query<Label>().ToList();
@@ -213,6 +215,8 @@ public class TriviaGameUIController : MonoBehaviour
             if (edadLabels.Count > 1) _lblDataCountry = edadLabels[1]; // The second one is "Pais"
 
             _btnSubmitData = panelDatos.Q<Button>("JoinButton");
+            if (_btnSubmitData != null)
+                _btnSubmitData.clicked += OnSubmitDataClicked;
         }
         // Query the TextFields for the form inputs
         var formInputs = panelDatos.Query<TextField>().ToList();
@@ -235,6 +239,10 @@ public class TriviaGameUIController : MonoBehaviour
             {
                 int idx = _countryNames.IndexOf(evt.newValue);
                 UpdateFlagIcon(idx);
+            });
+            _dropPaises.RegisterCallback<PointerDownEvent>(_ =>
+            {
+                _dropPaises.schedule.Execute(LimitDropdownPopupHeight).StartingIn(50);
             });
         }
 
@@ -309,6 +317,8 @@ public class TriviaGameUIController : MonoBehaviour
         if (_currentLoadedQuestionID == q.QuestionID) return;
 
         _currentLoadedQuestionID = q.QuestionID;
+
+        TriviaCharacterManager.Instance?.ShowRandom();
 
         HideNextQuestionScreen();
 
@@ -615,13 +625,13 @@ public class TriviaGameUIController : MonoBehaviour
         {
             ShowQuizUI(false);
             HideNextQuestionScreen();
-
-            if (_playersContainer != null) _playersContainer.style.visibility = Visibility.Visible;
-
             ForceHideAvatarSelection();
 
-            if (_lblTitle != null) _lblTitle.text = isEnglish ? "RESULTS" : "RESULTADOS";
-            if (_lblWaitingPlayers != null) _lblWaitingPlayers.text = "";
+            // Primero mostrar PanelDatos — el leaderboard se muestra después del submit
+            if (_panelDatos != null)
+                _panelDatos.style.display = DisplayStyle.Flex;
+
+            return; // El leaderboard se muestra en OnSubmitDataClicked tras el envío exitoso
         }
 
         if (_playersScrollView != null)
@@ -825,7 +835,7 @@ public class TriviaGameUIController : MonoBehaviour
         if (_lblDataName != null) _lblDataName.text = isEn ? "Name" : "Nombre";
         if (_lblDataSurname != null) _lblDataSurname.text = isEn ? "Surname" : "Apellido";
         if (_lblDataAge != null) _lblDataAge.text = isEn ? "Age" : "Edad";
-        if (_lblDataCountry != null) _lblDataCountry.text = isEn ? "Country" : "Pa�s";
+        if (_lblDataCountry != null) _lblDataCountry.text = isEn ? "Country" : "Pais";
         if (_btnSubmitData != null) _btnSubmitData.text = isEn ? "Submit Data" : "Enviar Datos";
 
         // Translate the TextField placeholder
@@ -848,6 +858,23 @@ public class TriviaGameUIController : MonoBehaviour
             _dropPaises.label = string.Empty;
     }
 
+    private void LimitDropdownPopupHeight()
+    {
+        var panelRoot = _dropPaises?.panel?.visualTree;
+        if (panelRoot == null) return;
+
+        // Only touch the ListView — no tocar el container-outer (maneja el posicionamiento)
+        var container = panelRoot.Q(className: "unity-base-dropdown__container-outer");
+        if (container == null) return;
+
+        var listView = container.Q<ListView>();
+        if (listView == null) return;
+
+        float itemHeight = listView.fixedItemHeight > 0 ? listView.fixedItemHeight : 36f;
+        listView.style.maxHeight = itemHeight * 3;
+        listView.style.overflow = Overflow.Hidden;
+    }
+
     private void UpdateFlagIcon(int index)
     {
         if (_dropFlagIcon == null) return;
@@ -865,5 +892,69 @@ public class TriviaGameUIController : MonoBehaviour
     public string GetSelectedCountry()
     {
         return _dropPaises != null ? _dropPaises.value : string.Empty;
+    }
+
+    private void OnSubmitDataClicked()
+    {
+        // Recolectar datos del formulario
+        string nombre   = _inputDataName     != null ? _inputDataName.value.Trim()     : "";
+        string apellido = _inputDataSurname   != null ? _inputDataSurname.value.Trim()  : "";
+        string edadStr  = _inputDataAge       != null ? _inputDataAge.value.Trim()      : "0";
+        string pais     = _dropPaises         != null ? _dropPaises.value               : "";
+
+        if (!int.TryParse(edadStr, out int edad)) edad = 0;
+
+        // Obtener usuario y puntos del jugador local
+        var localData = FindFirstObjectByType<PlayerNetworkData>();
+        // Buscar el que tiene input authority (el jugador local)
+        foreach (var pd in FindObjectsByType<PlayerNetworkData>(FindObjectsSortMode.None))
+        {
+            if (pd.Object != null && pd.Object.HasInputAuthority)
+            {
+                localData = pd;
+                break;
+            }
+        }
+
+        string usuario = localData != null ? localData.PlayerName.ToString() : "";
+        int    puntos  = localData != null ? localData.Score : 0;
+
+        if (SupabaseService.Instance == null)
+        {
+            Debug.LogError("[Submit] SupabaseService no encontrado en escena.");
+            return;
+        }
+
+        _btnSubmitData.SetEnabled(false);
+
+        SupabaseService.Instance.InsertJugador(
+            usuario, nombre, apellido, edad, pais, puntos,
+            onSuccess: () =>
+            {
+                Debug.Log("[Submit] Datos enviados correctamente.");
+                if (_panelDatos != null) _panelDatos.style.display = DisplayStyle.None;
+
+                // Ahora sí mostrar el leaderboard final
+                bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
+                if (_playersContainer != null) _playersContainer.style.visibility = Visibility.Visible;
+                if (_lblTitle != null) _lblTitle.text = isEnglish ? "RESULTS" : "RESULTADOS";
+                if (_lblWaitingPlayers != null) _lblWaitingPlayers.text = "";
+                SortAndShowLeaderboard(false);
+            },
+            onError: err =>
+            {
+                Debug.LogError($"[Submit] Fallo al enviar: {err}");
+                _btnSubmitData.SetEnabled(true);
+            }
+        );
+    }
+
+    [ContextMenu("Debug: Show PanelDatos")]
+    public void Debug_ShowPanelDatos()
+    {
+        if (_root != null)
+            _root.style.display = DisplayStyle.Flex;
+        if (_panelDatos != null)
+            _panelDatos.style.display = DisplayStyle.Flex;
     }
 }
