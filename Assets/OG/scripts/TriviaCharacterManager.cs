@@ -55,6 +55,15 @@ public class TriviaCharacterManager : MonoBehaviour
     public void ShowRandom()
     {
         if (_characters == null || _characters.Length == 0) return;
+
+        // Fallback: si Initialize no corrió todavía, intentarlo ahora
+        if (!_initialized && TriviaGameUIController.Instance != null)
+        {
+            var layer = TriviaGameUIController.Instance.GetCharacterLayer();
+            if (layer != null) Initialize(layer);
+        }
+
+        if (!_initialized) return;
         HideAll();
 
         int next = _lastShownIndex;

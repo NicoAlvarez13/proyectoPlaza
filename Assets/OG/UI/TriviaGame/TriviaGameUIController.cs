@@ -153,7 +153,11 @@ public class TriviaGameUIController : MonoBehaviour
     }
     private void Start()
     {
-        ApplyLocalization(); // NUEVO
+        ApplyLocalization();
+
+        // Todos los Awake() ya corrieron → Instance garantizado
+        if (_characterLayer != null && TriviaCharacterManager.Instance != null)
+            TriviaCharacterManager.Instance.Initialize(_characterLayer);
     }
 
     private void InitializeUI()
@@ -180,10 +184,9 @@ public class TriviaGameUIController : MonoBehaviour
         _quizBackground = _root.Q<VisualElement>("QuizBackground");
         _quizUI = _root.Q<VisualElement>("QuizUI");
 
-        // Initialize character manager with the CharacterLayer that sits between background and UI
+        // Solo guardamos la referencia — la inicialización se hace en Start()
+        // para garantizar que TriviaCharacterManager.Awake() ya corrió
         _characterLayer = _root.Q<VisualElement>("CharacterLayer");
-        if (_characterLayer != null && TriviaCharacterManager.Instance != null)
-            TriviaCharacterManager.Instance.Initialize(_characterLayer);
         _headerFiller = _root.Q<VisualElement>("HeaderFiller");
         _header = _root.Q<VisualElement>("Header");
         _categoryIcon = _root.Q<Image>("CategoryIcon");
@@ -968,6 +971,8 @@ public class TriviaGameUIController : MonoBehaviour
             }
         );
     }
+
+    public VisualElement GetCharacterLayer() => _characterLayer;
 
     public void ShowThanksScreen()
     {
