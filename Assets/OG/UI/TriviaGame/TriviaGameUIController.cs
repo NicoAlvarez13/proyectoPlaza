@@ -11,7 +11,6 @@ public class TriviaGameUIController : MonoBehaviour
     [SerializeField] private UIDocument _uiDocument;
     [SerializeField] private VisualTreeAsset _playerCardTemplate;
 
-    // FIX: Updated all UI element arrays to handle 5 categories instead of 4
     [Header("Quiz UI Settings")]
     [SerializeField] private Sprite[] _quizBackgrounds = new Sprite[5];
     [SerializeField] private Color32[] _headerColors = new Color32[5];
@@ -77,6 +76,9 @@ public class TriviaGameUIController : MonoBehaviour
     private TextField _inputDataAge;
     private DropdownField _dropPaises;
     private Image _dropFlagIcon;
+
+    // NEW: Tracker for the Thanks screen delay so we can cancel it if the game resets
+    private IVisualElementScheduledItem _thanksScreenTask;
 
     private static readonly List<string> _countryNames = new List<string>
     {
@@ -151,13 +153,10 @@ public class TriviaGameUIController : MonoBehaviour
         if (_uiDocument == null) return;
         InitializeUI();
     }
+
     private void Start()
     {
         ApplyLocalization();
-
-        // Todos los Awake() ya corrieron → Instance garantizado
-        if (_characterLayer != null && TriviaCharacterManager.Instance != null)
-            TriviaCharacterManager.Instance.Initialize(_characterLayer);
     }
 
     private void InitializeUI()
@@ -184,8 +183,6 @@ public class TriviaGameUIController : MonoBehaviour
         _quizBackground = _root.Q<VisualElement>("QuizBackground");
         _quizUI = _root.Q<VisualElement>("QuizUI");
 
-        // Solo guardamos la referencia — la inicialización se hace en Start()
-        // para garantizar que TriviaCharacterManager.Awake() ya corrió
         _characterLayer = _root.Q<VisualElement>("CharacterLayer");
         _headerFiller = _root.Q<VisualElement>("HeaderFiller");
         _header = _root.Q<VisualElement>("Header");
@@ -206,41 +203,37 @@ public class TriviaGameUIController : MonoBehaviour
         _lblTimerTitle = _root.Q<Label>("TimerLabel");
         _lblTimeUnit = _root.Q<Label>("TimeUnit");
 
-
-
-        // Query the final data collection form
-        _panelDatos   = _root.Q<VisualElement>("PanelDatos");
+        _panelDatos = _root.Q<VisualElement>("PanelDatos");
         _panelGracias = _root.Q<VisualElement>("PanelGracias");
-        var panelDatos = _panelDatos;
-        if (panelDatos != null)
+
+        if (_panelDatos != null)
         {
-            var allLabels = panelDatos.Query<Label>().ToList();
-            if (allLabels.Count > 0) _lblDataFormTitle = allLabels[0]; // Gets "Complete los datos..."
+            var allLabels = _panelDatos.Query<Label>().ToList();
+            if (allLabels.Count > 0) _lblDataFormTitle = allLabels[0];
 
-            _lblDataName = panelDatos.Q<Label>("Nombre");
-            _lblDataSurname = panelDatos.Q<Label>("Apellido");
+            _lblDataName = _panelDatos.Q<Label>("Nombre");
+            _lblDataSurname = _panelDatos.Q<Label>("Apellido");
 
-            // There are two labels named "Edad" in your UXML, so we grab them in order
-            var edadLabels = panelDatos.Query<Label>("Edad").ToList();
+            var edadLabels = _panelDatos.Query<Label>("Edad").ToList();
             if (edadLabels.Count > 0) _lblDataAge = edadLabels[0];
-            if (edadLabels.Count > 1) _lblDataCountry = edadLabels[1]; // The second one is "Pais"
+            if (edadLabels.Count > 1) _lblDataCountry = edadLabels[1];
 
-            _btnSubmitData = panelDatos.Q<Button>("JoinButton");
+            _btnSubmitData = _panelDatos.Q<Button>("JoinButton");
             if (_btnSubmitData != null)
                 _btnSubmitData.clicked += OnSubmitDataClicked;
         }
-        // Query the TextFields for the form inputs
-        var formInputs = panelDatos.Query<TextField>().ToList();
-        if (formInputs.Count >= 3)
+
+        var formInputs = _panelDatos?.Query<TextField>().ToList();
+        if (formInputs != null && formInputs.Count >= 3)
         {
             _inputDataName = formInputs[0];
             _inputDataSurname = formInputs[1];
             _inputDataAge = formInputs[2];
         }
 
-        // Query and setup the country dropdown
-        _dropPaises = panelDatos.Q<DropdownField>("DropPaises");
-        _dropFlagIcon = panelDatos.Q<Image>("SelectedFlagIcon");
+        _dropPaises = _panelDatos?.Q<DropdownField>("DropPaises");
+        _dropFlagIcon = _panelDatos?.Q<Image>("SelectedFlagIcon");
+
         if (_dropPaises != null)
         {
             _dropPaises.choices = _countryNames;
@@ -289,6 +282,12 @@ public class TriviaGameUIController : MonoBehaviour
 
     public void ResetUI()
     {
+        // NEW: Ensure lingering tasks are canceled and panels are forced hidden
+        _thanksScreenTask?.Pause();
+        _thanksScreenTask = null;
+        if (_panelDatos != null) _panelDatos.style.display = DisplayStyle.None;
+        if (_panelGracias != null) _panelGracias.style.display = DisplayStyle.None;
+
         if (_playersScrollView != null) _playersScrollView.contentContainer.Clear();
 
         ShowQuizUI(false);
@@ -327,9 +326,13 @@ public class TriviaGameUIController : MonoBehaviour
     {
         if (_currentLoadedQuestionID == q.QuestionID) return;
 
-        _currentLoadedQuestionID = q.QuestionID;
+        // NEW: Ensure forms are hidden when a question appears
+        _thanksScreenTask?.Pause();
+        _thanksScreenTask = null;
+        if (_panelDatos != null) _panelDatos.style.display = DisplayStyle.None;
+        if (_panelGracias != null) _panelGracias.style.display = DisplayStyle.None;
 
-        TriviaCharacterManager.Instance?.ShowRandom();
+        _currentLoadedQuestionID = q.QuestionID;
 
         HideNextQuestionScreen();
 
@@ -338,7 +341,6 @@ public class TriviaGameUIController : MonoBehaviour
         int categoryIndex = 0;
         string categoryNameStr = "AIRE";
 
-        // MUEVE EL BOOL AQU� ARRIBA para que est� disponible durante la validaci�n
         bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
 
         if (QuizGameManager.Instance != null)
@@ -351,7 +353,6 @@ public class TriviaGameUIController : MonoBehaviour
                     categoryNameStr = !string.IsNullOrWhiteSpace(cat.CategoryNameES) ? cat.CategoryNameES : cat.name;
                     string lowerName = categoryNameStr.ToLower();
 
-                    // NUEVO: Traducimos el nombre de la categor�a sobre la marcha seg�n el idioma detectado
                     if (lowerName.Contains("aire") || lowerName.Contains("air"))
                     {
                         categoryIndex = 0;
@@ -409,10 +410,10 @@ public class TriviaGameUIController : MonoBehaviour
                 _categoryIcon.sprite = _categoriesIcon[categoryIndex];
         }
 
-
+        // FIX: Removed accent from "CATEGORIA"
         if (_categoryLabel != null)
         {
-            _categoryLabel.text = isEnglish ? "CATEGORY" : "CATEGOR�A";
+            _categoryLabel.text = isEnglish ? "CATEGORY" : "CATEGORIA";
         }
 
         if (_categoryName != null)
@@ -420,11 +421,15 @@ public class TriviaGameUIController : MonoBehaviour
             _categoryName.text = categoryNameStr.ToUpper();
         }
 
+        if (TriviaGame_UICharcatersAnimations.Instance != null)
+        {
+            TriviaGame_UICharcatersAnimations.Instance.ShowCharacterForCategory(categoryNameStr);
+        }
+
         _localSelectedIndex = -1;
         _localSubmittedTime = 0f;
         _canAnswerLocal = true;
 
-        // Load translated question text
         _question.text = isEnglish ? q.QuestionTextEN : q.QuestionTextES;
 
         if (q.Type == QuestionSO.QuestionType.MultipleChoice)
@@ -469,7 +474,6 @@ public class TriviaGameUIController : MonoBehaviour
         _canAnswerLocal = false;
 
         _localSelectedIndex = index;
-
         _localSubmittedTime = QuizGameManager.Instance != null ? QuizGameManager.Instance.StateTimer : 0f;
 
         SelectAnswer(index, isMultipleChoice);
@@ -494,12 +498,10 @@ public class TriviaGameUIController : MonoBehaviour
 
         bool isCorrect = (_localSelectedIndex != -1) && (clickedText == _localCorrectAnswer);
 
-        // ── Audio de resultado ───────────────────────────────────────────────
         if (_localSelectedIndex == -1 || !isCorrect)
             AudioManager.Instance?.PlayIncorrect();
         else
             AudioManager.Instance?.PlayCorrect();
-        // ─────────────────────────────────────────────────────────────────────
 
         bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
 
@@ -576,6 +578,12 @@ public class TriviaGameUIController : MonoBehaviour
 
     public void ShowNextQuestionScreen(string nextInText, string timeText)
     {
+        // NEW: Ensure forms are hidden
+        _thanksScreenTask?.Pause();
+        _thanksScreenTask = null;
+        if (_panelDatos != null) _panelDatos.style.display = DisplayStyle.None;
+        if (_panelGracias != null) _panelGracias.style.display = DisplayStyle.None;
+
         if (_playersContainer != null) _playersContainer.style.visibility = Visibility.Hidden;
 
         if (_labelNextIn != null) _labelNextIn.text = nextInText;
@@ -620,6 +628,12 @@ public class TriviaGameUIController : MonoBehaviour
 
     public void ShowGuideLiveLeaderboard()
     {
+        // NEW: Ensure forms are hidden
+        _thanksScreenTask?.Pause();
+        _thanksScreenTask = null;
+        if (_panelDatos != null) _panelDatos.style.display = DisplayStyle.None;
+        if (_panelGracias != null) _panelGracias.style.display = DisplayStyle.None;
+
         ShowQuizUI(false);
         HideNextQuestionScreen();
 
@@ -645,11 +659,10 @@ public class TriviaGameUIController : MonoBehaviour
             HideNextQuestionScreen();
             ForceHideAvatarSelection();
 
-            // Solo los jugadores (no el guide) deben rellenar el formulario
             if (!isGuide && _panelDatos != null)
             {
                 _panelDatos.style.display = DisplayStyle.Flex;
-                return; // El leaderboard se muestra en OnSubmitDataClicked tras el envío exitoso
+                return;
             }
         }
 
@@ -679,9 +692,9 @@ public class TriviaGameUIController : MonoBehaviour
     public void ShowQuizUI(bool isVisible)
     {
         DisplayStyle style = isVisible ? DisplayStyle.Flex : DisplayStyle.None;
-        if (_quizBackground  != null) _quizBackground.style.display  = style;
-        if (_characterLayer  != null) _characterLayer.style.display  = style;
-        if (_quizUI          != null) _quizUI.style.display          = style;
+        if (_quizBackground != null) _quizBackground.style.display = style;
+        if (_characterLayer != null) _characterLayer.style.display = style;
+        if (_quizUI != null) _quizUI.style.display = style;
     }
 
     public void SetTimerVisual(float fillPercentage)
@@ -858,13 +871,11 @@ public class TriviaGameUIController : MonoBehaviour
         if (_lblDataCountry != null) _lblDataCountry.text = isEn ? "Country" : "Pais";
         if (_btnSubmitData != null) _btnSubmitData.text = isEn ? "Submit Data" : "Enviar Datos";
 
-        // Translate the TextField placeholder
         if (_playerNameSelector != null)
         {
             _playerNameSelector.textEdition.placeholder = isEn ? "Player Name..." : "Nombre del Jugador...";
         }
 
-        // Translate the final form placeholders
         if (_inputDataName != null)
             _inputDataName.textEdition.placeholder = isEn ? "Name..." : "Nombre...";
 
@@ -883,7 +894,6 @@ public class TriviaGameUIController : MonoBehaviour
         var panelRoot = _dropPaises?.panel?.visualTree;
         if (panelRoot == null) return;
 
-        // Only touch the ListView — no tocar el container-outer (maneja el posicionamiento)
         var container = panelRoot.Q(className: "unity-base-dropdown__container-outer");
         if (container == null) return;
 
@@ -916,17 +926,14 @@ public class TriviaGameUIController : MonoBehaviour
 
     private void OnSubmitDataClicked()
     {
-        // Recolectar datos del formulario
-        string nombre   = _inputDataName     != null ? _inputDataName.value.Trim()     : "";
-        string apellido = _inputDataSurname   != null ? _inputDataSurname.value.Trim()  : "";
-        string edadStr  = _inputDataAge       != null ? _inputDataAge.value.Trim()      : "0";
-        string pais     = _dropPaises         != null ? _dropPaises.value               : "";
+        string nombre = _inputDataName != null ? _inputDataName.value.Trim() : "";
+        string apellido = _inputDataSurname != null ? _inputDataSurname.value.Trim() : "";
+        string edadStr = _inputDataAge != null ? _inputDataAge.value.Trim() : "0";
+        string pais = _dropPaises != null ? _dropPaises.value : "";
 
         if (!int.TryParse(edadStr, out int edad)) edad = 0;
 
-        // Obtener usuario y puntos del jugador local
         var localData = FindFirstObjectByType<PlayerNetworkData>();
-        // Buscar el que tiene input authority (el jugador local)
         foreach (var pd in FindObjectsByType<PlayerNetworkData>(FindObjectsSortMode.None))
         {
             if (pd.Object != null && pd.Object.HasInputAuthority)
@@ -937,7 +944,7 @@ public class TriviaGameUIController : MonoBehaviour
         }
 
         string usuario = localData != null ? localData.PlayerName.ToString() : "";
-        int    puntos  = localData != null ? localData.Score : 0;
+        int puntos = localData != null ? localData.Score : 0;
 
         if (SupabaseService.Instance == null)
         {
@@ -954,15 +961,15 @@ public class TriviaGameUIController : MonoBehaviour
                 Debug.Log("[Submit] Datos enviados correctamente.");
                 if (_panelDatos != null) _panelDatos.style.display = DisplayStyle.None;
 
-                // Mostrar leaderboard final
                 bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
                 if (_playersContainer != null) _playersContainer.style.visibility = Visibility.Visible;
                 if (_lblTitle != null) _lblTitle.text = isEnglish ? "RESULTS" : "RESULTADOS";
                 if (_lblWaitingPlayers != null) _lblWaitingPlayers.text = "";
                 SortAndShowLeaderboard(false);
 
-                // Después de 10 segundos mostrar pantalla de agradecimiento
-                _root.schedule.Execute(ShowThanksScreen).StartingIn(10000);
+                // NEW: Use the tracker variable to store the scheduled task
+                _thanksScreenTask = _root.schedule.Execute(ShowThanksScreen);
+                _thanksScreenTask.StartingIn(10000);
             },
             onError: err =>
             {

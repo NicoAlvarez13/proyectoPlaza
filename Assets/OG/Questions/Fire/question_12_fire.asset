@@ -15,7 +15,8 @@ MonoBehaviour:
   QuestionID: 5d4dd9fb-db50-49c6-b5e9-c73ac1ef21a2
   Difficulty: 0
   Type: 0
-  QuestionTextEN: 
+  QuestionTextEN: What light phenomenon appears in the sky near the poles because
+    of the solar wind?
   QuestionTextES: "\xBFQu\xE9 fen\xF3meno de luces aparece en el cielo cerca de los
     polos por el viento solar?"
   CorrectAnswerEN: Auroras

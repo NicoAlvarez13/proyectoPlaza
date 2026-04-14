@@ -88,7 +88,8 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined, IPlayerLeft
                 if (MainMenuController.Instance != null)
                 {
                     bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
-                    string errorMsg = isEnglish ? "You are already playing in another tab. Please close this one." : "Ya est�s jugando en otra pesta�a. Por favor, cierra esta.";
+                    // FIX: Removed accents
+                    string errorMsg = isEnglish ? "You are already playing in another tab. Please close this one." : "Ya estas jugando en otra pestana. Por favor, cierra esta.";
                     MainMenuController.Instance.ShowJoinError(errorMsg);
                 }
 
@@ -124,30 +125,21 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined, IPlayerLeft
 
         if (QuizGameManager.Instance == null) return;
 
-        // FIX: Check if the QuizGameManager has been orphaned (StateAuthority is None).
-        // Fusion clears the authority BEFORE this callback runs, so we check for None.
         if (QuizGameManager.Instance.Object.StateAuthority == PlayerRef.None)
         {
             if (!QuizGameManager.Instance.IsRoomActive)
             {
-                // The Guide intentionally closed the room. 
-                // We don't need to do anything here because QuizGameManager.OnStatusChanged() 
-                // will automatically catch the IsRoomActive = false and shut down the Runner.
                 Debug.Log("The room was closed. Waiting for automatic shutdown...");
                 ExecuteLocalShutdown();
             }
             else
             {
-                // The host crashed or disconnected by accident!
                 Debug.LogWarning("The manager lost its State Authority! Claiming authority to keep match alive.");
-
-                // All remaining clients will ask for authority. Fusion safely gives it to just one.
                 QuizGameManager.Instance.Object.RequestStateAuthority();
             }
         }
         else
         {
-            // If the manager still has an authority, it was just a normal player who left.
             NotifyUI();
         }
     }

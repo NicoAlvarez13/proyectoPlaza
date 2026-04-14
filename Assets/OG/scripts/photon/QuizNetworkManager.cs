@@ -1,9 +1,9 @@
-using System; // Required for Action
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
-using System.Linq; // Ensure you have this at the top!
+using System.Linq;
 
 public class QuizNetworkManager : MonoBehaviour
 {
@@ -15,7 +15,6 @@ public class QuizNetworkManager : MonoBehaviour
     private const string LAST_ROOM_KEY = "LastRoomCode";
     private const string GUIDE_TOKEN_KEY = "GuideToken";
 
-    // Track if we are creating or reconnecting to avoid duplicate spawns
     public bool IsReconnecting { get; private set; }
 
     private void Awake()
@@ -23,7 +22,7 @@ public class QuizNetworkManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Keep alive across scenes
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -32,7 +31,6 @@ public class QuizNetworkManager : MonoBehaviour
         }
     }
 
-    // Change the signature to include an error message string
     public void CreateRoom(Action<bool, string> onComplete = null)
     {
         StartCoroutine(CreateRoomCoroutine(onComplete));
@@ -40,9 +38,7 @@ public class QuizNetworkManager : MonoBehaviour
 
     private IEnumerator CreateRoomCoroutine(Action<bool, string> onComplete)
     {
-        int roomName = UnityEngine.Random.Range(1000, 9999); // Generate a random 4-digit code
-        //int roomName = 0; // Harcoded for testing
-
+        int roomName = UnityEngine.Random.Range(1000, 9999);
         string roomCode = roomName.ToString();
 
         IsReconnecting = true;
@@ -54,38 +50,35 @@ public class QuizNetworkManager : MonoBehaviour
             yield break;
         }
 
-        // 1. SECURITY CHECK: Try to join the room to see if it already exists
         var joinTask = _runner.StartGame(new StartGameArgs()
         {
             GameMode = GameMode.Shared,
             SessionName = roomCode,
-            EnableClientSessionCreation = false // Strictly attempt to join
+            EnableClientSessionCreation = false
         });
 
         yield return new WaitUntil(() => joinTask.IsCompleted);
 
         if (!joinTask.IsFaulted && joinTask.Result.Ok)
         {
-            // FATAL: The room already exists! We don't want to let them join via the Create button.
             Debug.LogWarning($"Room {roomCode} already exists! Rejecting creation.");
 
             _runner.Shutdown();
             yield return new WaitUntil(() => _runner == null || _runner.IsShutdown);
 
-            // Pass the error back to the UI
-            onComplete?.Invoke(false, GetLocalizedError("The game already exists. Please use the Join button instead.", "La partida ya existe. Por favor, usa el bot�n de Unirse."));
+            // FIX: Removed accent 
+            onComplete?.Invoke(false, GetLocalizedError("The game already exists. Please use the Join button instead.", "La partida ya existe. Por favor, usa el boton de Unirse."));
             yield break;
         }
 
-        // 2. Joining failed, which means the room is safe to create.
         if (_runner != null && !_runner.IsShutdown)
         {
             _runner.Shutdown();
             yield return new WaitUntil(() => _runner == null || _runner.IsShutdown);
         }
 
-        IsReconnecting = false; // Flag as a new creation
-        InitializeRunner();     // Re-initialize for the creation process
+        IsReconnecting = false;
+        InitializeRunner();
 
         string guideToken = PlayerPrefs.GetString(GUIDE_TOKEN_KEY, string.Empty);
 
@@ -95,11 +88,9 @@ public class QuizNetworkManager : MonoBehaviour
             PlayerPrefs.SetString(GUIDE_TOKEN_KEY, guideToken);
             PlayerPrefs.Save();
         }
-        
 
         var sessionProps = new Dictionary<string, SessionProperty> { { "GuideToken", guideToken } };
 
-        // 3. Create the room
         var createTask = _runner.StartGame(new StartGameArgs()
         {
             GameMode = GameMode.Shared,
@@ -124,7 +115,7 @@ public class QuizNetworkManager : MonoBehaviour
         {
             PlayerPrefs.SetString(LAST_ROOM_KEY, roomCode);
             PlayerPrefs.Save();
-            onComplete?.Invoke(true, string.Empty); // Success! No error message.
+            onComplete?.Invoke(true, string.Empty);
         }
         else
         {
@@ -164,11 +155,11 @@ public class QuizNetworkManager : MonoBehaviour
         if (MainMenuController.Instance != null)
             MainMenuController.Instance.IsProcessing = false;
 
-        // Catch low-level task failures
         if (joinTask.IsFaulted)
         {
             IsReconnecting = false;
-            onComplete?.Invoke(false, GetLocalizedError("Critical network error. Please try again.", "Error cr�tico de red. Por favor, intenta de nuevo."));
+            // FIX: Removed accents
+            onComplete?.Invoke(false, GetLocalizedError("Critical network error. Please try again.", "Error critico de red. Por favor, intenta de nuevo."));
             yield break;
         }
 
@@ -176,10 +167,8 @@ public class QuizNetworkManager : MonoBehaviour
 
         if (result.Ok)
         {
-            // --- SECURITY VALIDATION FOR GUIDES ---
             if (asGuide)
             {
-                // Wait briefly for network objects to spawn and sync locally
                 yield return new WaitForSeconds(0.5f);
 
                 bool hasCredentials = IsOriginalGuide();
@@ -189,7 +178,6 @@ public class QuizNetworkManager : MonoBehaviour
                 {
                     PlayerRef currentGuide = QuizGameManager.Instance.GuidePlayerRef;
 
-                    // Check if the Guide ref is NOT None, not us, and is currently an active player
                     if (currentGuide != PlayerRef.None && currentGuide != _runner.LocalPlayer && _runner.ActivePlayers.Contains(currentGuide))
                     {
                         guideAlreadyPresent = true;
@@ -200,30 +188,28 @@ public class QuizNetworkManager : MonoBehaviour
                 {
                     Debug.LogWarning("Guide validation failed: Missing credentials or Guide is already active in the room.");
 
-                    // Kick the imposter out
                     _runner.Shutdown();
                     yield return new WaitUntil(() => _runner == null || _runner.IsShutdown);
                     _runner = null;
 
                     IsReconnecting = false;
-                    onComplete?.Invoke(false, GetLocalizedError("Invalid credentials or Guide is already active. Try creating a new room.", "Credenciales inv�lidas o el Gu�a ya est� activo. Intenta crear una nueva sala."));
+                    // FIX: Removed accents
+                    onComplete?.Invoke(false, GetLocalizedError("Invalid credentials or Guide is already active. Try creating a new room.", "Credenciales invalidas o el Guia ya esta activo. Intenta crear una nueva sala."));
                     yield break;
                 }
             }
             else
             {
-                // Save the room code for normal players so the Reconnect button works
                 PlayerPrefs.SetString(LAST_ROOM_KEY, roomCode);
                 PlayerPrefs.Save();
             }
 
             Debug.Log("Player joined the room successfully");
             IsReconnecting = false;
-            onComplete?.Invoke(true, string.Empty); // Success
+            onComplete?.Invoke(true, string.Empty);
         }
         else
         {
-            // SPECIFIC ERROR HANDLING: Translate the shutdown reason for the UI
             string specificError = GetUserFriendlyErrorMessage(result.ShutdownReason);
 
             _runner.Shutdown();
@@ -235,25 +221,25 @@ public class QuizNetworkManager : MonoBehaviour
         }
     }
 
-    // Helper method to translate Fusion shutdown reasons into user-friendly English messages
     private string GetUserFriendlyErrorMessage(ShutdownReason reason)
     {
+        // FIX: Removed all accents
         switch (reason)
         {
             case ShutdownReason.GameNotFound:
-                return GetLocalizedError("Session does not exist. Please check the code.", "La sesi�n no existe. Revisa el c�digo.");
+                return GetLocalizedError("Session does not exist. Please check the code.", "La sesion no existe. Revisa el codigo.");
             case ShutdownReason.GameIsFull:
-                return GetLocalizedError("The session is currently full.", "La sesi�n est� llena.");
+                return GetLocalizedError("The session is currently full.", "La sesion esta llena.");
             case ShutdownReason.GameClosed:
-                return GetLocalizedError("The session is closed.", "La sesi�n est� cerrada.");
+                return GetLocalizedError("The session is closed.", "La sesion esta cerrada.");
             case ShutdownReason.ConnectionTimeout:
-                return GetLocalizedError("Connection timed out.", "Tiempo de conexi�n agotado.");
+                return GetLocalizedError("Connection timed out.", "Tiempo de conexion agotado.");
             case ShutdownReason.ConnectionRefused:
-                return GetLocalizedError("Connection was refused by server.", "Conexi�n rechazada por el servidor.");
+                return GetLocalizedError("Connection was refused by server.", "Conexion rechazada por el servidor.");
             case ShutdownReason.InvalidRegion:
-                return GetLocalizedError("Invalid server region.", "Regi�n de servidor inv�lida.");
+                return GetLocalizedError("Invalid server region.", "Region de servidor invalida.");
             default:
-                return GetLocalizedError($"Connection failed: {reason}", $"Fallo de conexi�n: {reason}");
+                return GetLocalizedError($"Connection failed: {reason}", $"Fallo de conexion: {reason}");
         }
     }
 
@@ -264,7 +250,6 @@ public class QuizNetworkManager : MonoBehaviour
 
     private IEnumerator LeaveAndDestroyRoomCoroutine(Action onComplete)
     {
-        // 1. Trigger the global shutdown signal if I am the guide
         if (QuizGameManager.Instance != null && IsOriginalGuide())
         {
             Debug.Log("setting room to inactive");
@@ -275,22 +260,17 @@ public class QuizNetworkManager : MonoBehaviour
             Debug.Log("is not original guide");
         }
 
-        // 2. Wait a short moment to allow the shutdown signal to propagate over the network
         yield return new WaitForSeconds(0.5f);
 
-        // 3. Shutdown the runner to leave the room safely
         if (_runner != null && !_runner.IsShutdown)
         {
             Debug.Log("runner shutdown initiated");
             _runner.Shutdown();
-            
 
-            // Wait until Fusion has completely cleaned up the network session
             yield return new WaitUntil(() => _runner == null || _runner.IsShutdown);
             Debug.Log("runner shutdown complete");
         }
 
-        // 4. Notify the UI that it is safe to reset
         onComplete?.Invoke();
     }
 
@@ -306,46 +286,37 @@ public class QuizNetworkManager : MonoBehaviour
 
         _runner = runnerObj.GetComponent<NetworkRunner>();
 
-        // --- Event-Driven Disconnection Handling ---
-        // Grab the component directly from the prefab
         NetworkEvents networkEvents = runnerObj.GetComponent<NetworkEvents>();
 
         if (networkEvents != null)
         {
-            // Remove the listener first to avoid duplicate fires if the runner is re-initialized
             networkEvents.OnShutdown.RemoveListener(OnRunnerShutdown);
             networkEvents.OnShutdown.AddListener(OnRunnerShutdown);
         }
         else
         {
-            // Fallback warning just in case the component gets accidentally removed from the prefab later
             Debug.LogError("NetworkEvents component is missing! Please add it to your NetworkRunner prefab in the Inspector.");
         }
     }
 
-    // Replace your current OnRunnerShutdown method with this updated version:
-    // Replace your current OnRunnerShutdown method with this:
     private void OnRunnerShutdown(NetworkRunner runner, ShutdownReason reason)
     {
-        // Ignore expected shutdowns when cycling the runner for creation/joining
         if (IsReconnecting) return;
 
         Debug.LogWarning($"Runner shut down. Reason: {reason}. Returning to main menu.");
 
-        // Reset the Guide UI
         if (MainMenuController_guide.Instance != null)
         {
             MainMenuController_guide.Instance.SetupInitialState();
         }
 
-        // Return normal players to the main menu
         if (MainMenuController.Instance != null)
         {
             MainMenuController.Instance.SetUIState(true);
-            MainMenuController.Instance.ShowJoinError(GetLocalizedError("The session was closed.", "La sesi�n ha sido cerrada."));
+            // FIX: Removed accent
+            MainMenuController.Instance.ShowJoinError(GetLocalizedError("The session was closed.", "La sesion ha sido cerrada."));
         }
 
-        // FIX: Completely wipe the Trivia UI so no old cards or screens carry over to the next room!
         if (TriviaGameUIController.Instance != null)
         {
             TriviaGameUIController.Instance.ResetUI();
@@ -370,8 +341,6 @@ public class QuizNetworkManager : MonoBehaviour
             string sessionGuideToken = sessionProperty;
             string localGuideToken = PlayerPrefs.GetString(GUIDE_TOKEN_KEY, string.Empty);
 
-            //Debug.Log($"Session Guide Token: {sessionGuideToken}, Local Guide Token: {localGuideToken}");
-
             return !string.IsNullOrEmpty(localGuideToken) && sessionGuideToken == localGuideToken;
         }
         else
@@ -390,10 +359,6 @@ public class QuizNetworkManager : MonoBehaviour
     }
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
-    /// <summary>
-    /// Modo dev: crea una sala propia, limpia el GuideToken para verse como jugador,
-    /// y arranca la partida automáticamente con configuración por defecto.
-    /// </summary>
     public void DevCreateAndPlay(Action<bool, string> onComplete = null)
     {
         StartCoroutine(DevCreateAndPlayCoroutine(onComplete));
@@ -401,14 +366,13 @@ public class QuizNetworkManager : MonoBehaviour
 
     private IEnumerator DevCreateAndPlayCoroutine(Action<bool, string> onComplete)
     {
-        // 1. Crear sala como si fuéramos el guide
         bool success = false;
         string error = string.Empty;
 
         yield return StartCoroutine(CreateRoomCoroutine((ok, err) =>
         {
             success = ok;
-            error   = err;
+            error = err;
         }));
 
         if (!success)
@@ -417,11 +381,9 @@ public class QuizNetworkManager : MonoBehaviour
             yield break;
         }
 
-        // 2. Limpiar GuideToken → IsOriginalGuide() devuelve false → UI de jugador
         PlayerPrefs.DeleteKey(GUIDE_TOKEN_KEY);
         PlayerPrefs.Save();
 
-        // 3. Esperar a que QuizGameManager y PlayerSpawner estén listos
         float timeout = 10f;
         while (QuizGameManager.Instance == null && timeout > 0f)
         {
@@ -435,12 +397,10 @@ public class QuizNetworkManager : MonoBehaviour
             yield break;
         }
 
-        // 4. Spawnearse como jugador (PlayerSpawner ya corrió como guide, no nos spawnó como jugador)
         var spawner = FindFirstObjectByType<PlayerSpawner>();
         if (spawner != null)
             spawner.DevSpawnLocalPlayer();
 
-        // 5. Arrancar la partida con configuración por defecto
         yield return new WaitForSeconds(0.5f);
         QuizGameManager.Instance.DevStartMatch();
 

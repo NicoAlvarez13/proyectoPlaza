@@ -127,6 +127,7 @@ public class QuizGameManager : NetworkBehaviour, IStateAuthorityChanged
         CurrentQuestionIndex = 0;
         GameStarted = true;
         ChangeState(GameState.StartingMatch, TimeToStart);
+        Debug.Log("game language: " + GameManager.Instance.CurrentLanguage);
     }
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD

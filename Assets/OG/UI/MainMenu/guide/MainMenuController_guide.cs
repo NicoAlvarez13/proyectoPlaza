@@ -20,7 +20,7 @@ public class MainMenuController_guide : MonoBehaviour
     [SerializeField] private int qrSize = 512;
 
     [Header("Animation Settings")]
-    [SerializeField] private float astronautAnimSpeed = 2f; // Duration of one float direction in seconds
+    [SerializeField] private float astronautAnimSpeed = 2f;
 
     private const string LAST_ROOM_KEY = "LastRoomCode";
 
@@ -67,7 +67,6 @@ public class MainMenuController_guide : MonoBehaviour
 
     private void Awake()
     {
-        // Singleton pattern
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -77,7 +76,7 @@ public class MainMenuController_guide : MonoBehaviour
     }
     private void Start()
     {
-        ApplyLocalization(); // NUEVO: Garantiza que GameManager está listo
+        ApplyLocalization();
     }
 
     private void OnEnable()
@@ -90,7 +89,6 @@ public class MainMenuController_guide : MonoBehaviour
         if (uiDocument == null) return;
         var root = uiDocument.rootVisualElement;
 
-        // 1. Assign Containers
         _createRoomContainer = root.Q<VisualElement>("CreateRoomContainer");
         _reconnectContainer = root.Q<VisualElement>("ReconnectContainer");
         _leaveWarningContainer = root.Q<VisualElement>("LeaveAndDeleteRoomWarningContainer");
@@ -98,7 +96,6 @@ public class MainMenuController_guide : MonoBehaviour
         if (_reconnectContainer != null) _lblReconnectMessage = _reconnectContainer.Q<Label>("lblMessage");
         if (_leaveWarningContainer != null) _lblLeaveWarning = _leaveWarningContainer.Q<Label>("lblMessage");
 
-        // 2. Assign Buttons
         var createRoomWrapper = root.Q<VisualElement>("btnCreateRoom");
         if (createRoomWrapper != null) _btnCreateRoom = createRoomWrapper.Q<Button>();
 
@@ -124,12 +121,10 @@ public class MainMenuController_guide : MonoBehaviour
         if (joinWrapper != null) _btnJoin = joinWrapper.Q<Button>();
 
 
-        //Tranistion Elements
         _btnPlay = root.Q<Button>("PlayButton");
         _clouds = root.Q<VisualElement>("Clouds");
         _menuesContainer = root.Q<VisualElement>("MenuesContainer");
 
-        // 3. Labels, Inputs & Decoratives
         if (_createRoomContainer != null)
         {
             _lblMessageCreate = _createRoomContainer.Q<Label>("lblMessage");
@@ -144,14 +139,12 @@ public class MainMenuController_guide : MonoBehaviour
             _inputCode = _reconnectContainer.Q<TextField>("CodeInput");
         }
 
-        // Query the astronaut image
         _astronaut = root.Q<Image>("Astronaut");
 
         SetupInitialState();
         RegisterCallbacks();
 
 
-        // WAIT for the UI to be fully drawn before starting percentage-based animations
         if (_astronaut != null)
         {
             _astronaut.RegisterCallback<GeometryChangedEvent>(OnGeometryCalculated);
@@ -162,7 +155,6 @@ public class MainMenuController_guide : MonoBehaviour
     {
         UnregisterCallbacks();
 
-        // Critical: Unregister the animation event to prevent memory leaks
         if (_astronaut != null)
         {
             _astronaut.UnregisterCallback<TransitionEndEvent>(OnAstronautTransitionEnd);
@@ -178,20 +170,18 @@ public class MainMenuController_guide : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Resets the UI to its absolute default state. Used on start and when leaving a room.
-    /// </summary>
     public void SetupInitialState()
     {
-        SetUIState(true); // Ensure Guide menu is visible
-        if (TriviaGameUIController.Instance != null) TriviaGameUIController.Instance.SetUIState(false); // Hide Trivia UI
+        SetUIState(true);
+        if (TriviaGameUIController.Instance != null) TriviaGameUIController.Instance.SetUIState(false);
 
         if (_createRoomContainer != null) _createRoomContainer.style.display = DisplayStyle.Flex;
         if (_reconnectContainer != null) _reconnectContainer.style.display = DisplayStyle.None;
         if (_leaveWarningContainer != null) _leaveWarningContainer.style.display = DisplayStyle.None;
 
         bool isEnglish = GameManager.Instance != null && GameManager.Instance.CurrentLanguage == GameManager.GameLanguage.english;
-        if (_lblMessageCreate != null) _lblMessageCreate.text = isEnglish ? "Generate room code" : "Generar código de sala";
+        // FIX: Removed accent
+        if (_lblMessageCreate != null) _lblMessageCreate.text = isEnglish ? "Generate room code" : "Generar codigo de sala";
 
         if (_lblErrorCreate != null) _lblErrorCreate.text = string.Empty;
         if (_lblErrorReconnect != null) _lblErrorReconnect.text = string.Empty;
@@ -215,28 +205,23 @@ public class MainMenuController_guide : MonoBehaviour
         SetMenuesTransitionToInitialState();
     }
 
-    //---------------------------------*****************---------------------------------//
     #region Menues Transition Logic
     private void OnPlayButtonClicked() => ToggleMenuesTransition();
 
-    //Main methods
     public void ToggleMenuesTransition(bool instant = false, bool toggle = true, bool transitioned = false)
     {
         if (_transitioning) return;
 
-        // Determinar si hay algo que mover antes de tocar estado
         bool willMoveDown = (toggle && !_transitioned) || (!toggle && !_transitioned && transitioned);
         bool willMoveUp = (toggle && _transitioned) || (!toggle && _transitioned && !transitioned);
 
-        if (!willMoveDown && !willMoveUp) return; // nada que hacer, no bloquear
+        if (!willMoveDown && !willMoveUp) return;
 
         _transitioning = true;
 
-        // Durations
         SetDuration(_menuesContainer, instant ? 0f : 1.2f);
         SetDuration(_clouds, instant ? 0f : 1.4f);
 
-        // Aplicar translate
         if (willMoveDown)
         {
             SetTranslate(_menuesContainer, 0, 120);
@@ -250,7 +235,6 @@ public class MainMenuController_guide : MonoBehaviour
             _transitioned = false;
         }
 
-        // Resolver fin de transición
         if (instant)
         {
             _transitioning = false;
@@ -279,8 +263,6 @@ public class MainMenuController_guide : MonoBehaviour
         }
     }
 
-    // --- Helpers ---
-
     private void SetDuration(VisualElement el, float seconds)
     {
         if (el != null)
@@ -294,7 +276,6 @@ public class MainMenuController_guide : MonoBehaviour
                 new Translate(x, new Length(yPercent, LengthUnit.Percent), 0)
             );
     }
-
 
     private void RegisterTransitionEnd(VisualElement element)
     {
@@ -317,13 +298,10 @@ public class MainMenuController_guide : MonoBehaviour
         Debug.Log("Transition finished!");
     }
 
-
     #endregion
-    //---------------------------------*****************---------------------------------//
 
     private void RegisterCallbacks()
     {
-        
         if (_btnPlay != null) _btnPlay.clicked += OnPlayButtonClicked;
         if (_btnCreateRoom != null) _btnCreateRoom.clicked += OnCreateRoomClicked;
         if (_btnGoToReconnect != null) _btnGoToReconnect.clicked += () => SwitchContainer(_reconnectContainer);
@@ -331,8 +309,6 @@ public class MainMenuController_guide : MonoBehaviour
         if (_btnJoin != null) _btnJoin.clicked += OnJoinClicked;
         if (_btnAcceptLeave != null) _btnAcceptLeave.clicked += OnAcceptLeaveClicked;
         if (_btnStartGame != null) _btnStartGame.clicked += OnStartGameClicked;
-
-
 
         if (_btnLeave != null)
         {
@@ -355,43 +331,24 @@ public class MainMenuController_guide : MonoBehaviour
 
     #region Animation Logic
 
-    /// <summary>
-    /// Fired once the UI Toolkit has finished calculating screen sizes.
-    /// </summary>
     private void OnGeometryCalculated(GeometryChangedEvent evt)
     {
-        // 1. Unregister immediately so this only runs once
         _astronaut.UnregisterCallback<GeometryChangedEvent>(OnGeometryCalculated);
-
-        // 2. Now that the UI has a real size, start the animation
         StartAstronautAnimation();
     }
 
-
-    /// <summary>
-    /// Configures the USS Transition properties and starts the infinite loop.
-    /// </summary>
-    /// 
     private void StartAstronautAnimation()
     {
-        Debug.Log($"astro nashe {_astronaut}");
         if (_astronaut == null) return;
 
-        // 1. Explicitly set the starting position before applying transitions
         _astronaut.style.translate = new Translate(new Length(0, LengthUnit.Percent), new Length(20, LengthUnit.Percent));
-
-        // 2. Configure USS transition settings via C#
         _astronaut.style.transitionDuration = new List<TimeValue> { new TimeValue(astronautAnimSpeed, TimeUnit.Second) };
         _astronaut.style.transitionProperty = new List<StylePropertyName> { new StylePropertyName("translate") };
         _astronaut.style.transitionTimingFunction = new List<EasingFunction> { new EasingFunction(EasingMode.EaseInOutSine) };
 
-        // 3. Listen for when the translate animation finishes to ping-pong it
         _astronaut.RegisterCallback<TransitionEndEvent>(OnAstronautTransitionEnd);
-
-        // 4. Delay the first movement by 50 milliseconds so the UI engine registers the initial state
         _astronaut.schedule.Execute(MoveAstronautDown).StartingIn(50);
     }
-    
 
     private void MoveAstronautDown()
     {
@@ -407,10 +364,8 @@ public class MainMenuController_guide : MonoBehaviour
 
     private void OnAstronautTransitionEnd(TransitionEndEvent evt)
     {
-        // Only react if the 'translate' property finished transitioning
         if (!evt.stylePropertyNames.Contains("translate")) return;
 
-        // Ping-pong the direction
         if (_isAstronautDown)
         {
             MoveAstronautUp();
@@ -492,8 +447,6 @@ public class MainMenuController_guide : MonoBehaviour
                     SwitchContainer(_createRoomContainer);
                     EnterActiveRoomUI(code);
 
-                    // FIX: Instantly grab the true player count because PlayerJoined 
-                    // callbacks won't fire for players who are already in the room!
                     if (QuizNetworkManager.Instance._runner != null)
                     {
                         int currentPlayers = Mathf.Max(0, QuizNetworkManager.Instance._runner.ActivePlayers.Count() - 1);
@@ -607,7 +560,8 @@ public class MainMenuController_guide : MonoBehaviour
         }
     }
 
-    private void OnStartGameClicked() { 
+    private void OnStartGameClicked()
+    {
         if (QuizNetworkManager.Instance != null)
         {
             QuizGameManager.Instance.StartMatch(QuestionSO.DifficultyLevel.Easy, 1, QuizGameManager.Instance.AllCategoriesDatabase);
@@ -629,9 +583,10 @@ public class MainMenuController_guide : MonoBehaviour
 
         if (_lblLeaveWarning != null)
         {
+            // FIX: Removed accents
             _lblLeaveWarning.text = isEn
                 ? "WARNING!\n\nIf you accept, you will leave and the room will be deleted, the match will end and player data will not be saved."
-                : "AVISO!\n\nSi aceptas, saldrás y se eliminará la sala, la partida terminará y no se guardarán los datos de los jugadores";
+                : "AVISO!\n\nSi aceptas, saldras y se eliminara la sala, la partida terminara y no se guardaran los datos de los jugadores";
         }
     }
 }

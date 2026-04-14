@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
-// Removed unused standalone input module
 
 public class MainMenuController : MonoBehaviour
 {
@@ -45,7 +44,7 @@ public class MainMenuController : MonoBehaviour
 
     // Decoratives
     [Header("Animation Settings")]
-    [SerializeField] private float astronautAnimSpeed = 2f; // Duration of one float direction in seconds
+    [SerializeField] private float astronautAnimSpeed = 2f;
     private Image _astronaut;
     private bool _isAstronautDown = false;
 
@@ -74,7 +73,6 @@ public class MainMenuController : MonoBehaviour
         _menuesContainer = root.Q<VisualElement>("MenuesContainer");
         _clouds = root.Q<VisualElement>("Clouds");
 
-        // NEW: Query the error label (Make sure your UXML has a Label with this name)
         _lblError = root.Q<Label>("lblErrorMessage");
 
         var codeMainContainer = root.Q<VisualElement>("CodeMainContainer");
@@ -89,22 +87,20 @@ public class MainMenuController : MonoBehaviour
         }
 
         _playButtonBack = root.Q<VisualElement>("PlayButtonBack");
-        _panelDatos     = root.Q<VisualElement>("PanelDatos");
-        _btnBanderaEsp  = root.Q<Button>("BanderEsp");
-        _btnBanderaEng  = root.Q<Button>("BanderaEng");
+        _panelDatos = root.Q<VisualElement>("PanelDatos");
+        _btnBanderaEsp = root.Q<Button>("BanderEsp");
+        _btnBanderaEng = root.Q<Button>("BanderaEng");
 
         _btnDevJoin = root.Q<Button>("BtnDevJoin");
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
         if (_btnDevJoin != null) _btnDevJoin.style.display = DisplayStyle.Flex;
 #endif
 
-        // Query the astronaut image
         _astronaut = root.Q<Image>("Astronaut");
 
         SetupInitialState();
         RegisterEvents();
 
-        // WAIT for the UI to be fully drawn before starting percentage-based animations
         if (_astronaut != null)
         {
             _astronaut.RegisterCallback<GeometryChangedEvent>(OnGeometryCalculated);
@@ -114,7 +110,7 @@ public class MainMenuController : MonoBehaviour
     private void Start()
     {
         CheckUrlParameters();
-        ApplyLocalization(); // NUEVO: Lo llamamos aqu� para asegurar que GameManager ya despert�
+        ApplyLocalization();
     }
 
     private void OnDisable()
@@ -135,7 +131,6 @@ public class MainMenuController : MonoBehaviour
 
         if (_codeInput != null) _codeInput.value = string.Empty;
 
-        // NEW: Clear the error label on startup
         if (_lblError != null) _lblError.text = string.Empty;
 
         SetMenuesTransitionToInitialState();
@@ -151,6 +146,10 @@ public class MainMenuController : MonoBehaviour
         if (!string.IsNullOrEmpty(roomCode))
         {
             if (_codeInput != null) _codeInput.value = roomCode;
+
+            // NEW: Automatically hide the language UI when joining via URL
+            ShowPlayButton();
+
             SetMenuesTransitionToFinalState();
         }
     }
@@ -174,43 +173,24 @@ public class MainMenuController : MonoBehaviour
 
     #region Animation Logic
 
-    /// <summary>
-    /// Fired once the UI Toolkit has finished calculating screen sizes.
-    /// </summary>
     private void OnGeometryCalculated(GeometryChangedEvent evt)
     {
-        // 1. Unregister immediately so this only runs once
         _astronaut.UnregisterCallback<GeometryChangedEvent>(OnGeometryCalculated);
-
-        // 2. Now that the UI has a real size, start the animation
         StartAstronautAnimation();
     }
 
-
-    /// <summary>
-    /// Configures the USS Transition properties and starts the infinite loop.
-    /// </summary>
-    /// 
     private void StartAstronautAnimation()
     {
-        Debug.Log($"astro nashe {_astronaut}");
         if (_astronaut == null) return;
 
-        // 1. Explicitly set the starting position before applying transitions
         _astronaut.style.translate = new Translate(new Length(0, LengthUnit.Percent), new Length(20, LengthUnit.Percent));
-
-        // 2. Configure USS transition settings via C#
         _astronaut.style.transitionDuration = new List<TimeValue> { new TimeValue(astronautAnimSpeed, TimeUnit.Second) };
         _astronaut.style.transitionProperty = new List<StylePropertyName> { new StylePropertyName("translate") };
         _astronaut.style.transitionTimingFunction = new List<EasingFunction> { new EasingFunction(EasingMode.EaseInOutSine) };
 
-        // 3. Listen for when the translate animation finishes to ping-pong it
         _astronaut.RegisterCallback<TransitionEndEvent>(OnAstronautTransitionEnd);
-
-        // 4. Delay the first movement by 50 milliseconds so the UI engine registers the initial state
         _astronaut.schedule.Execute(MoveAstronautDown).StartingIn(50);
     }
-
 
     private void MoveAstronautDown()
     {
@@ -226,10 +206,8 @@ public class MainMenuController : MonoBehaviour
 
     private void OnAstronautTransitionEnd(TransitionEndEvent evt)
     {
-        // Only react if the 'translate' property finished transitioning
         if (!evt.stylePropertyNames.Contains("translate")) return;
 
-        // Ping-pong the direction
         if (_isAstronautDown)
         {
             MoveAstronautUp();
@@ -276,10 +254,8 @@ public class MainMenuController : MonoBehaviour
     }
 
     #region Menu Transition Logic
-    //-----------------------*********************--------------------------//
     private void OnPlayButtonClicked() => ToggleMenuesTransition();
 
-    //Main methods
     public void ToggleMenuesTransition(bool instant = false, bool toggle = true, bool transitioned = false)
     {
         if (_transitioning) return;
@@ -319,7 +295,7 @@ public class MainMenuController : MonoBehaviour
         if (_menuesContainer != null) RegisterTransitionEnd(_menuesContainer);
         if (_clouds != null) RegisterTransitionEnd(_clouds);
     }
-    public void SetMenuesTransitionToFinalState() 
+    public void SetMenuesTransitionToFinalState()
     {
         if (!_transitioning)
         {
@@ -327,7 +303,7 @@ public class MainMenuController : MonoBehaviour
             ToggleMenuesTransition(true, false, true);
         }
     }
-    public void SetMenuesTransitionToInitialState() 
+    public void SetMenuesTransitionToInitialState()
     {
         if (!_transitioning)
         {
@@ -335,8 +311,6 @@ public class MainMenuController : MonoBehaviour
             ToggleMenuesTransition(true, false, false);
         }
     }
-
-    //Helpers
 
     private void SetDuration(VisualElement el, float seconds)
     {
@@ -372,8 +346,6 @@ public class MainMenuController : MonoBehaviour
     {
         Debug.Log("Transition finished!");
     }
-
-    //----------------------*********************--------------------------//
     #endregion
 
     public void SetUIState(bool isVisible)
@@ -401,9 +373,9 @@ public class MainMenuController : MonoBehaviour
         IsProcessing = true;
 
         if (GameManager.Instance != null && GameManager.Instance.CurrentLanguage == default)
-            GameManager.Instance.SetLanguage(GameManager.GameLanguage.spanish);
+            //GameManager.Instance.SetLanguage(GameManager.GameLanguage.spanish);
 
-        SetMenuesTransitionToFinalState();
+            SetMenuesTransitionToFinalState();
 
         if (_btnDevJoin != null) _btnDevJoin.SetEnabled(false);
 
@@ -446,7 +418,6 @@ public class MainMenuController : MonoBehaviour
 
         IsProcessing = true;
 
-        // Clear previous errors when attempting to join
         if (_lblError != null) _lblError.text = string.Empty;
 
         if (QuizNetworkManager.Instance != null)
@@ -457,7 +428,6 @@ public class MainMenuController : MonoBehaviour
 
                 if (!success)
                 {
-                    // UPDATED: Display the error directly on the UI
                     if (_lblError != null) _lblError.text = errorMessage;
                     Debug.LogWarning($"Join failed: {errorMessage}");
                 }
@@ -475,7 +445,6 @@ public class MainMenuController : MonoBehaviour
         SetUIState(true);
         IsProcessing = false;
 
-        // UPDATED: Push the external error (like duplicate tabs) to the UI
         if (_lblError != null) _lblError.text = message;
     }
 
@@ -493,6 +462,7 @@ public class MainMenuController : MonoBehaviour
             GameManager.Instance.SetLanguage(GameManager.GameLanguage.english);
         ApplyLocalization();
         ShowPlayButton();
+        Debug.Log("Language set to English" + GameManager.Instance.CurrentLanguage);
     }
 
     private void ShowPlayButton()
