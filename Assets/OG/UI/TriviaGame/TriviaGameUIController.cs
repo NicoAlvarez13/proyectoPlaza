@@ -17,7 +17,7 @@ public class TriviaGameUIController : MonoBehaviour
     [SerializeField] private Sprite[] _categoriesIcon = new Sprite[5];
 
     [Header("Country Flags (alphabetical order)")]
-    [SerializeField] private Sprite[] _countryFlags = new Sprite[28];
+    [SerializeField] private Sprite[] _countryFlags = new Sprite[21];
 
     private VisualElement _root;
     private Label _lblTitle;
@@ -82,11 +82,11 @@ public class TriviaGameUIController : MonoBehaviour
 
     private static readonly List<string> _countryNames = new List<string>
     {
-        "Alemania", "Argentina", "Bolivia", "Brasil", "Chile", "China",
-        "Colombia", "Costa Rica", "Cuba", "Ecuador", "El Salvador", "España",
-        "Estados Unidos", "Francia", "Honduras", "Italia", "Japón", "México",
-        "Nicaragua", "Panamá", "Paraguay", "Perú", "Puerto Rico", "Reino Unido",
-        "República Dominicana", "Resto del Mundo", "Uruguay", "Venezuela"
+        "Alemania", "Argentina", "Bolivia", "Brasil", "Chile",
+        "Colombia", "Costa Rica", "Cuba", "Ecuador", "España",
+        "Estados Unidos", "Francia", "Italia", "México",
+        "Paraguay", "Perú", "Puerto Rico", "Reino Unido",
+        "República Dominicana", "Uruguay", "Venezuela"
     };
 
     public class AnswerElement
@@ -891,18 +891,57 @@ public class TriviaGameUIController : MonoBehaviour
 
     private void LimitDropdownPopupHeight()
     {
+        Debug.Log("[Submit] Entrando a LimitDropdownPopupHeight");
         var panelRoot = _dropPaises?.panel?.visualTree;
         if (panelRoot == null) return;
 
         var container = panelRoot.Q(className: "unity-base-dropdown__container-outer");
-        if (container == null) return;
 
-        var listView = container.Q<ListView>();
-        if (listView == null) return;
+        if (container != null)
+        {
+            // 1. LIMITAR ALTURA (Lo que ya funciona)
+            container.style.maxHeight = 250; 
+            container.style.height = StyleKeyword.Auto;
 
-        float itemHeight = listView.fixedItemHeight > 0 ? listView.fixedItemHeight : 36f;
-        listView.style.maxHeight = itemHeight * 3;
-        listView.style.overflow = Overflow.Hidden;
+            // 2. CORREGIR POSICIÓN (El "Anclaje")
+            // Obtenemos dónde está parado el dropdown en la pantalla
+            var dropdownBounds = _dropPaises.worldBound;
+
+            // Forzamos que el popup empiece justo donde termina el dropdown
+            // y que tenga el mismo ancho para que no se vea finito
+            container.style.position = Position.Absolute;
+            container.style.top = dropdownBounds.yMax; 
+            container.style.left = dropdownBounds.xMin;
+            container.style.width = dropdownBounds.width;
+
+            // 3. FUENTE Y SCROLL (Para mantener lo anterior)
+            var scrollView = container.Q<ScrollView>();
+            if (scrollView != null) {
+
+                // Desactiva la visibilidad de las barras
+                scrollView.verticalScrollerVisibility = ScrollerVisibility.Hidden;
+                scrollView.horizontalScrollerVisibility = ScrollerVisibility.Hidden;
+    
+                // Opcional: Forzar el modo de scroll para que sea más fluido en táctil
+                scrollView.touchScrollBehavior = ScrollView.TouchScrollBehavior.Clamped;
+                scrollView.style.maxHeight = 250;   
+            }
+
+            var itemLabels = container.Query<Label>(className: "unity-base-dropdown__item-label").ToList();
+            if (_btnSubmitData != null && itemLabels.Count > 0)
+            {
+                var customFont = _btnSubmitData.resolvedStyle.unityFontDefinition;
+                foreach (var label in itemLabels)
+                {
+                    label.style.unityFontDefinition = customFont;
+                    label.style.fontSize = 20;
+                    label.style.color = Color.black;
+                }
+            }
+            Debug.Log("[Submit] Altura y posición corregidas");
+
+            container.style.opacity = 1;
+        }
     }
 
     private void UpdateFlagIcon(int index)

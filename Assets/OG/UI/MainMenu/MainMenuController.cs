@@ -14,10 +14,6 @@ public class MainMenuController : MonoBehaviour
     // --- Constants ---
     private const string LAST_ROOM_KEY = "LastRoomCode";
 
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
-    [Header("Dev Tools")]
-    [SerializeField] private string _devRoomCode = "1234";
-#endif
 
     // --- UI Elements ---
     private Button _btnPlay;

@@ -92,4 +92,5 @@
     border-left-width: 0;
     padding-left: 96px;
     background-color: rgb(255, 255, 255);
+    -unity-font-definition: url("project://database/Assets/Fonts/Switzer_Complete/Fonts/OTF/Switzer-Medium.otf?fileID=12800000&guid=0ede7fb590f099e4fa345fe6f68c7ac5&type=3#Switzer-Medium");
 }

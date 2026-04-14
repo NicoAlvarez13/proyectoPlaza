@@ -564,7 +564,7 @@ public class MainMenuController_guide : MonoBehaviour
     {
         if (QuizNetworkManager.Instance != null)
         {
-            QuizGameManager.Instance.StartMatch(QuestionSO.DifficultyLevel.Easy, 1, QuizGameManager.Instance.AllCategoriesDatabase);
+            QuizGameManager.Instance.StartMatch(QuestionSO.DifficultyLevel.Easy, 2, QuizGameManager.Instance.AllCategoriesDatabase);
         }
     }
 

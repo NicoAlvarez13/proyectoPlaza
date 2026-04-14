@@ -1,0 +1,12 @@
+/* Esto oculta el popup en el instante que nace */
+.unity-base-dropdown__container-outer {
+    max-height: 250px !important;
+    height: auto !important;
+    opacity: 0; /* Invisible inicialmente */
+}
+
+/* Fuente pixel art para los items */
+.unity-base-dropdown__item-label {
+    font-size: 20px !important;
+    color: black !important;
+}
