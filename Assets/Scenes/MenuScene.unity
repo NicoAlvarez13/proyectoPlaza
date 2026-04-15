@@ -599,7 +599,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuController
   _uiDocument: {fileID: 1033760035}
-  _devRoomCode: 1234
   IsProcessing: 0
   astronautAnimSpeed: 2
 --- !u!1 &1682348225

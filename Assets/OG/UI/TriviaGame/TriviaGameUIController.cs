@@ -277,6 +277,10 @@ public class TriviaGameUIController : MonoBehaviour
 
         ShowQuizUI(false);
         HideNextQuestionScreen();
+        // Add these lines to force the panels to hide on startup
+        if (_panelDatos != null) _panelDatos.style.display = DisplayStyle.None;
+        if (_panelGracias != null) _panelGracias.style.display = DisplayStyle.None;
+
         SetUIState(false);
     }
 
@@ -763,6 +767,9 @@ public class TriviaGameUIController : MonoBehaviour
 
     public void ResetToAvatarSelection()
     {
+        // Add this line to hide the panel when returning to the lobby
+        if (_panelDatos != null) _panelDatos.style.display = DisplayStyle.None;
+
         if (_playersContainer != null) _playersContainer.style.visibility = Visibility.Hidden;
         if (_lblPersonalizeAvatar != null) _lblPersonalizeAvatar.style.display = DisplayStyle.Flex;
         if (_characterSelector != null) _characterSelector.style.display = DisplayStyle.Flex;
